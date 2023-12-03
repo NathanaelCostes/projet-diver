@@ -16,24 +16,18 @@ public class PostgreDAOFactory implements DAOFactory {
     /**
      * 
      */
-    public String port;
-
-    /**
-     * 
-     */
     public DiverDAO createDiverDAO() {
-        // TODO implement here
-        return null;
+        return new DiverDAOPostgre();
     }
 
+    /**
+     * Pas thread safe
+     */
     public static PostgreDAOFactory getInstance(){
         if(PostgreDAOFactory.instance == null){
-            //TODO
-        } else {
-            return PostgreDAOFactory.instance;
+            PostgreDAOFactory.instance = new PostgreDAOFactory();
         }
-
-        return null; // bouchon TODO
+        return PostgreDAOFactory.instance;
     }
 
 }

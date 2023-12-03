@@ -13,19 +13,36 @@ public class DiverFacade {
     public DiverFacade() {
     }
 
+    private static DiverFacade instance;
+
+    Diver diver;
+
     /**
-     * @param id 
-     * @param pwd
+     * @param email
+     * @param password
      */
-    public void login(String id, String pwd) {
-        // TODO implement here
+    public void login(String email, String password) {
+        PostgreDAOFactory.getInstance().createDiverDAO().getDiver(email);
+        this.getCurrentDiver().login(email, password);
+    }
+
+    /**
+     *
+     */
+    public static DiverFacade getInstance() {
+
+        if(DiverFacade.instance == null){
+            DiverFacade.instance = new DiverFacade();
+        }
+
+        return DiverFacade.instance;
     }
 
     /**
      * 
      */
-    public void getCurrentDiver() {
-        // TODO implement here
+    public Diver getCurrentDiver() {
+        return this.diver;
     }
 
 }

@@ -14,21 +14,21 @@ public abstract class DiverDAO {
     }
 
     /**
-     * 
+     * Fetches a diver from the database using its email
+     * @param email the email to find in the database
+     * @return the diver if found, null otherwise
      */
-    public abstract void getDiver();
+    public abstract Diver getDiver(String email);
 
     /**
      * 
      */
     public  static DiverDAO getInstance() {
         if (DiverDAO.instance == null) {
-            //TODO
+            return new DiverDAOPostgre();
         } else {
             return DiverDAO.instance;
         }
-
-        return null; // bouchon
     }
 
 }
