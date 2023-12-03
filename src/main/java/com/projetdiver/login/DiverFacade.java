@@ -13,6 +13,8 @@ public class DiverFacade {
     public DiverFacade() {
     }
 
+    //TODO Dire qui est le current driver
+
     private static DiverFacade instance;
 
     Diver diver;

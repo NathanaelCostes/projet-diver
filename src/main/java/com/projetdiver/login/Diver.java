@@ -32,7 +32,6 @@ public class Diver {
      * @param pwd
      */
     public void login(String id, String pwd) {
-        // TODO implemen
         if(id.equals(this.email) && pwd.equals(this.password)){
             System.out.println("Login success");
         } else {
