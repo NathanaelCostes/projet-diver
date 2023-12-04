@@ -1,1 +1,9 @@
 notes.txt
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Maven
+log/
+target/
