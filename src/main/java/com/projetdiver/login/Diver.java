@@ -27,12 +27,14 @@ public class Diver {
         this.prenom = prenom;
     }
 
+    public Diver(){}
+
     /**
-     * @param id 
+     * @param email
      * @param pwd
      */
-    public void login(String id, String pwd) {
-        if(id.equals(this.email) && pwd.equals(this.password)){
+    public boolean login(String email, String pwd) {
+        if(email.equals(this.email) && pwd.equals(this.password)){
             System.out.println("Login success");
         } else {
             System.out.println("Login failed");

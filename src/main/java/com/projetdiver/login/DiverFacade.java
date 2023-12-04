@@ -10,7 +10,7 @@ public class DiverFacade {
     /**
      * Default constructor
      */
-    public DiverFacade() {
+    private DiverFacade() {
     }
 
     //TODO Dire qui est le current driver
@@ -24,8 +24,19 @@ public class DiverFacade {
      * @param password
      */
     public void login(String email, String password) {
-        PostgreDAOFactory.getInstance().createDiverDAO().getDiver(email);
-        this.getCurrentDiver().login(email, password);
+
+        Diver diverFetched = (PostgreDAOFactory.getInstance().createDiverDAO().getDiver(email));
+        if(this.diver == null && diverFetched!=null){
+
+            boolean succeeded = diverFetched.login(email, password);
+            if (succeeded) {
+                this.diver = diverFetched;
+                System.out.println("Diver fetched: " + this.diver);
+            }
+        } else {
+            System.out.println("Diver already logged in");
+            //TODO throw exception
+        }
     }
 
     /**
@@ -47,4 +58,7 @@ public class DiverFacade {
         return this.diver;
     }
 
+    public Diver getDiver() {
+        return diver;
+    }
 }

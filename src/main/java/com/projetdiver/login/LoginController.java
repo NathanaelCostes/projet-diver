@@ -32,7 +32,7 @@ public class LoginController {
         System.out.println("Email: " + email);
         System.out.println("Password: " + password);
 
-        DiverFacade diverFacade = new DiverFacade();
+        DiverFacade diverFacade = DiverFacade.getInstance();
         diverFacade.login(email, password);
     }
 }
