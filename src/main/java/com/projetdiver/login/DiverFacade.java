@@ -1,5 +1,9 @@
 package com.projetdiver.login;
 
+import com.projetdiver.dao.PostgreDAOFactory;
+import com.projetdiver.diver.Diver;
+import com.projetdiver.login.exceptions.DiverAlreadyLoggedInException;
+
 import java.util.*;
 
 /**

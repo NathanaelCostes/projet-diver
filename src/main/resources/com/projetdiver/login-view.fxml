@@ -8,7 +8,6 @@
 <?import javafx.scene.text.Font?>
 
 <Pane maxHeight="318.0" maxWidth="396.0" minHeight="318.0" minWidth="396.0" prefHeight="318.0" prefWidth="396.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projetdiver.login.LoginController">
-    <children>
         <Button layoutX="309.0" layoutY="232.0" onAction="#onAction" text="Login" textAlignment="CENTER" />
         <Label layoutX="46.0" layoutY="65.0" text="Email" />
         <TextField fx:id="emailTextField" layoutX="46.0" layoutY="101.0" prefHeight="25.0" prefWidth="274.0" promptText="example@gmail.com" />
@@ -23,5 +22,4 @@
             <Font size="16.0" />
          </font>
       </Label>
-    </children>
 </Pane>
