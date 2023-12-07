@@ -1,4 +1,5 @@
 notes.txt
+
 # Intellij
 .idea/
 *.iml
@@ -9,6 +10,8 @@ notes.txt
 # Maven
 log/
 target/
+
+*.class
 
 #Docker
 docker-compose.yml
