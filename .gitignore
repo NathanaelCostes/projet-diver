@@ -1,4 +1,5 @@
 notes.txt
+
 # Intellij
 .idea/
 *.iml
@@ -10,7 +11,7 @@ notes.txt
 log/
 target/
 
-target/classes/com/projetdiver/login
+*.class
 
 #Docker
 docker-compose.yml
