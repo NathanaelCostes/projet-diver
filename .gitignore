@@ -4,6 +4,9 @@ notes.txt
 *.iml
 *.iws
 
+.env
+
 # Maven
 log/
 target/
+

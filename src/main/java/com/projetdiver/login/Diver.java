@@ -15,7 +15,6 @@ public class Diver {
 
     private String prenom;
 
-
     /**
      * @param email
      * @param password
@@ -33,11 +32,13 @@ public class Diver {
      * @param email
      * @param pwd
      */
-    public boolean login(String email, String pwd) {
+    public boolean login(String email, String pwd)  {
         if(email.equals(this.email) && pwd.equals(this.password)){
             System.out.println("Login success");
+            return true;
         } else {
             System.out.println("Login failed");
+            return false;
         }
     }
 

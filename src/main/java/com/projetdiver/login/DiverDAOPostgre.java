@@ -1,5 +1,7 @@
 package com.projetdiver.login;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 import java.sql.*;
 
 /**
@@ -14,12 +16,13 @@ public class DiverDAOPostgre extends DiverDAO {
 
     }
 
+    Dotenv dotenv = Dotenv.load();
+
     private Connection connection;
 
-    // TODO mettre ces infos dans un fichier de config
-    private final String DB_USER = "postgres";
-    private final String DB_PASSWORD = "postgres";
-    private final String DB_URL = "jdbc:postgresql://localhost:32768/postgres";
+    private final String DB_USER = dotenv.get("DB_USER");
+    private final String DB_PASSWORD = dotenv.get("DB_PASSWORD");
+    private final String DB_URL = dotenv.get("DB_URL");
 
     /**
      *

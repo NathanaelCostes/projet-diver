@@ -1,6 +1,7 @@
 package com.projetdiver.login;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.util.*;
@@ -16,6 +17,9 @@ public class LoginController {
     @FXML
     private TextField passwordTextField;
 
+    @FXML
+    private Label errorLabel;
+
     /**
      * Default constructor
      */
@@ -25,7 +29,7 @@ public class LoginController {
      * Login the user
      */
     public void onAction() {
-        // Access the values from the text fields
+
         String email = emailTextField.getText();
         String password = passwordTextField.getText();
 
@@ -33,6 +37,10 @@ public class LoginController {
         System.out.println("Password: " + password);
 
         DiverFacade diverFacade = DiverFacade.getInstance();
-        diverFacade.login(email, password);
+        try {
+            diverFacade.login(email, password);
+        } catch (Exception e) {
+           this.errorLabel.setText(e.getMessage());
+        }
     }
 }

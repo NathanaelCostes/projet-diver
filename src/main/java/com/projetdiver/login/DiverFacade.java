@@ -23,19 +23,27 @@ public class DiverFacade {
      * @param email
      * @param password
      */
-    public void login(String email, String password) {
+    public void login(String email, String password) throws Exception {
 
         Diver diverFetched = (PostgreDAOFactory.getInstance().createDiverDAO().getDiver(email));
         if(this.diver == null && diverFetched!=null){
 
             boolean succeeded = diverFetched.login(email, password);
+
             if (succeeded) {
                 this.diver = diverFetched;
                 System.out.println("Diver fetched: " + this.diver);
             }
-        } else {
+        } else if(this.diver != null) {
             System.out.println("Diver already logged in");
+            throw new DiverAlreadyLoggedInException("Diver already logged in");
             //TODO throw exception
+        } else if(diverFetched == null){
+            System.out.println("There is no diver with this email");
+            throw new Exception("There is no diver with this email");
+        } else {
+            System.out.println("Unknown error");
+            throw new Exception("There is no diver with this email");
         }
     }
 

@@ -10,7 +10,7 @@ public class PostgreDAOFactory implements DAOFactory {
     /**
      * Default constructor
      */
-    public PostgreDAOFactory() {
+    private PostgreDAOFactory() {
     }
 
     /**
