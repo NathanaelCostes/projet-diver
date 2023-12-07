@@ -5,8 +5,7 @@ import com.projetdiver.login.exceptions.DiverAlreadyLoggedInException;
 import com.projetdiver.login.exceptions.DiverEmailNotFoundException;
 
 /**
- * The DiverFacade that is used to do all actions on a diver
- * Singleton class
+ *
  */
 public class DiverFacade {
 

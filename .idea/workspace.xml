@@ -55,6 +55,9 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Unnamed.executor": "Run",
+    "JUnit.LoginTest.WrongPasswordShouldThrowWrongPasswordException.executor": "Run",
+    "JUnit.LoginTest.driverAlreadyLoggedShouldThrowDiverAlreadyLoggedInException.executor": "Run",
+    "JUnit.LoginTest.driverEmailNotFoundShouldThrowDiverEmailNotFoundException.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
@@ -68,10 +71,11 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.projetdiver.diver" />
       <recent name="com.projetdiver.login" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.LoginTest.driverAlreadyLoggedShouldThrowDiverAlreadyLoggedInException">
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.projetdiver.HelloApplication" />
       <module name="projet-diver" />
@@ -79,6 +83,61 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="LoginTest.WrongPasswordShouldThrowWrongPasswordException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="projet-diver" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.projetdiver.diver.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.projetdiver.diver" />
+      <option name="MAIN_CLASS_NAME" value="com.projetdiver.diver.LoginTest" />
+      <option name="METHOD_NAME" value="WrongPasswordShouldThrowWrongPasswordException" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoginTest.driverAlreadyLoggedShouldThrowDiverAlreadyLoggedInException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="projet-diver" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.projetdiver.diver.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.projetdiver.diver" />
+      <option name="MAIN_CLASS_NAME" value="com.projetdiver.diver.LoginTest" />
+      <option name="METHOD_NAME" value="driverAlreadyLoggedShouldThrowDiverAlreadyLoggedInException" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoginTest.driverEmailNotFoundShouldThrowDiverEmailNotFoundException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="projet-diver" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.projetdiver.diver.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.projetdiver.diver" />
+      <option name="MAIN_CLASS_NAME" value="com.projetdiver.diver.LoginTest" />
+      <option name="METHOD_NAME" value="driverEmailNotFoundShouldThrowDiverEmailNotFoundException" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.LoginTest.driverAlreadyLoggedShouldThrowDiverAlreadyLoggedInException" />
+        <item itemvalue="JUnit.LoginTest.driverEmailNotFoundShouldThrowDiverEmailNotFoundException" />
+        <item itemvalue="JUnit.LoginTest.WrongPasswordShouldThrowWrongPasswordException" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
