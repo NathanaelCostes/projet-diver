@@ -13,8 +13,6 @@ public class DiverFacade {
     private DiverFacade() {
     }
 
-    //TODO Dire qui est le current driver
-
     private static DiverFacade instance;
 
     Diver diver;
@@ -37,7 +35,6 @@ public class DiverFacade {
         } else if(this.diver != null) {
             System.out.println("Diver already logged in");
             throw new DiverAlreadyLoggedInException("Diver already logged in");
-            //TODO throw exception
         } else if(diverFetched == null){
             System.out.println("There is no diver with this email");
             throw new Exception("There is no diver with this email");

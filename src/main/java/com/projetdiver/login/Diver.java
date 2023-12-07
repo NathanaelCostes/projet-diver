@@ -32,10 +32,13 @@ public class Diver {
      * @param email
      * @param pwd
      */
-    public boolean login(String email, String pwd)  {
-        if(email.equals(this.email) && pwd.equals(this.password)){
+    public boolean login(String email, String pwd) throws Exception{
+        if(email.equals(this.email) && pwd.equals(this.password)) {
             System.out.println("Login success");
+            //TODO redirect to the main page of the app
             return true;
+        } else  if(!pwd.equals(this.password)){
+            throw new Exception("Wrong password");
         } else {
             System.out.println("Login failed");
             return false;
@@ -44,6 +47,14 @@ public class Diver {
 
     public String getEmail() {
     	return this.email;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
     }
 
     public String toString() {

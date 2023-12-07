@@ -20,6 +20,8 @@ public class LoginController {
     @FXML
     private Label errorLabel;
 
+
+
     /**
      * Default constructor
      */
@@ -36,11 +38,21 @@ public class LoginController {
         System.out.println("Email: " + email);
         System.out.println("Password: " + password);
 
+        if(email.equals("") || password.equals("")){
+            this.errorLabel.setText("Please fill all the fields");
+            return;
+        }
+
         DiverFacade diverFacade = DiverFacade.getInstance();
         try {
-            diverFacade.login(email, password);
+            diverFacade.login(email, password); //TODO JUNIT TEST
+            diverFacade.getCurrentDiver().getNom();
         } catch (Exception e) {
            this.errorLabel.setText(e.getMessage());
         }
+
+
     }
+
+
 }
