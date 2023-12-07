@@ -1,12 +1,12 @@
-notes.txt
-# Intellij
-.idea/
-*.iml
-*.iws
+    notes.txt
+    # Intellij
+    .idea/
+    *.iml
+    *.iws
 
-.env
+    .env
 
-# Maven
-log/
-target/
+    # Maven
+    log/
+    target/
 

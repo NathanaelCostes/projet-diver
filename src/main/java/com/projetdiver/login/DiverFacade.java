@@ -37,10 +37,11 @@ public class DiverFacade {
         } else if(this.diver != null) {
             System.out.println("Diver already logged in");
             throw new DiverAlreadyLoggedInException("Diver already logged in");
-            //TODO throw exception
+
         } else if(diverFetched == null){
             System.out.println("There is no diver with this email");
             throw new Exception("There is no diver with this email");
+
         } else {
             System.out.println("Unknown error");
             throw new Exception("There is no diver with this email");
