@@ -1,17 +1,17 @@
-package com.projetdiver.login;
+package com.projetdiver.diver;
 
 /**
- * 
+ * Abstract class for the DiverDAO
  */
 public abstract class DiverDAO {
 
+    /** instance de DiverDAO Postgre */
     private static DiverDAO instance;
 
     /**
      * Default constructor
      */
-    public DiverDAO() {
-    }
+    public DiverDAO() {}
 
     /**
      * Fetches a diver from the database using its email
@@ -21,7 +21,8 @@ public abstract class DiverDAO {
     public abstract Diver getDiver(String email);
 
     /**
-     * 
+     * get the instance of the DiverDAO
+     * Not thread safe
      */
     public  static DiverDAO getInstance() {
         if (DiverDAO.instance == null) {

@@ -1,4 +1,6 @@
-package com.projetdiver.login;
+package com.projetdiver.dao;
+
+import com.projetdiver.diver.DiverDAO;
 
 /**
  * 
@@ -17,7 +19,7 @@ public class PostgreDAOFactory implements DAOFactory {
      * 
      */
     public DiverDAO createDiverDAO() {
-        return new DiverDAOPostgre();
+        return DiverDAO.getInstance();
     }
 
     /**

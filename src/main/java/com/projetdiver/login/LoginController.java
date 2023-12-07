@@ -1,13 +1,12 @@
 package com.projetdiver.login;
 
+import com.projetdiver.diver.DiverFacade;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-import java.util.*;
-
 /**
- * 
+ * Controller for the login view, connect the diver when the login button is clicked
  */
 public class LoginController {
 
@@ -28,7 +27,8 @@ public class LoginController {
     public LoginController() {}
 
     /**
-     * Login the user
+     * Login the user when the login button is clicked.
+     * If there is an error, displays it in the error label
      */
     public void onAction() {
 
@@ -46,13 +46,11 @@ public class LoginController {
         DiverFacade diverFacade = DiverFacade.getInstance();
         try {
             diverFacade.login(email, password); //TODO JUNIT TEST
+
             diverFacade.getCurrentDiver().getNom();
+            diverFacade.getCurrentDiver().getPrenom();
         } catch (Exception e) {
            this.errorLabel.setText(e.getMessage());
         }
-
-
     }
-
-
 }

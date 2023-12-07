@@ -1,34 +1,38 @@
-package com.projetdiver.login;
+package com.projetdiver.diver;
 
+import com.projetdiver.diver.Diver;
+import com.projetdiver.diver.DiverDAO;
 import io.github.cdimascio.dotenv.Dotenv;
-
 import java.sql.*;
 
 /**
- * 
+ * Does the connection to the postgre database and communicate with it
  */
 public class DiverDAOPostgre extends DiverDAO {
 
     /**
      * Default constructor
      */
-    public DiverDAOPostgre() {
+    public DiverDAOPostgre() {}
 
-    }
-
+    /** dotenv to load informations from the .env */
     Dotenv dotenv = Dotenv.load();
 
     private Connection connection;
 
+    /** User of the database to get in the .env */
     private final String DB_USER = dotenv.get("DB_USER");
+
+    /** Password of the database to get in the .env */
     private final String DB_PASSWORD = dotenv.get("DB_PASSWORD");
+
+    /** URL of the database to get in the .env */
     private final String DB_URL = dotenv.get("DB_URL");
 
     /**
-     *
+     * Connect to the database using the informations in the .env
      */
     private void connection() {
-
         try {
             this.connection = DriverManager.getConnection(this.DB_URL, this.DB_USER, this.DB_PASSWORD);
             this.connection.isValid(2);
@@ -38,8 +42,11 @@ public class DiverDAOPostgre extends DiverDAO {
     }
 
     /**
-     * 
-     */public Diver getDiver(String email) {
+     * Fetches a diver from the database using its email
+     * @param email the email to find in the database
+     * @return the diver if found, null otherwise
+     */
+    public Diver getDiver(String email) {
         try {
             connection();
             System.out.println("Connection to the database successful");
@@ -67,7 +74,7 @@ public class DiverDAOPostgre extends DiverDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            // Close the connection in a finally block to ensure it's always closed
+            // Close the connection
             try {
                 if (connection != null && !connection.isClosed()) {
                     connection.close();
@@ -76,8 +83,7 @@ public class DiverDAOPostgre extends DiverDAO {
                 e.printStackTrace();
             }
         }
-
-        return null; // Placeholder for handling errors
+        return null;
     }
 
 }
