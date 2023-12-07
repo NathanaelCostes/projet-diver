@@ -10,5 +10,7 @@ notes.txt
 log/
 target/
 
+target/classes/com/projetdiver/login
+
 #Docker
 docker-compose.yml
