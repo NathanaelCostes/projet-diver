@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  projet_diver_db:
+    image: postgres:16
+    container_name: projet_diver_db
+    volumes:
+      - diver_vol:/var/lib/postgresql/data
+      - ../dataset:/docker-entrypoint-initdb.d
+    ports: 
+      - "5432:5432"
+
+volumes:
+  diver_vol:
