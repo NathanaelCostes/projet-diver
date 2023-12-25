@@ -21,12 +21,15 @@ public class Diver {
     /** Prenom of the user */
     private String prenom;
 
+    private int id;
+
     /**
      * Creates a Diver
      * @param email
      * @param password
      */
-    public Diver(String email, String password, String nom, String prenom) {
+    public Diver(int id, String email, String password, String nom, String prenom) {
+        this.id = id;
         this.email = email;
         this.password = password;
         this.nom = nom;
@@ -84,4 +87,7 @@ public class Diver {
     	return this.email + " " + this.password + " " + this.nom + " " + this.prenom;
     }
 
+    public int getId() {
+        return id;
+    }
 }

@@ -19,8 +19,6 @@ public class LoginController {
     @FXML
     private Label errorLabel;
 
-
-
     /**
      * Default constructor
      */
@@ -45,7 +43,7 @@ public class LoginController {
 
         DiverFacade diverFacade = DiverFacade.getInstance();
         try {
-            diverFacade.login(email, password); //TODO JUNIT TEST
+            diverFacade.login(email, password);
 
             diverFacade.getCurrentDiver().getNom();
             diverFacade.getCurrentDiver().getPrenom();

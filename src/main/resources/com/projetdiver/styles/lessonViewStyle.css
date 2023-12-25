@@ -1,0 +1,32 @@
+/* Style for AnchorPane */
+.anchor-pane {
+    -fx-background-color: #f4f4f4; /* Background color */
+}
+
+/* Style for Label */
+.label {
+    -fx-font-size: 18px; /* Font size */
+    -fx-font-weight: bold; /* Font weight */
+    -fx-text-fill: #333; /* Text color */
+}
+
+/* Style for ListView */
+.list-view {
+    -fx-background-color: #fff; /* Background color */
+    -fx-border-color: #ddd; /* Border color */
+    -fx-border-width: 1px; /* Border width */
+}
+
+/* Style for Button */
+.button {
+    -fx-background-color: #00c2ff; /* Button background color */
+    -fx-text-fill: #fff; /* Button text color */
+    -fx-font-size: 14px; /* Button font size */
+    -fx-font-weight: bold; /* Button font weight */
+    -fx-padding: 8px 16px; /* Button padding */
+}
+
+/* Style for Button when hovered */
+.button:hover {
+    -fx-background-color: #0080ff; /* Hovered background color */
+}
