@@ -22,7 +22,7 @@ public class DiverApplication extends Application {
      */
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(DiverApplication.class.getResource("signup-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(DiverApplication.class.getResource("profile-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 400, 300);
         stage.setTitle("Login!");
 
