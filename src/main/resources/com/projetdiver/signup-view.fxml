@@ -3,9 +3,8 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projetdiver.signup.SignupController">
     <center>
         <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
             <columnConstraints>
@@ -19,26 +18,28 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Label text="First Name" style="-fx-text-fill: #008080; -fx-font-size: 14.0;" GridPane.columnIndex="0" />
-                <TextField maxWidth="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" />
-                <Label text="Last Name" style="-fx-text-fill: #008080; -fx-font-size: 14.0;" GridPane.rowIndex="1" />
-                <TextField maxWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <Label text="Email" style="-fx-text-fill: #008080; -fx-font-size: 14.0;" GridPane.rowIndex="2" />
-                <TextField maxWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                <Label text="Password" style="-fx-text-fill: #008080; -fx-font-size: 14.0;" GridPane.rowIndex="3" />
-                <PasswordField maxHeight="-Infinity" maxWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <Label style="-fx-text-fill: #008080; -fx-font-size: 14.0;" text="First Name" GridPane.columnIndex="0" />
+                <TextField fx:id="firstNameTextField" maxWidth="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" />
+                <Label style="-fx-text-fill: #008080; -fx-font-size: 14.0;" text="Last Name" GridPane.rowIndex="1" />
+                <TextField fx:id="lastNameTextField" maxWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Label style="-fx-text-fill: #008080; -fx-font-size: 14.0;" text="Email" GridPane.rowIndex="2" />
+                <TextField fx:id="emailTextField" maxWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Label style="-fx-text-fill: #008080; -fx-font-size: 14.0;" text="Password" GridPane.rowIndex="3" />
+                <PasswordField fx:id="passwordField" maxHeight="-Infinity" maxWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             </children>
         </GridPane>
     </center>
     <bottom>
-        <Button mnemonicParsing="false" text="Sign Up" style="-fx-background-color: #008080; -fx-text-fill: white;" BorderPane.alignment="CENTER">
-            <BorderPane.margin>
-                <Insets bottom="25.0" />
-            </BorderPane.margin>
-        </Button>
+        <VBox alignment="CENTER" spacing="10">
+            <Label fx:id="errorLabel" style="-fx-text-fill: red;" text="" visible="true" />
+            <Button mnemonicParsing="false" onAction="#onAction" style="-fx-background-color: #008080; -fx-text-fill: white;" text="Submit">
+            <VBox.margin>
+               <Insets bottom="10.0" />
+            </VBox.margin></Button>
+        </VBox>
     </bottom>
     <top>
-        <Label text="Sign Up" style="-fx-text-fill: #008080; -fx-font-size: 36.0;" BorderPane.alignment="CENTER">
+        <Label style="-fx-text-fill: #008080; -fx-font-size: 36.0;" text="Sign Up" BorderPane.alignment="CENTER">
             <BorderPane.margin>
                 <Insets top="25.0" />
             </BorderPane.margin>

@@ -26,7 +26,7 @@ public class Diver {
      * @param email
      * @param password
      */
-    public Diver(String email, String password, String nom, String prenom) {
+    public Diver(String prenom, String nom, String email, String password) {
         this.email = email;
         this.password = password;
         this.nom = nom;
@@ -78,9 +78,16 @@ public class Diver {
     }
 
     /**
+     * @return the password of the user
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
      * @return the user as a string
      */
-    public String toString() {
+    public String toString(){
     	return this.email + " " + this.password + " " + this.nom + " " + this.prenom;
     }
 

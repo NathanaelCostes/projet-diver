@@ -86,4 +86,39 @@ public class DiverDAOPostgre extends DiverDAO {
         return null;
     }
 
+    /**
+     * Adds a diver to the database
+     * @param diver the diver to add to the database
+     * @return true if the diver is added, false otherwise
+     */
+    public boolean addDiver(Diver diver) {
+        try {
+            connection();
+            System.out.println("Connection to the database successful");
+
+            // Use a prepared statement to avoid SQL injection
+            String sql = "INSERT INTO users (email, password, last_name, first_name) VALUES (?, ?, ?, ?)";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setString(1, diver.getEmail());
+                statement.setString(2, diver.getPassword());
+                statement.setString(3, diver.getNom());
+                statement.setString(4, diver.getPrenom());
+                statement.executeUpdate();
+                return true;
+            }catch (SQLException e) {
+                e.printStackTrace();
+                return false;
+            }
+        } finally {
+            // Close the connection
+            try {
+                if (connection != null && !connection.isClosed()) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 }

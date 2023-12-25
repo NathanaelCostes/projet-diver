@@ -3,6 +3,8 @@ package com.projetdiver.diver;
 import com.projetdiver.dao.PostgreDAOFactory;
 import com.projetdiver.login.exceptions.DiverAlreadyLoggedInException;
 import com.projetdiver.login.exceptions.DiverEmailNotFoundException;
+import com.projetdiver.signup.exceptions.CreatingAccountFailed;
+import com.projetdiver.signup.exceptions.DiverAlreadyExisting;
 
 /**
  *
@@ -49,6 +51,26 @@ public class DiverFacade {
         } else {
             System.out.println("Unknown error");
             throw new Exception("There is no diver with this email");
+        }
+    }
+
+    public void signup(String firstName, String lastName, String email, String password)
+            throws Exception, DiverAlreadyExisting, CreatingAccountFailed
+    {
+        // Check if the diver is already existing
+        Diver diverFetched = (PostgreDAOFactory.getInstance().createDiverDAO().getDiver(email));
+        if(diverFetched == null) {
+            // If the diver is not existing, create it
+            Diver diver = new Diver(firstName, lastName, email, password);
+
+            boolean isAdded = PostgreDAOFactory.getInstance().createDiverDAO().addDiver(diver);
+            if(isAdded) {
+                System.out.println("Diver added: " + diver);
+            } else {
+                throw new CreatingAccountFailed("Creating account failed. Please verify your information");
+            }
+        } else  {
+            throw new DiverAlreadyExisting("Email already existing");
         }
     }
 
