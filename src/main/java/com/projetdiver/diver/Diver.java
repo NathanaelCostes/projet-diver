@@ -66,14 +66,14 @@ public class Diver {
     /**
      * @return the name of the user
      */
-    public String getNom() {
+    public String getLastName() {
         return nom;
     }
 
     /**
      * @return the password of the user
      */
-    public String getPrenom() {
+    public String getFirstName() {
         return prenom;
     }
 
@@ -85,10 +85,45 @@ public class Diver {
     }
 
     /**
+     * Will set the first name of the user
+     * @param prenom the first name of the user
+     */
+    public void setFirstName(String prenom) {
+        this.prenom = prenom;
+    }
+
+    /**
+     * Will set the last name of the user
+     * @param nom the last name of the user
+     */
+    public void setLastName(String nom) {
+        this.nom = nom;
+    }
+
+    /**
+     * Will set the email of the user
+     * @param email the email of the user
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * Will set the password of the user
+     * @param password the password of the user
+     */
+    public void setPassword(String password) {
+    	this.password = password;
+    }
+
+    /**
      * @return the user as a string
      */
     public String toString(){
-    	return this.email + " " + this.password + " " + this.nom + " " + this.prenom;
+    	return "First name: " + this.prenom + "\n" +
+                "Last name: " + this.nom + "\n" +
+                "Email: " + this.email + "\n" +
+                "Password: " + this.password + "\n";
     }
 
 }

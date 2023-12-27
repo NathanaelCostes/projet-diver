@@ -27,6 +27,35 @@ public abstract class DiverDAO {
      */
     public abstract boolean addDiver(Diver diver);
 
+
+    /**
+     * Update the first name of the diver
+     * @param diver the diver to update
+     * @param firstName the new first name of the diver
+     */
+    public abstract void updateDiverFirstName(Diver diver, String firstName);
+
+    /**
+     * Update the last name of the diver
+     * @param diver the diver to update
+     * @param lastName the new last name of the diver
+     */
+    public abstract void updateDiverLastName(Diver diver, String lastName);
+
+    /**
+     * Update the email of the diver
+     * @param diver the diver to update
+     * @param email the new email of the diver
+     */
+    public abstract void updateDiverEmail(Diver diver, String email);
+
+    /**
+     * Update the password of the diver
+     * @param diver the diver to update
+     * @param password the new password of the diver
+     */
+    public abstract void updateDiverPassword(Diver diver, String password);
+
     /**
      * get the instance of the DiverDAO
      * Not thread safe
