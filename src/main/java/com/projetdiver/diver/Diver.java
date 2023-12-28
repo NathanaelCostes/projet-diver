@@ -27,8 +27,8 @@ public class Diver {
 
     /**
      * Creates a Diver
-     * @param email
-     * @param password
+     * @param email the email of the diver
+     * @param password the password of the diver
      */
     public Diver(int id, String email, String password, String nom, String prenom) {
         this.id = id;
@@ -45,9 +45,9 @@ public class Diver {
     /**
      * Login the user and print a message if the login is successful
      * If the login is not successful, raise an exception
-     * @param email
-     * @param pwd
-     * @throws WrongPasswordException
+     * @param email the email of the user
+     * @param pwd the password of the user
+     * @throws WrongPasswordException if the password is wrong
      */
     public boolean login(String email, String pwd) throws WrongPasswordException {
         if(email.equals(this.email) && pwd.equals(this.password)) {

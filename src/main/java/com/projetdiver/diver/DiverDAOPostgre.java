@@ -36,7 +36,7 @@ public class DiverDAOPostgre extends DiverDAO {
             this.connection = DriverManager.getConnection(this.DB_URL, this.DB_USER, this.DB_PASSWORD);
             this.connection.isValid(2);
         } catch (SQLException e) {
-            e.printStackTrace();;
+            System.err.println("Connection to the database failed");
         }
     }
 
@@ -74,7 +74,7 @@ public class DiverDAOPostgre extends DiverDAO {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Connection to the database failed");
         } finally {
             // Close the connection
             try {
@@ -82,7 +82,7 @@ public class DiverDAOPostgre extends DiverDAO {
                     connection.close();
                 }
             } catch (SQLException e) {
-                e.printStackTrace();
+                System.err.println("Error while closing the connection");
             }
         }
         return null;

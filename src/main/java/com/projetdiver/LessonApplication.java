@@ -1,6 +1,5 @@
 package com.projetdiver;
 
-import com.projetdiver.diver.Diver;
 import com.projetdiver.diver.DiverFacade;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * JavaFX App - LessonApplication
@@ -29,7 +29,7 @@ public class LessonApplication extends Application {
         Scene scene = new Scene(root, 750, 750); // Set the root of the scene to the loaded FXML root
 
         stage.setTitle("Lesson");
-        stage.getIcons().add(new Image(DiverApplication.class.getResourceAsStream("/Diving_Portal_Logo.png")));
+        stage.getIcons().add(new Image(Objects.requireNonNull(DiverApplication.class.getResourceAsStream("/Diving_Portal_Logo.png"))));
         stage.setScene(scene);
         stage.show();
     }

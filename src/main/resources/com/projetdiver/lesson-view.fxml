@@ -5,12 +5,10 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="590.0" prefWidth="891.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projetdiver.lesson.controllers.LessonController" stylesheets="@styles/lessonViewStyle.css">
-   <children>
       <ListView fx:id="lessonListView" layoutX="26.0" layoutY="41.0" prefHeight="507.0" prefWidth="838.0" />
       <Label layoutX="413.0" layoutY="13.0" text="Liste de cours">
          <font>
             <Font size="18.0" />
          </font></Label>
       <Button layoutX="363.0" layoutY="550.0" mnemonicParsing="false" onAction="#openLessonCreationModal" text="Ajouter un cours" />
-   </children>
 </AnchorPane>

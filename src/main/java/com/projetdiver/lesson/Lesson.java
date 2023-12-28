@@ -100,35 +100,11 @@ public class Lesson {
         this.endDate = endDate;
     }
 
-    public List<Diver> getDiverList() {
-        return diverList;
-    }
-
-    public void setDiverList(List<Diver> diverList) {
-        this.diverList = diverList;
-    }
-
     public LessonType getType() {
         return type;
     }
 
     public void setType(LessonType type) {
         this.type = type;
-    }
-
-    public String getLevelRequired() {
-        return levelRequired;
-    }
-
-    public void setLevelRequired(String levelRequired) {
-        this.levelRequired = levelRequired;
-    }
-
-    public List<String> getReviewList() {
-        return reviewList;
-    }
-
-    public void setReviewList(List<String> reviewList) {
-        this.reviewList = reviewList;
     }
 }

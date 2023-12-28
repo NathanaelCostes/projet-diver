@@ -41,7 +41,7 @@ public abstract class LessonDAO {
 
     /**
      * Delete a lesson
-     * @param lesson_int
+     * @param lesson_int the id of the lesson
      * @return true if the lesson was deleted, false otherwise
      */
     public abstract boolean deleteLesson(int lesson_int);
@@ -58,7 +58,7 @@ public abstract class LessonDAO {
 
     /**
      * Update a lesson
-     * @param lesson
+     * @param lesson the lesson to update
      * @return true if the lesson was updated, false otherwise
      */
     public abstract boolean updateLesson(Lesson lesson);
