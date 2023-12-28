@@ -2,8 +2,6 @@ package com.projetdiver.lesson;
 
 import com.projetdiver.dao.PostgreDAOFactory;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
 
 public class LessonFacade {
@@ -22,17 +20,38 @@ public class LessonFacade {
     }
 
     public List<Lesson> getAllLessons() {
-        List<Lesson> lessonList = PostgreDAOFactory.getInstance().createLessonDAO().getAllLessons();
-
-        return lessonList;
+        return PostgreDAOFactory.getInstance().createLessonDAO().getAllLessons();
     }
 
     public boolean deleteLesson(int lesson_id) {
         return PostgreDAOFactory.getInstance().createLessonDAO().deleteLesson(lesson_id);
     }
 
-    public boolean createLesson(Lesson lesson) {
-        return PostgreDAOFactory.getInstance().createLessonDAO().createLesson(lesson);
+    public boolean createLesson(Lesson lesson, int teacherId) {
+        return PostgreDAOFactory.getInstance().createLessonDAO().createLesson(lesson,teacherId);
     }
 
+    public boolean subscribeToALesson(int lesson_id, int diver_id) {
+        return PostgreDAOFactory.getInstance().createLessonDAO().subscribeToALesson(lesson_id, diver_id);
+    }
+
+    public boolean isLessonCreator(int diverId, int lessonId) {
+        return PostgreDAOFactory.getInstance().createLessonDAO().isLessonCreator(diverId, lessonId);
+    }
+
+    public boolean unsubscribeToTheLesson(int lessonId, int diverId) {
+        return PostgreDAOFactory.getInstance().createLessonDAO().unsubscribeToTheLesson(lessonId, diverId);
+    }
+
+    public boolean isSubscribedToLesson(int diverId, int lessonId) {
+        return PostgreDAOFactory.getInstance().createLessonDAO().isSubscribedToLesson(diverId, lessonId);
+    }
+
+    public boolean updateLesson(Lesson lesson) {
+        return  PostgreDAOFactory.getInstance().createLessonDAO().updateLesson(lesson);
+    }
+
+    public Lesson getLessonById(int lessonId) {
+        return PostgreDAOFactory.getInstance().createLessonDAO().getLessonById(lessonId);
+    }
 }

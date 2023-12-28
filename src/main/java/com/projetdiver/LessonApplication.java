@@ -1,5 +1,7 @@
 package com.projetdiver;
 
+import com.projetdiver.diver.Diver;
+import com.projetdiver.diver.DiverFacade;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -36,7 +38,10 @@ public class LessonApplication extends Application {
      * Launches the application
      * @param args command-line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+
+        //TODO remove this / only for testing
+        DiverFacade.getInstance().login("michel@amila.com", "1234");
         launch();
     }
 }

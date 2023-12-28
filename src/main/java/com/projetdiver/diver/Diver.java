@@ -23,6 +23,8 @@ public class Diver {
 
     private int id;
 
+    private boolean isAdmin;
+
     /**
      * Creates a Diver
      * @param email
@@ -34,6 +36,7 @@ public class Diver {
         this.password = password;
         this.nom = nom;
         this.prenom = prenom;
+        this.isAdmin = false;
     }
 
     /** Default Constructor */
@@ -89,5 +92,9 @@ public class Diver {
 
     public int getId() {
         return id;
+    }
+
+    public boolean isAdmin() {
+        return this.isAdmin;
     }
 }

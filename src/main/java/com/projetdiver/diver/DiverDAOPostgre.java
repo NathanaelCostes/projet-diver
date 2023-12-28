@@ -1,7 +1,5 @@
 package com.projetdiver.diver;
 
-import com.projetdiver.diver.Diver;
-import com.projetdiver.diver.DiverDAO;
 import io.github.cdimascio.dotenv.Dotenv;
 import java.sql.*;
 
@@ -34,10 +32,11 @@ public class DiverDAOPostgre extends DiverDAO {
      */
     private void connection() {
         try {
+            assert this.DB_URL != null;
             this.connection = DriverManager.getConnection(this.DB_URL, this.DB_USER, this.DB_PASSWORD);
             this.connection.isValid(2);
         } catch (SQLException e) {
-            e.printStackTrace();
+            e.printStackTrace();;
         }
     }
 

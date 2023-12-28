@@ -22,14 +22,18 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Controller for the lesson list view.
+ * @author Costes
+ */
 public class LessonController implements Initializable {
 
     @FXML
     private ListView<HBox> lessonListView;
 
-    @FXML
-    private Button addLesson;
-
+    /**
+     * Initialize the lesson list view.
+     */
     @FXML
     public void setLessonListView() {
         try {
@@ -47,7 +51,7 @@ public class LessonController implements Initializable {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
@@ -80,7 +84,7 @@ public class LessonController implements Initializable {
             // Show the modal window
             modalStage.showAndWait();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
@@ -91,9 +95,6 @@ public class LessonController implements Initializable {
             InputStream fxmlStream = getClass().getResourceAsStream("/com/projetdiver/lesson-creation-modal.fxml");
             FXMLLoader loader = new FXMLLoader();
             Parent root = loader.load(fxmlStream);
-
-            LessonCreationController creationController = loader.getController();
-            // Additional initialization if needed
 
             Stage modalStage = new Stage();
             modalStage.setTitle("Create Lesson");
@@ -113,10 +114,15 @@ public class LessonController implements Initializable {
             // After the lesson creation modal is closed, refresh the lesson list
             setLessonListView();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
+    /**
+     * Initialize the controller.
+     * @param url The url to initialize
+     * @param resourceBundle The resource bundle to initialize
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setLessonListView();

@@ -11,6 +11,6 @@
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Button fx:id="addLesson" layoutX="363.0" layoutY="550.0" mnemonicParsing="false" onAction="#openLessonCreationModal" text="Ajouter un cours" />
+      <Button layoutX="363.0" layoutY="550.0" mnemonicParsing="false" onAction="#openLessonCreationModal" text="Ajouter un cours" />
    </children>
 </AnchorPane>

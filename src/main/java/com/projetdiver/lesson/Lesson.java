@@ -5,50 +5,60 @@ import com.projetdiver.diver.Diver;
 import java.sql.Date;
 import java.util.List;
 
+/**
+ * Class representing a lesson of diving.
+ * @see LessonType
+ * @see Diver
+ * @author Costes
+ */
 public class Lesson {
 
+    /** Id of the lesson */
     private int id;
 
+    /** Name of the lesson */
     private String name;
 
+    /** Description of the lesson */
     private String description;
 
+    /** Start date of the lesson */
     private Date startDate;
 
+    /** End date of the lesson */
     private Date endDate;
 
-    private Diver teacher;
-
+    /** List of the divers registered to the lesson */
     private List<Diver> diverList;
 
+    /** Type of the lesson */
     private LessonType type;
 
     //TODO relier avec les Level
+    /** Level required to register to the lesson */
     private String levelRequired;
 
     //TODO relier avec les Review
+    /** List of the reviews of the lesson */
     private List<String> reviewList;
 
     public Lesson() {}
 
-
-    public Lesson(int id, String name, String description, Date startDate, Date endDate, Diver teacher, List<Diver> diverList, LessonType type) {
+    public Lesson(int id, String name, String description, Date startDate, Date endDate, List<Diver> diverList, LessonType type) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.teacher = teacher;
         this.diverList = diverList;
         this.type = type;
     }
 
     @Override
     public String toString() {
-        return String.format("Lesson: %s%nDescription: %s%nStart Date: %s%nEnd Date: %s%nTeacher: %s%nType: %s%nLevel Required: %s",
-                name, description, startDate, endDate, teacher, type, levelRequired);
+        return String.format("Lesson: %s%nDescription: %s%nStart Date: %s%nEnd Date: %s%nType: %s%nLevel Required: %s",
+                name, description, startDate, endDate, type, levelRequired);
     }
-    
 
     public int getId() {
         return id;
@@ -88,14 +98,6 @@ public class Lesson {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
-    }
-
-    public Diver getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(Diver teacher) {
-        this.teacher = teacher;
     }
 
     public List<Diver> getDiverList() {

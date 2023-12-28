@@ -11,19 +11,18 @@ CREATE TABLE IF NOT EXISTS diver (
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30) NOT NULL,
     email VARCHAR(80) NOT NULL,
-    password VARCHAR(100) NOT NULL
+    password VARCHAR(100) NOT NULL,
+    admin BOOLEAN NOT NULL
     );
 
 -- Create the lesson table
 CREATE TABLE IF NOT EXISTS lesson (
-                                      lesson_id SERIAL PRIMARY KEY,
-                                      professor_id INTEGER NOT NULL,
-                                      name VARCHAR(30) NOT NULL,
+   lesson_id SERIAL PRIMARY KEY,
+    name VARCHAR(30) NOT NULL,
     description VARCHAR(255) NOT NULL,
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
-    type VARCHAR(30) NOT NULL,
-    FOREIGN KEY (professor_id) REFERENCES diver(diver_id)
+    type VARCHAR(30) NOT NULL
 );
 
 
@@ -36,9 +35,9 @@ CREATE TABLE IF NOT EXISTS diver_gives_lesson (
 );
 
 CREATE TABLE IF NOT EXISTS diver_takes_lesson(
-                                                 lesson_id INTEGER NOT NULL,
-                                                 diver_id INTEGER NOT NULL,
-                                                 PRIMARY KEY (lesson_id, diver_id),
-                                                 FOREIGN KEY (lesson_id) REFERENCES lesson(lesson_id),
-                                                 FOREIGN KEY (diver_id) REFERENCES diver(diver_id)
+            lesson_id INTEGER NOT NULL,
+            diver_id INTEGER NOT NULL,
+            PRIMARY KEY (lesson_id, diver_id),
+             FOREIGN KEY (lesson_id) REFERENCES lesson(lesson_id),
+             FOREIGN KEY (diver_id) REFERENCES diver(diver_id)
 );
