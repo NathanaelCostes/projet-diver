@@ -58,7 +58,9 @@ public class DiverDAOPostgre extends DiverDAO {
                 ResultSet resultSet = statement.executeQuery();
 
                 if (resultSet.next()) {
-                    Diver diver = new Diver(resultSet.getString("email"),
+                    Diver diver = new Diver(
+                            resultSet.getInt("diverId"),
+                            resultSet.getString("email"),
                             resultSet.getString("password"),
                             resultSet.getString("last_name"),
                             resultSet.getString("first_name"));
@@ -69,6 +71,53 @@ public class DiverDAOPostgre extends DiverDAO {
                 } else {
                     // Handle the case when no user with the given email is found
                     System.out.println("User with email " + email + " not found");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Close the connection
+            try {
+                if (connection != null && !connection.isClosed()) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Fetches a diver from the database using its email
+     * @param diverId the id to find in the database
+     * @return the diver if found, null otherwise
+     */
+    public Diver getDiver(int diverId) {
+        try {
+            connection();
+            System.out.println("Connection to the database successful");
+
+            // Use a prepared statement to avoid SQL injection
+            String sql = "SELECT * FROM diver WHERE diverId=?";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setInt(1, diverId);
+                ResultSet resultSet = statement.executeQuery();
+
+                if (resultSet.next()) {
+                    Diver diver = new Diver(
+                            resultSet.getInt("diverId"),
+                            resultSet.getString("email"),
+                            resultSet.getString("password"),
+                            resultSet.getString("last_name"),
+                            resultSet.getString("first_name"));
+
+                    resultSet.close();
+                    System.out.println(diver);
+                    return diver;
+                } else {
+                    // Handle the case when no user with the given id is found
+                    System.out.println("User with id " + diverId + " not found");
                 }
             }
         } catch (SQLException e) {

@@ -4,6 +4,8 @@ services:
   projet_diver_db:
     image: postgres:16
     container_name: projet_diver_db
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
     volumes:
       - diver_vol:/var/lib/postgresql/data
       - ../dataset:/docker-entrypoint-initdb.d

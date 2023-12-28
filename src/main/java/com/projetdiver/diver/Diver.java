@@ -10,6 +10,9 @@ import com.projetdiver.login.exceptions.WrongPasswordException;
  */
 public class Diver {
 
+    /** Id of the diver */
+    private int diverId;
+
     /** Email of the diver */
     private String email;
     /** Password of the user */
@@ -23,10 +26,12 @@ public class Diver {
 
     /**
      * Creates a Diver
+     * @param diverId
      * @param email
      * @param password
      */
-    public Diver(String email, String password, String nom, String prenom) {
+    public Diver(int diverId, String email, String password, String nom, String prenom) {
+        this.diverId = diverId;
         this.email = email;
         this.password = password;
         this.nom = nom;
@@ -54,6 +59,13 @@ public class Diver {
             System.out.println("Login failed");
             return false;
         }
+    }
+
+    /**
+     * @return the id of the diver
+     */
+    public int getDiverId() {
+        return this.diverId;
     }
 
     /**

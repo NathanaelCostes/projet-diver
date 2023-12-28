@@ -46,7 +46,7 @@ public class DiverFacade {
             throw new DiverAlreadyLoggedInException("Diver already logged in");
         } else if(diverFetched == null){
             throw new DiverEmailNotFoundException("There is no diver with this email");
-        } else {
+        } else { // Useless because the diverFetched is null
             System.out.println("Unknown error");
             throw new Exception("There is no diver with this email");
         }

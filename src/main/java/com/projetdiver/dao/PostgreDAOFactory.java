@@ -1,6 +1,7 @@
 package com.projetdiver.dao;
 
 import com.projetdiver.diver.DiverDAO;
+import com.projetdiver.session.SessionDAO;
 
 /**
  * 
@@ -20,6 +21,10 @@ public class PostgreDAOFactory implements DAOFactory {
      */
     public DiverDAO createDiverDAO() {
         return DiverDAO.getInstance();
+    }
+
+    public SessionDAO createSessionDAO() {
+        return SessionDAO.getInstance();
     }
 
     /**
