@@ -4,6 +4,8 @@ import com.projetdiver.diver.Diver;
 import com.projetdiver.diver.DiverDAO;
 import io.github.cdimascio.dotenv.Dotenv;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Does the connection to the postgre database and communicate with it
@@ -130,6 +132,52 @@ public class DiverDAOPostgre extends DiverDAO {
                 e.printStackTrace();
             }
         }
+    }
+
+    /**
+     * Get all the divers from the database
+     *
+     * @return the list of all the divers
+     */
+    @Override
+    public List<Diver> getAllDivers() {
+        // List of all the divers
+        List<Diver> divers = new ArrayList<>();
+        try{
+            connection();
+            System.out.println("Connection to the database successful");
+
+
+            // Use a prepared statement to avoid SQL injection
+            String sql = "SELECT * FROM users";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                ResultSet resultSet = statement.executeQuery();
+
+                while (resultSet.next()) {
+                    Diver diver = new Diver(resultSet.getString("first_name"),
+                            resultSet.getString("last_name"),
+                            resultSet.getString("email"),
+                            resultSet.getString("password"));
+
+                    divers.add(diver);
+                }
+                resultSet.close();
+                return divers;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        } finally {
+            // Close the connection
+            try {
+                if (connection != null && !connection.isClosed()) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return divers;
     }
 
     /**
@@ -260,6 +308,35 @@ public class DiverDAOPostgre extends DiverDAO {
             }
         }
 
+    }
+
+    /**
+     * Delete a diver from the database
+     * @param email the email of the diver to delete
+     */
+    public void deleteDiverByEmail(String email) {
+        try {
+            connection();
+            System.out.println("Connection to the database successful");
+
+            // Use a prepared statement to avoid SQL injection
+            String sql = "DELETE FROM users WHERE email = ?";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setString(1, email);
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } finally {
+            // Close the connection
+            try {
+                if (connection != null && !connection.isClosed()) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }
