@@ -38,10 +38,7 @@ public class LessonApplication extends Application {
      * Launches the application
      * @param args command-line arguments
      */
-    public static void main(String[] args) throws Exception {
-
-        //TODO remove this / only for testing
-        DiverFacade.getInstance().login("michel@amila.com", "1234");
+    public static void main(String[] args) {
         launch();
     }
 }
