@@ -10,7 +10,7 @@ services:
       - diver_vol:/var/lib/postgresql/data
       - ../dataset:/docker-entrypoint-initdb.d
     ports: 
-      - "5432:5432"
+      - "5436:5432"
 
 volumes:
   diver_vol:
