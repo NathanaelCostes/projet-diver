@@ -4,7 +4,10 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="com.projetdiver.lesson.controllers.LessonDetailModalController" stylesheets="@styles/lessonDetailModalStyle.css">
+<VBox  xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projetdiver.lesson.controllers.LessonDetailModalController">
+   <Label fx:id="titleLabel" prefHeight="35.0" prefWidth="91.0" textAlignment="CENTER"/>
+   <Label fx:id="dateLabel" />
+   <Label fx:id="typeLabel" />
     <Label fx:id="detailsLabel" />
     <Button fx:id="deleteButton" onAction="#handleDeleteButton" text="Delete" visible="false" />
    <Button fx:id="setButton" onAction="#handleUpdateButton" text="Set" visible="false" />

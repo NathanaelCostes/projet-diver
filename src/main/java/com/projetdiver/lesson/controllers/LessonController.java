@@ -20,6 +20,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 /**
@@ -67,7 +69,11 @@ public class LessonController implements Initializable {
             Parent root = loader.load(fxmlStream);
 
             LessonDetailModalController detailsController = loader.getController();
-            detailsController.setDetails("Lesson Details: " + lesson.toString());
+            detailsController.setTitle(lesson.getName());
+            detailsController.setDetails(lesson.getDescription());
+            detailsController.setDate("From the " + lesson.getStartDate() + " to the " + lesson.getEndDate());
+            detailsController.setType(Character.toUpperCase(lesson.getType().toString().charAt(0)) + lesson.getType().toString().substring(1).toLowerCase(Locale.ROOT) + " lesson");
+
             detailsController.setLesson_id(lesson.getId());
 
             Stage modalStage = new Stage();
@@ -75,6 +81,12 @@ public class LessonController implements Initializable {
 
             Scene scene = new Scene(root);
             scene.setUserData(this);
+
+            if (scene != null) {
+                String cssPath = Objects.requireNonNull(getClass().getResource("/com/projetdiver/styles/lessonDetailModalStyle.css")).toExternalForm();
+                System.out.println(cssPath);
+                scene.getStylesheets().add(cssPath);
+            }
 
             modalStage.setScene(scene);
             modalStage.initOwner(((Node) event.getSource()).getScene().getWindow());
@@ -114,7 +126,7 @@ public class LessonController implements Initializable {
             // After the lesson creation modal is closed, refresh the lesson list
             setLessonListView();
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            System.err.println(e.getMessage());
         }
     }
 

@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Objects;
 
 /**
  * Controller for the lesson detail modal.
@@ -24,6 +25,15 @@ public class LessonDetailModalController {
 
     @FXML
     private Label detailsLabel;
+
+    @FXML
+    private Label titleLabel;
+
+    @FXML
+    private Label dateLabel;
+
+    @FXML
+    private Label typeLabel;
 
     @FXML
     private Button deleteButton;
@@ -48,6 +58,7 @@ public class LessonDetailModalController {
      * Initialize the controller
      */
     public void initialize() {
+
         // Check if the current diver is an admin or has created the lesson
         Diver currentDiver = DiverFacade.getInstance().getCurrentDiver();
         if (currentDiver != null) {
@@ -165,6 +176,29 @@ public class LessonDetailModalController {
         detailsLabel.setText(details);
     }
 
+    /**
+     * Set the title to display in the modal
+     * @param title The title to display
+     */
+    public void setTitle(String title) {
+        titleLabel.setText(title);
+    }
+
+    /**
+     * Set the date to display in the modal
+     * @param date The date to display
+     */
+    public void setDate(String date) {
+        dateLabel.setText(date);
+    }
+
+    /**
+     * Set the type to display in the modal
+     * @param type The type to display
+     */
+    public void setType(String type) {
+        typeLabel.setText(type);
+    }
 
     @FXML
     private void handleDeleteButton() {
