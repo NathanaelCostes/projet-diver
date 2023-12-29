@@ -41,18 +41,18 @@ public abstract class LessonDAO {
 
     /**
      * Delete a lesson
-     * @param lesson_int the id of the lesson
+     * @param lessonId the id of the lesson
      * @return true if the lesson was deleted, false otherwise
      */
-    public abstract boolean deleteLesson(int lesson_int);
+    public abstract boolean deleteLesson(int lessonId);
 
     /**
      * Subscribe a diver to a lesson
-     * @param lesson_id the id of the lesson
-     * @param diver_id the diver that wants to subscribe to the lesson
+     * @param lessonId the id of the lesson
+     * @param diverId the diver that wants to subscribe to the lesson
      * @return true if the subscription was successful, false otherwise
      */
-    public abstract boolean subscribeToALesson(int lesson_id, int diver_id);
+    public abstract boolean subscribeToALesson(int lessonId, int diverId);
 
 
 

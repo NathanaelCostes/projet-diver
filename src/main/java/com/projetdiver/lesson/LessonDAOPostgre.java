@@ -65,7 +65,7 @@ public class LessonDAOPostgre extends LessonDAO{
         try {
             connection();
 
-            String sql = "SELECT * FROM lesson WHERE lesson_id = ?";
+            String sql = "SELECT * FROM lesson WHERE lessonId = ?";
 
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setInt(1, id);
@@ -74,11 +74,11 @@ public class LessonDAOPostgre extends LessonDAO{
                 if (resultSet.next()) {
                     Lesson lesson = new Lesson();
                     // Set the properties of the Lesson object based on the database columns
-                    lesson.setId(resultSet.getInt("lesson_id"));
+                    lesson.setId(resultSet.getInt("lessonId"));
                     lesson.setName(resultSet.getString("name"));
                     lesson.setDescription(resultSet.getString("description"));
-                    lesson.setStartDate(resultSet.getDate("start_date"));
-                    lesson.setEndDate(resultSet.getDate("end_date"));
+                    lesson.setStartDate(resultSet.getDate("startDate"));
+                    lesson.setEndDate(resultSet.getDate("endDate"));
                     lesson.setType(LessonType.valueOf(resultSet.getString("type")));
 
                     resultSet.close();
@@ -110,11 +110,11 @@ public class LessonDAOPostgre extends LessonDAO{
             connection();
 
             // Insert into lesson table
-            String lessonSql = "INSERT INTO lesson (name, description, start_date, end_date, type) " +
+            String lessonSql = "INSERT INTO lesson (name, description, startDate, endDate, type) " +
                     "VALUES (?, ?, ?, ?, ?)";
 
-            // Insert into diver_gives_lesson table
-            String diverLessonSql = "INSERT INTO diver_gives_lesson (diver_id, lesson_id) VALUES (?, ?)";
+            // Insert into diverGivesLesson table
+            String diverLessonSql = "INSERT INTO diverGivesLesson (diverId, lessonId) VALUES (?, ?)";
 
             try (PreparedStatement lessonStatement = connection.prepareStatement(lessonSql, Statement.RETURN_GENERATED_KEYS);
                  PreparedStatement diverLessonStatement = connection.prepareStatement(diverLessonSql)) {
@@ -134,7 +134,7 @@ public class LessonDAOPostgre extends LessonDAO{
                     if (generatedKeys.next()) {
                         int lessonId = generatedKeys.getInt(1);
 
-                        // Insert into diver_gives_lesson table
+                        // Insert into diverGivesLesson table
                         diverLessonStatement.setInt(1, teacherId);
                         diverLessonStatement.setInt(2, lessonId);
 
@@ -155,7 +155,7 @@ public class LessonDAOPostgre extends LessonDAO{
 
 
     /**
-     * Delete a lesson and related records in diver_takes_lesson and diver_gives_lesson tables
+     * Delete a lesson and related records in diverTakesLesson and diverGivesLesson tables
      * @param lessonId the ID of the lesson to be deleted
      * @return true if the lesson and related records were deleted, false otherwise
      */
@@ -165,19 +165,19 @@ public class LessonDAOPostgre extends LessonDAO{
             connection();
             boolean success = false;
 
-            // Delete from diver_takes_lesson table
-            String deleteDiverTakesLessonSql = "DELETE FROM diver_takes_lesson WHERE lesson_id = ?";
-            success = deleteRelatedRecords(lessonId, deleteDiverTakesLessonSql, "diver_takes_lesson");
+            // Delete from diverTakesLesson table
+            String deleteDiverTakesLessonSql = "DELETE FROM diverTakesLesson WHERE lessonId = ?";
+            success = deleteRelatedRecords(lessonId, deleteDiverTakesLessonSql, "diverTakesLesson");
 
-            // If diver_takes_lesson deletion was successful, proceed to delete from diver_gives_lesson table
+            // If diverTakesLesson deletion was successful, proceed to delete from diverGivesLesson table
             if (success) {
-                String deleteDiverGivesLessonSql = "DELETE FROM diver_gives_lesson WHERE lesson_id = ?";
-                success = deleteRelatedRecords(lessonId, deleteDiverGivesLessonSql, "diver_gives_lesson");
+                String deleteDiverGivesLessonSql = "DELETE FROM diverGivesLesson WHERE lessonId = ?";
+                success = deleteRelatedRecords(lessonId, deleteDiverGivesLessonSql, "diverGivesLesson");
             }
 
-            // If diver_gives_lesson deletion was successful, proceed to delete from lesson table
+            // If diverGivesLesson deletion was successful, proceed to delete from lesson table
             if (success) {
-                String deleteLessonSql = "DELETE FROM lesson WHERE lesson_id = ?";
+                String deleteLessonSql = "DELETE FROM lesson WHERE lessonId = ?";
                 success = deleteRecord(lessonId, deleteLessonSql);
             }
 
@@ -207,21 +207,21 @@ public class LessonDAOPostgre extends LessonDAO{
 
     /**
      * Subscribe a diver to a lesson
-     * @param lesson_id the id of the lesson
-     * @param diver_id the diver that wants to subscribe to the lesson
+     * @param lessonId the id of the lesson
+     * @param diverId the diver that wants to subscribe to the lesson
      * @return true if the subscription was successful, false otherwise
      */
     @Override
-    public boolean subscribeToALesson(int lesson_id, int diver_id) {
+    public boolean subscribeToALesson(int lessonId, int diverId) {
         try {
             connection();
 
-            String diverLessonSql = "INSERT INTO diver_takes_lesson (diver_id, lesson_id) VALUES (?, ?)";
+            String diverLessonSql = "INSERT INTO diverTakesLesson (diverId, lessonId) VALUES (?, ?)";
 
             try (PreparedStatement diverLessonStatement = connection.prepareStatement(diverLessonSql)) {
 
-                diverLessonStatement.setInt(1, diver_id);
-                diverLessonStatement.setInt(2, lesson_id);
+                diverLessonStatement.setInt(1, diverId);
+                diverLessonStatement.setInt(2, lessonId);
 
                 int diverLessonRowsAffected = diverLessonStatement.executeUpdate();
 
@@ -248,7 +248,7 @@ public class LessonDAOPostgre extends LessonDAO{
         try {
             connection();
 
-            String sql = "UPDATE lesson SET name = ?, description = ?, start_date = ?, end_date = ?, type = ? WHERE lesson_id = ?";
+            String sql = "UPDATE lesson SET name = ?, description = ?, startDate = ?, endDate = ?, type = ? WHERE lessonId = ?";
 
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setString(1, lesson.getName());
@@ -292,11 +292,11 @@ public class LessonDAOPostgre extends LessonDAO{
                 while (resultSet.next()) {
                     Lesson lesson = new Lesson();
                     // Set the properties of the Lesson object based on the database columns
-                    lesson.setId(resultSet.getInt("lesson_id"));
+                    lesson.setId(resultSet.getInt("lessonId"));
                     lesson.setName(resultSet.getString("name"));
                     lesson.setDescription(resultSet.getString("description"));
-                    lesson.setStartDate(resultSet.getDate("start_date"));
-                    lesson.setEndDate(resultSet.getDate("end_date"));
+                    lesson.setStartDate(resultSet.getDate("startDate"));
+                    lesson.setEndDate(resultSet.getDate("endDate"));
                     lesson.setType(LessonType.valueOf(resultSet.getString("type")));
 
                     lessons.add(lesson);
@@ -320,7 +320,7 @@ public class LessonDAOPostgre extends LessonDAO{
         try {
             connection();
 
-            String sql = "SELECT * FROM diver_gives_lesson WHERE diver_id = ? AND lesson_id = ?";
+            String sql = "SELECT * FROM diverGivesLesson WHERE diverId = ? AND lessonId = ?";
 
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setInt(1, diverId);
@@ -345,7 +345,7 @@ public class LessonDAOPostgre extends LessonDAO{
         try {
             connection();
 
-            String sql = "SELECT * FROM diver_takes_lesson WHERE diver_id = ? AND lesson_id = ?";
+            String sql = "SELECT * FROM diverTakesLesson WHERE diverId = ? AND lessonId = ?";
 
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setInt(1, diverId);
@@ -376,7 +376,7 @@ public class LessonDAOPostgre extends LessonDAO{
         try {
             connection();
 
-            String sql = "DELETE FROM diver_takes_lesson WHERE lesson_id = ? AND diver_id = ?";
+            String sql = "DELETE FROM diverTakesLesson WHERE lessonId = ? AND diverId = ?";
 
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setInt(1, lessonId);
@@ -459,7 +459,7 @@ public class LessonDAOPostgre extends LessonDAO{
         PreparedStatement statement = null;
         try {
             connection();
-            String sql = "SELECT COUNT(*) FROM " + tableName + " WHERE lesson_id = ?";
+            String sql = "SELECT COUNT(*) FROM " + tableName + " WHERE lessonId = ?";
             statement = connection.prepareStatement(sql);
             statement.setInt(1, id);
 

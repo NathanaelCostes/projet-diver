@@ -45,8 +45,8 @@ public class LoginController {
         try {
             diverFacade.login(email, password);
 
-            diverFacade.getCurrentDiver().getNom();
-            diverFacade.getCurrentDiver().getPrenom();
+            diverFacade.getCurrentDiver().getLastName();
+            diverFacade.getCurrentDiver().getFirstName();
         } catch (Exception e) {
            this.errorLabel.setText(e.getMessage());
         }

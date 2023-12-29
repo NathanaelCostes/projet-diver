@@ -10,19 +10,21 @@ import com.projetdiver.login.exceptions.WrongPasswordException;
  */
 public class Diver {
 
+    /** Id of the diver */
+    private Integer id;
+
     /** Email of the diver */
     private String email;
     /** Password of the user */
     private String password;
 
-    /** Nom of the user */
-    private String nom;
+    /** LastName of the user */
+    private String lastName;
 
-    /** Prenom of the user */
-    private String prenom;
+    /** FirstName of the user */
+    private String firstName;
 
-    private int id;
-
+    /** true if the user is an admin, false otherwise */
     private boolean isAdmin;
 
     /**
@@ -30,12 +32,12 @@ public class Diver {
      * @param email the email of the diver
      * @param password the password of the diver
      */
-    public Diver(int id, String email, String password, String nom, String prenom) {
+    public Diver(int id, String email, String password, String lastName, String firstName) {
         this.id = id;
         this.email = email;
         this.password = password;
-        this.nom = nom;
-        this.prenom = prenom;
+        this.lastName = lastName;
+        this.firstName = firstName;
         this.isAdmin = false;
     }
 
@@ -63,6 +65,20 @@ public class Diver {
     }
 
     /**
+     * @return the id of the diver
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @return true if the diver is an admin, false otherwise
+     */
+    public boolean isAdmin() {
+        return this.isAdmin;
+    }
+
+    /**
      * @return the email of the diver
      */
     public String getEmail() {
@@ -72,29 +88,23 @@ public class Diver {
     /**
      * @return the name of the user
      */
-    public String getNom() {
-        return nom;
+    public String getLastName() {
+        return this.lastName;
     }
 
     /**
      * @return the password of the user
      */
-    public String getPrenom() {
-        return prenom;
+    public String getFirstName() {
+        return this.firstName;
     }
 
     /**
      * @return the user as a string
      */
     public String toString() {
-    	return this.email + " " + this.password + " " + this.nom + " " + this.prenom;
+    	return this.email + " " + this.password + " " + this.lastName + " " + this.firstName;
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public boolean isAdmin() {
-        return this.isAdmin;
-    }
 }
