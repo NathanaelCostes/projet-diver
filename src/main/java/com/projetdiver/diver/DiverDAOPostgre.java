@@ -1,7 +1,5 @@
 package com.projetdiver.diver;
 
-import com.projetdiver.diver.Diver;
-import com.projetdiver.diver.DiverDAO;
 import io.github.cdimascio.dotenv.Dotenv;
 import java.sql.*;
 import java.util.ArrayList;
@@ -45,10 +43,11 @@ public class DiverDAOPostgre extends DiverDAO {
      */
     private void connection() {
         try {
+            assert this.DB_URL != null;
             this.connection = DriverManager.getConnection(this.DB_URL, this.DB_USER, this.DB_PASSWORD);
             this.connection.isValid(2);
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Connection to the database failed");
         }
     }
 
@@ -64,16 +63,18 @@ public class DiverDAOPostgre extends DiverDAO {
             System.out.println("Connection to the database successful");
 
             // Use a prepared statement to avoid SQL injection
-            String sql = "SELECT * FROM diver WHERE email = ?";
+            String sql = "SELECT * FROM diver WHERE email=?";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setString(1, email);
                 ResultSet resultSet = statement.executeQuery();
 
                 if (resultSet.next()) {
-                    Diver diver = new Diver(resultSet.getString("first_name"),
-                            resultSet.getString("last_name"),
+                    Diver diver = new Diver
+                            (resultSet.getInt("diverId"),
                             resultSet.getString("email"),
-                            resultSet.getString("password"));
+                            resultSet.getString("password"),
+                            resultSet.getString("lastName"),
+                            resultSet.getString("firstName"));
 
                     resultSet.close();
                     System.out.println(diver);
@@ -81,6 +82,54 @@ public class DiverDAOPostgre extends DiverDAO {
                 } else {
                     // Handle the case when no user with the given email is found
                     System.out.println("User with email " + email + " not found");
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Connection to the database failed");
+        } finally {
+            // Close the connection
+            try {
+                if (connection != null && !connection.isClosed()) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.err.println("Error while closing the connection");
+            }
+        }
+        return null;
+    }
+
+
+    /**
+     * Fetches a diver from the database using its email
+     * @param diverId the id to find in the database
+     * @return the diver if found, null otherwise
+     */
+    public Diver getDiver(int diverId) {
+        try {
+            connection();
+            System.out.println("Connection to the database successful");
+
+            // Use a prepared statement to avoid SQL injection
+            String sql = "SELECT * FROM diver WHERE diverId=?";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setInt(1, diverId);
+                ResultSet resultSet = statement.executeQuery();
+
+                if (resultSet.next()) {
+                    Diver diver = new Diver(
+                            resultSet.getInt("diverId"),
+                            resultSet.getString("email"),
+                            resultSet.getString("password"),
+                            resultSet.getString("lastName"),
+                            resultSet.getString("firstName"));
+
+                    resultSet.close();
+                    System.out.println(diver);
+                    return diver;
+                } else {
+                    // Handle the case when no user with the given id is found
+                    System.out.println("User with id " + diverId + " not found");
                 }
             }
         } catch (SQLException e) {

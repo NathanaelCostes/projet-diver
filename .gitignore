@@ -12,6 +12,3 @@ log/
 target/
 
 *.class
-
-#Docker
-docker-compose.yml

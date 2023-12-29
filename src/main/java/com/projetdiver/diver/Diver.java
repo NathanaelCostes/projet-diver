@@ -10,27 +10,36 @@ import com.projetdiver.login.exceptions.WrongPasswordException;
  */
 public class Diver {
 
+    /** Id of the diver */
+    private Integer id;
+
     /** Email of the diver */
     private String email;
     /** Password of the user */
     private String password;
 
-    /** Nom of the user */
-    private String nom;
+    /** LastName of the user */
+    private String lastName;
 
-    /** Prenom of the user */
-    private String prenom;
+    /** FirstName of the user */
+    private String firstName;
+
+    /** true if the user is an admin, false otherwise */
+    private boolean isAdmin;
 
     /**
      * Creates a Diver
-     * @param email
-     * @param password
+     * @param email the email of the diver
+     * @param password the password of the diver
      */
-    public Diver(String prenom, String nom, String email, String password) {
+
+    public Diver(int id, String email, String password, String lastName, String firstName) {
+        this.id = id;
         this.email = email;
         this.password = password;
-        this.nom = nom;
-        this.prenom = prenom;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.isAdmin = false;
     }
 
     /** Default Constructor */
@@ -39,9 +48,9 @@ public class Diver {
     /**
      * Login the user and print a message if the login is successful
      * If the login is not successful, raise an exception
-     * @param email
-     * @param pwd
-     * @throws WrongPasswordException
+     * @param email the email of the user
+     * @param pwd the password of the user
+     * @throws WrongPasswordException if the password is wrong
      */
     public boolean login(String email, String pwd) throws WrongPasswordException {
         if(email.equals(this.email) && pwd.equals(this.password)) {
@@ -57,6 +66,20 @@ public class Diver {
     }
 
     /**
+     * @return the id of the diver
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @return true if the diver is an admin, false otherwise
+     */
+    public boolean isAdmin() {
+        return this.isAdmin;
+    }
+
+    /**
      * @return the email of the diver
      */
     public String getEmail() {
@@ -67,14 +90,14 @@ public class Diver {
      * @return the name of the user
      */
     public String getLastName() {
-        return nom;
+        return this.lastName;
     }
 
     /**
      * @return the password of the user
      */
     public String getFirstName() {
-        return prenom;
+        return this.firstName;
     }
 
     /**
@@ -120,8 +143,8 @@ public class Diver {
      * @return the user as a string
      */
     public String toString(){
-    	return "First name: " + this.prenom + "\n" +
-                "Last name: " + this.nom + "\n" +
+    	return "First name: " + this.firstName + "\n" +
+                "Last name: " + this.lastName + "\n" +
                 "Email: " + this.email + "\n" +
                 "Password: " + this.password + "\n";
     }

@@ -25,4 +25,8 @@ module com.projetdiver {
 
     exports com.projetdiver.diver;
     opens com.projetdiver.diver to javafx.fxml;
+    exports com.projetdiver.lesson;
+    opens com.projetdiver.lesson to javafx.fxml;
+    exports com.projetdiver.lesson.controllers;
+    opens com.projetdiver.lesson.controllers to javafx.fxml;
 }
