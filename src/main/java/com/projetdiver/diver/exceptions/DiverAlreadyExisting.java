@@ -1,4 +1,4 @@
-package com.projetdiver.signup.exceptions;
+package com.projetdiver.diver.exceptions;
 
 /**
  * DiverAlreadyExisting is an exception that is raised when a diver is already existing in the database

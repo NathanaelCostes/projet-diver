@@ -1,8 +1,8 @@
 package com.projetdiver.diver;
 
-import com.projetdiver.login.exceptions.DiverAlreadyLoggedInException;
-import com.projetdiver.login.exceptions.DiverEmailNotFoundException;
-import com.projetdiver.login.exceptions.WrongPasswordException;
+import com.projetdiver.diver.exceptions.DiverAlreadyLoggedInException;
+import com.projetdiver.diver.exceptions.DiverEmailNotFoundException;
+import com.projetdiver.diver.exceptions.WrongPasswordException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

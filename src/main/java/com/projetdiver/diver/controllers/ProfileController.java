@@ -1,4 +1,4 @@
-package com.projetdiver.profile;
+package com.projetdiver.diver.controllers;
 
 import com.projetdiver.diver.DiverFacade;
 

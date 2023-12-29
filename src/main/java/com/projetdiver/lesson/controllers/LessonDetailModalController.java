@@ -15,7 +15,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Objects;
 
 /**
  * Controller for the lesson detail modal.
@@ -208,7 +207,7 @@ public class LessonDetailModalController {
     @FXML
     private void handleUpdateButton() throws IOException {
 
-        InputStream fxmlStream = getClass().getResourceAsStream("/com/projetdiver/lesson-modification-modal.fxml");
+        InputStream fxmlStream = getClass().getResourceAsStream("/com/projetdiver/views/lesson/lesson-modification-modal.fxml");
         FXMLLoader loader = new FXMLLoader();
         Parent root = loader.load(fxmlStream);
 

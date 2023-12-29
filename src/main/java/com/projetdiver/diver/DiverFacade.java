@@ -1,10 +1,10 @@
 package com.projetdiver.diver;
 
 import com.projetdiver.dao.PostgreDAOFactory;
-import com.projetdiver.login.exceptions.DiverAlreadyLoggedInException;
-import com.projetdiver.login.exceptions.DiverEmailNotFoundException;
-import com.projetdiver.signup.exceptions.CreatingAccountFailed;
-import com.projetdiver.signup.exceptions.DiverAlreadyExisting;
+import com.projetdiver.diver.exceptions.DiverAlreadyLoggedInException;
+import com.projetdiver.diver.exceptions.DiverEmailNotFoundException;
+import com.projetdiver.diver.exceptions.CreatingAccountFailed;
+import com.projetdiver.diver.exceptions.DiverAlreadyExisting;
 
 /**
  *
@@ -72,7 +72,7 @@ public class DiverFacade {
         Diver diverFetched = (PostgreDAOFactory.getInstance().createDiverDAO().getDiver(email));
         if(diverFetched == null) {
             // If the diver is not existing, create it
-            Diver diver = new Diver(firstName, lastName, email, password);
+            Diver diver = new Diver(null, email, password, lastName, firstName );
 
             boolean isAdded = PostgreDAOFactory.getInstance().createDiverDAO().addDiver(diver);
             if(isAdded) {

@@ -1,4 +1,4 @@
-package com.projetdiver.signup.exceptions;
+package com.projetdiver.diver.exceptions;
 
 public class CreatingAccountFailed extends Exception
 {

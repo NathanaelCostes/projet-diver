@@ -159,7 +159,7 @@ public class DiverDAOPostgre extends DiverDAO {
             System.out.println("Connection to the database successful");
 
             // Use a prepared statement to avoid SQL injection
-            String sql = "INSERT INTO diver (email, password, first_name , last_name) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO diver (email, password, firstName , lastName) VALUES (?, ?, ?, ?)";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setString(1, diver.getEmail());
                 statement.setString(2, diver.getPassword());
@@ -203,11 +203,13 @@ public class DiverDAOPostgre extends DiverDAO {
                 ResultSet resultSet = statement.executeQuery();
 
                 while (resultSet.next()) {
-                    Diver diver = new Diver(resultSet.getString("first_name"),
-                            resultSet.getString("last_name"),
+                    Diver diver = new Diver(
+                            resultSet.getInt("diverId"),
                             resultSet.getString("email"),
-                            resultSet.getString("password"));
-
+                            resultSet.getString("password"),
+                            resultSet.getString("lastName"),
+                            resultSet.getString("firstName"));
+                    
                     divers.add(diver);
                 }
                 resultSet.close();
@@ -241,7 +243,7 @@ public class DiverDAOPostgre extends DiverDAO {
             System.out.println("Connection to the database successful");
 
             // Use a prepared statement to avoid SQL injection
-            String sql = "UPDATE diver SET first_name = ? WHERE email = ?";
+            String sql = "UPDATE diver SET firstName = ? WHERE email = ?";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setString(1, firstName);
                 statement.setString(2, diver.getEmail());
@@ -274,7 +276,7 @@ public class DiverDAOPostgre extends DiverDAO {
             System.out.println("Connection to the database successful");
 
             // Use a prepared statement to avoid SQL injection
-            String sql = "UPDATE diver SET last_name = ? WHERE email = ?";
+            String sql = "UPDATE diver SET lastName = ? WHERE email = ?";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setString(1, lastName);
                 statement.setString(2, diver.getEmail());

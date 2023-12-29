@@ -1,8 +1,8 @@
-package com.projetdiver.signup;
+package com.projetdiver.diver.controllers;
 
 import com.projetdiver.diver.DiverFacade;
-import com.projetdiver.signup.exceptions.CreatingAccountFailed;
-import com.projetdiver.signup.exceptions.DiverAlreadyExisting;
+import com.projetdiver.diver.exceptions.CreatingAccountFailed;
+import com.projetdiver.diver.exceptions.DiverAlreadyExisting;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;

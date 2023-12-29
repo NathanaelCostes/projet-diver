@@ -64,7 +64,7 @@ public class LessonController implements Initializable {
 
     private void openLessonDetailsModal(ActionEvent event, Lesson lesson) {
         try {
-            InputStream fxmlStream = getClass().getResourceAsStream("/com/projetdiver/lesson-detail-modal.fxml");
+            InputStream fxmlStream = getClass().getResourceAsStream("/com/projetdiver/views/lesson/lesson-detail-modal.fxml");
             FXMLLoader loader = new FXMLLoader();
             Parent root = loader.load(fxmlStream);
 
@@ -104,7 +104,7 @@ public class LessonController implements Initializable {
     @FXML
     private void openLessonCreationModal(ActionEvent event) {
         try {
-            InputStream fxmlStream = getClass().getResourceAsStream("/com/projetdiver/lesson-creation-modal.fxml");
+            InputStream fxmlStream = getClass().getResourceAsStream("/com/projetdiver/views/lesson/lesson-creation-modal.fxml");
             FXMLLoader loader = new FXMLLoader();
             Parent root = loader.load(fxmlStream);
 

@@ -1,6 +1,6 @@
 package com.projetdiver.diver;
 
-import com.projetdiver.login.exceptions.WrongPasswordException;
+import com.projetdiver.diver.exceptions.WrongPasswordException;
 
 /**
  * Diver is a class that represents a diver
@@ -32,8 +32,7 @@ public class Diver {
      * @param email the email of the diver
      * @param password the password of the diver
      */
-
-    public Diver(int id, String email, String password, String lastName, String firstName) {
+    public Diver(Integer id, String email, String password, String lastName, String firstName) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -109,18 +108,18 @@ public class Diver {
 
     /**
      * Will set the first name of the user
-     * @param prenom the first name of the user
+     * @param firstName the first name of the user
      */
-    public void setFirstName(String prenom) {
-        this.prenom = prenom;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     /**
      * Will set the last name of the user
-     * @param nom the last name of the user
+     * @param lastName the last name of the user
      */
-    public void setLastName(String nom) {
-        this.nom = nom;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     /**

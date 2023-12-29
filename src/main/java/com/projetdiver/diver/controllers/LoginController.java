@@ -1,4 +1,4 @@
-package com.projetdiver.login;
+package com.projetdiver.diver.controllers;
 
 import com.projetdiver.diver.DiverFacade;
 import javafx.fxml.FXML;
