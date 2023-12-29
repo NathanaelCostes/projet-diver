@@ -1,7 +1,5 @@
 package com.projetdiver.diver;
 
-import com.projetdiver.diver.Diver;
-import com.projetdiver.diver.DiverDAO;
 import io.github.cdimascio.dotenv.Dotenv;
 import java.sql.*;
 
@@ -34,10 +32,11 @@ public class DiverDAOPostgre extends DiverDAO {
      */
     private void connection() {
         try {
+            assert this.DB_URL != null;
             this.connection = DriverManager.getConnection(this.DB_URL, this.DB_USER, this.DB_PASSWORD);
             this.connection.isValid(2);
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Connection to the database failed");
         }
     }
 
@@ -53,12 +52,15 @@ public class DiverDAOPostgre extends DiverDAO {
 
             // Use a prepared statement to avoid SQL injection
             String sql = "SELECT * FROM diver WHERE email=?";
+
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setString(1, email);
                 ResultSet resultSet = statement.executeQuery();
 
                 if (resultSet.next()) {
-                    Diver diver = new Diver(resultSet.getString("email"),
+                    Diver diver = new Diver
+                            (resultSet.getInt("diver_id"),
+                            resultSet.getString("email"),
                             resultSet.getString("password"),
                             resultSet.getString("last_name"),
                             resultSet.getString("first_name"));
@@ -72,7 +74,7 @@ public class DiverDAOPostgre extends DiverDAO {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Connection to the database failed");
         } finally {
             // Close the connection
             try {
@@ -80,7 +82,7 @@ public class DiverDAOPostgre extends DiverDAO {
                     connection.close();
                 }
             } catch (SQLException e) {
-                e.printStackTrace();
+                System.err.println("Error while closing the connection");
             }
         }
         return null;

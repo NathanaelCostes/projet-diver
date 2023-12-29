@@ -1,6 +1,7 @@
 package com.projetdiver.dao;
 
 import com.projetdiver.diver.DiverDAO;
+import com.projetdiver.lesson.LessonDAO;
 
 /**
  * 
@@ -21,6 +22,8 @@ public class PostgreDAOFactory implements DAOFactory {
     public DiverDAO createDiverDAO() {
         return DiverDAO.getInstance();
     }
+
+    public LessonDAO createLessonDAO() { return LessonDAO.getInstance(); }
 
     /**
      * Pas thread safe

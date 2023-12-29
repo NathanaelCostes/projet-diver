@@ -26,7 +26,8 @@ public abstract class DiverDAO {
      */
     public  static DiverDAO getInstance() {
         if (DiverDAO.instance == null) {
-            return new DiverDAOPostgre();
+            instance = new DiverDAOPostgre();
+            return instance;
         } else {
             return DiverDAO.instance;
         }
