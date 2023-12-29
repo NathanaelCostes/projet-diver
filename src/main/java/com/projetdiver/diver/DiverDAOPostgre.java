@@ -51,7 +51,7 @@ public class DiverDAOPostgre extends DiverDAO {
             System.out.println("Connection to the database successful");
 
             // Use a prepared statement to avoid SQL injection
-            String sql = "SELECT * FROM diver WHERE email = ?";
+            String sql = "SELECT * FROM diver WHERE email=?";
 
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setString(1, email);
