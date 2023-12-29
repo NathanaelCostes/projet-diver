@@ -1,0 +1,38 @@
+#diverListVBox {
+    -fx-background-color: #7FB3D5; /* Bleu lagon */
+
+}
+
+#diverListVBox HBox {
+    -fx-border-color: #35648F; /* Bleu plus foncé pour la bordure */
+    -fx-border-width: 2px;
+    -fx-padding: 10px;
+    -fx-spacing: 10px;
+}
+
+#diverListVBox Label {
+    -fx-text-fill: #1E414D; /* Couleur de texte plus sombre */
+}
+
+#diverListVBox Button {
+    -fx-background-color: #FF5E5E; /* Rouge vif */
+    -fx-text-fill: white;
+}
+
+#diverListVBox Button:hover {
+    -fx-background-color: #E04444; /* Rouge plus foncé au survol */
+}
+
+#diverListVBox Label:first-child,
+#diverListVBox Label:nth-child(2),
+#diverListVBox Label:nth-child(3) {
+    -fx-font-weight: bold; /* Les trois premières étiquettes en gras */
+}
+
+#diverListVBox ScrollPane {
+    -fx-background-color: #7FB3D5; /* Assurez-vous que la couleur de fond de la ScrollPane correspond à celle du VBox */
+}
+
+#diverListVBox Label:empty {
+    -fx-text-fill: transparent; /* Cachez les labels vides */
+}

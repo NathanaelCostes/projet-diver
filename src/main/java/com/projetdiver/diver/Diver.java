@@ -32,6 +32,7 @@ public class Diver {
      * @param email the email of the diver
      * @param password the password of the diver
      */
+
     public Diver(int id, String email, String password, String lastName, String firstName) {
         this.id = id;
         this.email = email;
@@ -100,11 +101,52 @@ public class Diver {
     }
 
     /**
-     * @return the user as a string
+     * @return the password of the user
      */
-    public String toString() {
-    	return this.email + " " + this.password + " " + this.lastName + " " + this.firstName;
+    public String getPassword() {
+        return password;
     }
 
+    /**
+     * Will set the first name of the user
+     * @param prenom the first name of the user
+     */
+    public void setFirstName(String prenom) {
+        this.prenom = prenom;
+    }
+
+    /**
+     * Will set the last name of the user
+     * @param nom the last name of the user
+     */
+    public void setLastName(String nom) {
+        this.nom = nom;
+    }
+
+    /**
+     * Will set the email of the user
+     * @param email the email of the user
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * Will set the password of the user
+     * @param password the password of the user
+     */
+    public void setPassword(String password) {
+    	this.password = password;
+    }
+
+    /**
+     * @return the user as a string
+     */
+    public String toString(){
+    	return "First name: " + this.firstName + "\n" +
+                "Last name: " + this.lastName + "\n" +
+                "Email: " + this.email + "\n" +
+                "Password: " + this.password + "\n";
+    }
 
 }
