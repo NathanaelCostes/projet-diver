@@ -26,7 +26,8 @@ public class DiverApplication extends Application {
 
 
 
-        FXMLLoader fxmlLoader = new FXMLLoader(DiverApplication.class.getResource("profile-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(DiverApplication.class.getResource("/com/projetdiver/views/account/profile-view.fxml"));
+        System.out.println(fxmlLoader.getLocation());
         Scene scene = new Scene(fxmlLoader.load(), 600, 600);
         stage.setTitle("Login!");
 

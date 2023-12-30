@@ -24,7 +24,7 @@ public class LessonApplication extends Application {
      */
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(DiverApplication.class.getResource("lesson-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(DiverApplication.class.getResource("/com/projetdiver/views/lesson/lesson-view.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root, 750, 750); // Set the root of the scene to the loaded FXML root
 
