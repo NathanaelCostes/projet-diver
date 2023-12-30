@@ -27,13 +27,14 @@ VALUES('yasuo.midlaner@riotgames.com', '1234', 'Yasuo', 'Midlaner');
 -- Création de la table Session
 CREATE TABLE session(
     sessionId serial NOT NULL PRIMARY KEY,
-    title varchar(30) NOT NULL UNIQUE,
+    title varchar(30) NOT NULL,
     date date,
     comment varchar(255),
     duration float,
     temp int,
     depth int,
-    owner int NOT NULL REFERENCES diver(diverId)
+    owner int NOT NULL REFERENCES diver(diverId),
+    UNIQUE (title, owner)
     -- spotId int NOT NULL REFERENCES spot(spotId)
 );
 
@@ -55,7 +56,6 @@ CREATE TABLE invitation(
     pending boolean NOT NULL DEFAULT true,
     PRIMARY KEY(sessionId, receiver)
     --Coming:
-    --sender int NOT NULL REFERENCES contact(contactId) PRIMARY KEY,
     --receiver int NOT NULL REFERENCES contact(contactId) PRIMARY KEY
 );
 

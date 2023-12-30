@@ -14,4 +14,13 @@ module com.projetdiver {
     opens com.projetdiver.dao to javafx.fxml;
     exports com.projetdiver.diver;
     opens com.projetdiver.diver to javafx.fxml;
+
+    exports com.projetdiver.session;
+    opens com.projetdiver.session to javafx.fxml;
+    exports com.projetdiver.session.exceptions;
+    opens com.projetdiver.session.exceptions to javafx.fxml;
+    exports com.projetdiver.session.invitation;
+    opens com.projetdiver.session.invitation to javafx.fxml;
+    exports com.projetdiver.session.controllers;
+    opens com.projetdiver.session.controllers to javafx.fxml;
 }

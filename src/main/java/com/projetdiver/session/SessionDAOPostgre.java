@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.sql.*;
 import java.util.Objects;
 
-import io.github.cdimascio.dotenv.Dotenv;
+//import io.github.cdimascio.dotenv.Dotenv;
 
 
-public class SessionDAOPostgre extends SessionDAO{
+public class SessionDAOPostgre extends SessionDAO {
 
     /**
      * Default constructor
@@ -19,18 +19,18 @@ public class SessionDAOPostgre extends SessionDAO{
     public SessionDAOPostgre() {}
 
     /** dotenv to load informations from the .env */
-    private Dotenv dotenv = Dotenv.load();
+    //private Dotenv dotenv = Dotenv.load();
 
     private Connection connection;
 
     /** User of the database to get in the .env */
-    private final String DB_USER = dotenv.get("DB_USER");
+    private final String DB_USER = "postgres"; //dotenv.get("DB_USER");
 
     /** Password of the database to get in the .env */
-    private final String DB_PASSWORD = dotenv.get("DB_PASSWORD");
+    private final String DB_PASSWORD = "postgres"; //dotenv.get("DB_PASSWORD");
 
     /** URL of the database to get in the .env */
-    private final String DB_URL = dotenv.get("DB_URL");
+    private final String DB_URL = "jdbc:postgresql://localhost:5432/projet_diver_db"; //dotenv.get("DB_URL");
 
     /**
      * Connect to the database using the informations in the .env
@@ -55,71 +55,164 @@ public class SessionDAOPostgre extends SessionDAO{
         }
     }
 
-    private Session getSession(Object object) {
-
+    @Override
+    public Session getSession(Integer sessionId) {
         try {
             connection();
 
             // Use a prepared statement to avoid SQL injection
-            String sql;
-
-            // In the case where objects is an Integer
-            if (object instanceof Integer) {
-                sql = "SELECT * FROM session WHERE sessionid=?;";
-            }
-            // In the case where objects is a String
-            else {
-                sql = "SELECT * FROM session WHERE title=?;";
-            }
-
+            String sql = "SELECT * FROM session WHERE sessionId=?;";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                if(object instanceof Integer) {
-                    statement.setInt(1, (Integer) object);
-                } else {
-                    statement.setString(1, (String) object);
-                }
+                statement.setInt(1, sessionId);
                 ResultSet resultSet = statement.executeQuery();
 
                 if (resultSet.next()) {
                     Session session = new Session(
                             resultSet.getInt("sessionId"),
-                        resultSet.getString("title"),
-                        resultSet.getDate("date"),
-                        resultSet.getString("comment"),
-                        resultSet.getFloat("duration"),
-                        resultSet.getInt("temp"),
-                        resultSet.getInt("depth"),
-                        DiverDAO.getInstance().getDiver(resultSet.getInt("owner"))
+                            resultSet.getString("title"),
+                            resultSet.getDate("date"),
+                            resultSet.getString("comment"),
+                            resultSet.getFloat("duration"),
+                            resultSet.getInt("temp"),
+                            resultSet.getInt("depth"),
+                            DiverDAO.getInstance().getDiver(resultSet.getInt("owner"))
                     );
 
                     resultSet.close();
 
                     return session;
+                } else {
+                    return null;
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+            return null;
         } finally {
             closeConnection();
         }
-        return null;
     }
 
     @Override
-    public Session getSession(Integer sessionId) {
-        return getSession((Object) sessionId);
+    public Session getSession(Diver owner, String title) {
+        try {
+            connection();
+
+            // Use a prepared statement to avoid SQL injection
+            String sql = "SELECT * FROM session WHERE owner=? AND title=?;";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setInt(1, owner.getDiverId());
+                statement.setString(2, title);
+                ResultSet resultSet = statement.executeQuery();
+
+                if (resultSet.next()) {
+                    Session session = new Session(
+                            resultSet.getInt("sessionId"),
+                            resultSet.getString("title"),
+                            resultSet.getDate("date"),
+                            resultSet.getString("comment"),
+                            resultSet.getFloat("duration"),
+                            resultSet.getInt("temp"),
+                            resultSet.getInt("depth"),
+                            DiverDAO.getInstance().getDiver(resultSet.getInt("owner"))
+                    );
+
+                    resultSet.close();
+
+                    return session;
+                } else {
+                    return null;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            closeConnection();
+        }
     }
 
     @Override
-    public Session getSession(String title) {
-        return getSession((Object) title);
+    public ArrayList<Session> getAllSessionsWhereDiverIsOwner(Diver owner){
+        try {
+            connection();
+
+            // Use a prepared statement to avoid SQL injection
+            String sql = "SELECT * FROM session WHERE owner=?;";
+
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setInt(1, owner.getDiverId());
+                ResultSet resultSet = statement.executeQuery();
+
+                ArrayList<Session> allSessions = new ArrayList<>();
+
+                while (resultSet.next()) {
+                    Session session = new Session(
+                            resultSet.getInt("sessionId"),
+                            resultSet.getString("title"),
+                            resultSet.getDate("date"),
+                            resultSet.getString("comment"),
+                            resultSet.getFloat("duration"),
+                            resultSet.getInt("temp"),
+                            resultSet.getInt("depth"),
+                            DiverDAO.getInstance().getDiver(resultSet.getInt("owner"))
+                    );
+                    allSessions.add(session);
+                }
+
+                resultSet.close();
+                return allSessions;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            closeConnection();
+        }
+    }
+
+    @Override
+    public ArrayList<Session> getAllSessionsWhereDiverIsInvited(Diver diver, boolean pending) {
+        try {
+            connection();
+
+            // Use a prepared statement to avoid SQL injection
+            String sql = "SELECT * FROM session INNER JOIN invitation ON session.sessionId = invitation.sessionId WHERE invitation.receiver=? AND invitation.pending=?;";
+
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setInt(1, diver.getDiverId());
+                statement.setBoolean(2, pending);
+                ResultSet resultSet = statement.executeQuery();
+
+                ArrayList<Session> allSessions = new ArrayList<>();
+
+                while (resultSet.next()) {
+                    Session session = new Session(
+                            resultSet.getInt("sessionId"),
+                            resultSet.getString("title"),
+                            resultSet.getDate("date"),
+                            resultSet.getString("comment"),
+                            resultSet.getFloat("duration"),
+                            resultSet.getInt("temp"),
+                            resultSet.getInt("depth"),
+                            DiverDAO.getInstance().getDiver(resultSet.getInt("owner"))
+                    );
+                    allSessions.add(session);
+                }
+
+                resultSet.close();
+                return allSessions;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            closeConnection();
+        }
     }
 
     @Override
     public boolean createSession(Session session) {
-
         try {
             connection();
 
@@ -147,15 +240,11 @@ public class SessionDAOPostgre extends SessionDAO{
 
     @Override
     public boolean modifySession(Session session) {
-        if (session.getSessionId() == null) {
-            return false;
-        }
-
         try {
             connection();
 
             // Use a prepared statement to avoid SQL injection
-            String sql = "UPDATE session SET title=?, date=?, comment=?, duration=?, temp=?, depth=? WHERE sessionid=?;";
+            String sql = "UPDATE session SET title=?, date=?, comment=?, duration=?, temp=?, depth=? WHERE sessionId=?;";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setString(1, session.getTitle());
                 statement.setDate(2, session.getDate());
@@ -182,7 +271,7 @@ public class SessionDAOPostgre extends SessionDAO{
             connection();
 
             // Use a prepared statement to avoid SQL injection
-            String sql = "DELETE FROM session WHERE sessionid=?;";
+            String sql = "DELETE FROM session WHERE sessionId=?;";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setInt(1, session.getSessionId());
                 statement.executeUpdate();
@@ -267,7 +356,7 @@ public class SessionDAOPostgre extends SessionDAO{
             connection();
 
             // Use a prepared statement to avoid SQL injection
-            String sql = "SELECT * FROM invitation WHERE sessionid=?;";
+            String sql = "SELECT * FROM invitation WHERE sessionId=?;";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setInt(1, session.getSessionId());
                 ResultSet resultSet = statement.executeQuery();
@@ -317,12 +406,35 @@ public class SessionDAOPostgre extends SessionDAO{
     }
 
     @Override
+    boolean acceptInvitation(Invitation invitation) {
+        try {
+            connection();
+
+            // Use a prepared statement to avoid SQL injection
+            String sql = "UPDATE invitation SET pending=? WHERE sessionId=? AND receiver=?;";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setBoolean(1, false);
+                statement.setInt(2, invitation.getSession().getSessionId());
+                statement.setInt(3, invitation.getReceiver().getDiverId());
+                statement.executeUpdate();
+
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            closeConnection();
+        }
+    }
+
+    @Override
     boolean deleteInvitation(Invitation invitation) {
         try {
             connection();
 
             // Use a prepared statement to avoid SQL injection
-            String sql = "DELETE FROM invitation WHERE sessionid=? AND receiver=?;";
+            String sql = "DELETE FROM invitation WHERE sessionId=? AND receiver=?;";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setInt(1, invitation.getSession().getSessionId());
                 statement.setInt(2, invitation.getReceiver().getDiverId());
