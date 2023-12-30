@@ -2,7 +2,7 @@ package com.projetdiver.diver;
 
 import com.projetdiver.diver.Diver;
 import com.projetdiver.diver.DiverDAO;
-import io.github.cdimascio.dotenv.Dotenv;
+//import io.github.cdimascio.dotenv.Dotenv;
 import java.sql.*;
 
 /**

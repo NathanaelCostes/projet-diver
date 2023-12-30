@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projetdiver.session.controllers.SessionController">
+   <top>
+      <Label style="-fx-font-weight: bold; -fx-font-size: 50px; -fx-font-family: Roboto;" text="List of Sessions" textAlignment="CENTER" textFill="#0099ff" BorderPane.alignment="CENTER" />
+   </top>
+   <center>
+      <VBox fx:id="sessionListVBox" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+   </center>
+   <bottom>
+      <HBox fx:id="sessionMenuHBox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>

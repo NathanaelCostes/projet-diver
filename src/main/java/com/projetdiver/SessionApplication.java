@@ -35,8 +35,8 @@ public class SessionApplication extends Application {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        FXMLLoader fxmlLoader = new FXMLLoader(SessionApplication.class.getResource("session-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 800);
+        FXMLLoader fxmlLoader = new FXMLLoader(SessionApplication.class.getResource("/com/projetdiver/views/session/session-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 800, 600);
         stage.setTitle("Session!");
 
         stage.getIcons().add(new Image(Objects.requireNonNull(SessionApplication.class.getResourceAsStream("/Diving_Portal_Logo.png"))));

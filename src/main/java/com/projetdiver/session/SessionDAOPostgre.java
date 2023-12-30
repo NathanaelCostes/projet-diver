@@ -24,7 +24,8 @@ public class SessionDAOPostgre extends SessionDAO {
     private Connection connection;
 
     /** User of the database to get in the .env */
-    private final String DB_USER = "postgres"; //dotenv.get("DB_USER");
+    //private final String DB_USER = dotenv.get("DB_USER");
+    private final String DB_USER = "postgres";
 
     /** Password of the database to get in the .env */
     private final String DB_PASSWORD = "postgres"; //dotenv.get("DB_PASSWORD");
@@ -37,6 +38,7 @@ public class SessionDAOPostgre extends SessionDAO {
      */
     private void connection() {
         try {
+            System.out.println("Test: " + System.getenv("DB_USER"));
             this.connection = DriverManager.getConnection(this.DB_URL, this.DB_USER, this.DB_PASSWORD);
             this.connection.isValid(2);
         } catch (SQLException e) {
