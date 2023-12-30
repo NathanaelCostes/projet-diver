@@ -31,12 +31,15 @@ public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXRouter.bind(this, stage);
-        FXMLLoader fxmlLoader = new FXMLLoader(DiverApplication.class.getResource("/com/projetdiver/views/account/login-view.fxml"));
-        System.out.println(fxmlLoader.getLocation());
+        //FXMLLoader fxmlLoader = new FXMLLoader(DiverApplication.class.getResource("/com/projetdiver/views/account/login-view.fxml"));
+        //System.out.println(fxmlLoader.getLocation());
         //Convert fxmlLoader URL to String :
-        String fxmlLoaderURL = fxmlLoader.getLocation().toString();
-        System.out.println(fxmlLoaderURL);
-        /*FXRouter.when("login", DiverApplication.class.getResource("/com/projetdiver/views/account/login-view.fxml").toString());
-        FXRouter.goTo("login");*/
+        //String fxmlLoaderURL = fxmlLoader.getLocation().toString();
+        //System.out.println(fxmlLoaderURL);
+
+        // Attention \\
+        FXRouter.when("login", "views/account/login-view.fxml");
+        FXRouter.when("profile", "views/account/profile-view.fxml");
+        FXRouter.goTo("login");
     }
 }
