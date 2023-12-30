@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projetdiver.mainpage.MainPageController">
+   <children>
+      <BorderPane layoutX="90.0" layoutY="106.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <AnchorPane prefHeight="65.0" prefWidth="200.0" style="-fx-background-color: #2d95a1;" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <ImageView fitHeight="65.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../Diving_Portal_Logo.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Diving Portal" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Button minHeight="-Infinity" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: transparent;" HBox.hgrow="NEVER">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/admin_icon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="15.0" right="15.0" />
+                           </HBox.margin>
+                        </Button>
+
+                        <Button minWidth="25.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/user_icon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="15.0" right="15.0" />
+                           </HBox.margin>
+                           <prefHeight>25.0</prefHeight>
+                           <prefWidth>25.0</prefWidth>
+                        </Button>
+
+                        <ToggleButton fx:id="sidebarToggleButton" mnemonicParsing="false" style="-fx-background-color: transparent;">
+                           <graphic>
+                              <StackPane>
+                                 <!-- Unselected State Image -->
+                                 <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@icons/menu_icon.png" />
+                                    </image>
+                                    <viewport>
+                                       <Rectangle2D />
+                                    </viewport>
+                                 </ImageView>
+
+                                 <!-- Selected State Image (Initially hidden) -->
+                                 <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                    <image>
+                                       <Image url="@icons/close_tab_icon.png" />
+                                    </image>
+                                    <viewport>
+                                       <Rectangle2D />
+                                    </viewport>
+                                 </ImageView>
+                              </StackPane>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </ToggleButton>
+                     </children>
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </top>
+         <right>
+            <AnchorPane prefHeight="362.0" prefWidth="176.0" style="-fx-background-color: #3ebbbe;" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <!-- Button 1 with Image -->
+                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="176.0" style="-fx-background-color: transparent;">
+                           <graphic>
+                              <HBox alignment="CENTER" spacing="15.0">
+                                 <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@icons/map_icon.png" />
+                                    </image>
+                                 </ImageView>
+                                 <Text fill="WHITE" text="Map">
+                                    <font>
+                                       <Font name="System Bold" size="12.0" />
+                                    </font>
+                                 </Text>
+                              </HBox>
+                           </graphic>
+                        </Button>
+
+                        <!-- Button 2 with Image -->
+                        <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="176.0" style="-fx-background-color: transparent;">
+                           <graphic>
+                              <HBox alignment="CENTER" spacing="15.0">
+                                 <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@icons/sessions_icon.png" />
+                                    </image>
+                                 </ImageView>
+                                 <Text fill="WHITE" text="Sessions">
+                                    <font>
+                                       <Font name="System Bold" size="12.0" />
+                                    </font>
+                                 </Text>
+                              </HBox>
+                           </graphic>
+                        </Button>
+
+                        <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="176.0" style="-fx-background-color: transparent;">
+                           <graphic>
+                              <HBox alignment="CENTER" spacing="15.0">
+                                 <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@icons/lessons_icon.png" />
+                                    </image>
+                                 </ImageView>
+                                 <Text fill="WHITE" text="Lessons">
+                                    <font>
+                                       <Font name="System Bold" size="12.0" />
+                                    </font>
+                                 </Text>
+                              </HBox>
+                           </graphic>
+                        </Button>
+
+                        <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="176.0" style="-fx-background-color: transparent;">
+                           <graphic>
+                              <HBox alignment="CENTER" spacing="15.0">
+                                 <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@icons/contact_icon.png" />
+                                    </image>
+                                 </ImageView>
+                                 <Text fill="WHITE" text="Contacts">
+                                    <font>
+                                       <Font name="System Bold" size="12.0" />
+                                    </font>
+                                 </Text>
+                              </HBox>
+                           </graphic>
+                        </Button>
+
+                        <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="176.0" style="-fx-background-color: transparent;">
+                           <graphic>
+                              <HBox alignment="CENTER" spacing="15.0">
+                                 <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@icons/club_icon.png" />
+                                    </image>
+                                 </ImageView>
+                                 <Text fill="WHITE" text="Club">
+                                    <font>
+                                       <Font name="System Bold" size="12.0" />
+                                    </font>
+                                 </Text>
+                              </HBox>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </right>
+      </BorderPane>
+   </children>
+</AnchorPane>
