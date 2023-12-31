@@ -2,7 +2,7 @@ package com.projetdiver.diver;
 
 import com.projetdiver.diver.Diver;
 import com.projetdiver.diver.DiverDAO;
-//import io.github.cdimascio.dotenv.Dotenv;
+import io.github.cdimascio.dotenv.Dotenv;
 import java.sql.*;
 
 /**
@@ -16,18 +16,18 @@ public class DiverDAOPostgre extends DiverDAO {
     public DiverDAOPostgre() {}
 
     /** dotenv to load informations from the .env */
-    //private Dotenv dotenv = Dotenv.load();
+    private Dotenv dotenv = Dotenv.load();
 
     private Connection connection;
 
     /** User of the database to get in the .env */
-    private final String DB_USER = "postgres"; //dotenv.get("DB_USER");
+    private final String DB_USER = dotenv.get("DB_USER");
 
     /** Password of the database to get in the .env */
-    private final String DB_PASSWORD = "postgres"; //dotenv.get("DB_PASSWORD");
+    private final String DB_PASSWORD = dotenv.get("DB_PASSWORD");
 
     /** URL of the database to get in the .env */
-    private final String DB_URL = "jdbc:postgresql://localhost:5432/projet_diver_db"; //dotenv.get("DB_URL");
+    private final String DB_URL = dotenv.get("DB_URL");
 
 
     /**

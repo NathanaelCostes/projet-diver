@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.sql.*;
 import java.util.Objects;
 
-//import io.github.cdimascio.dotenv.Dotenv;
+import io.github.cdimascio.dotenv.Dotenv;
 
 
 public class SessionDAOPostgre extends SessionDAO {
@@ -19,19 +19,18 @@ public class SessionDAOPostgre extends SessionDAO {
     public SessionDAOPostgre() {}
 
     /** dotenv to load informations from the .env */
-    //private Dotenv dotenv = Dotenv.load();
+    private Dotenv dotenv = Dotenv.load();
 
     private Connection connection;
 
     /** User of the database to get in the .env */
-    //private final String DB_USER = dotenv.get("DB_USER");
-    private final String DB_USER = "postgres";
+    private final String DB_USER = dotenv.get("DB_USER");
 
     /** Password of the database to get in the .env */
-    private final String DB_PASSWORD = "postgres"; //dotenv.get("DB_PASSWORD");
+    private final String DB_PASSWORD = dotenv.get("DB_PASSWORD");
 
     /** URL of the database to get in the .env */
-    private final String DB_URL = "jdbc:postgresql://localhost:5432/projet_diver_db"; //dotenv.get("DB_URL");
+    private final String DB_URL = dotenv.get("DB_URL");
 
     /**
      * Connect to the database using the informations in the .env
@@ -69,14 +68,24 @@ public class SessionDAOPostgre extends SessionDAO {
                 ResultSet resultSet = statement.executeQuery();
 
                 if (resultSet.next()) {
+
+                    Float duration = resultSet.getFloat("duration");
+                    if (resultSet.wasNull()) { duration = null; }
+
+                    Integer temp = resultSet.getInt("temp");
+                    if (resultSet.wasNull()) { temp = null; }
+
+                    Integer depth = resultSet.getInt("depth");
+                    if (resultSet.wasNull()) { depth = null; }
+
                     Session session = new Session(
                             resultSet.getInt("sessionId"),
                             resultSet.getString("title"),
                             resultSet.getDate("date"),
                             resultSet.getString("comment"),
-                            resultSet.getFloat("duration"),
-                            resultSet.getInt("temp"),
-                            resultSet.getInt("depth"),
+                            duration,
+                            temp,
+                            depth,
                             DiverDAO.getInstance().getDiver(resultSet.getInt("owner"))
                     );
 
@@ -108,14 +117,24 @@ public class SessionDAOPostgre extends SessionDAO {
                 ResultSet resultSet = statement.executeQuery();
 
                 if (resultSet.next()) {
+
+                    Float duration = resultSet.getFloat("duration");
+                    if (resultSet.wasNull()) { duration = null; }
+
+                    Integer temp = resultSet.getInt("temp");
+                    if (resultSet.wasNull()) { temp = null; }
+
+                    Integer depth = resultSet.getInt("depth");
+                    if (resultSet.wasNull()) { depth = null; }
+
                     Session session = new Session(
                             resultSet.getInt("sessionId"),
                             resultSet.getString("title"),
                             resultSet.getDate("date"),
                             resultSet.getString("comment"),
-                            resultSet.getFloat("duration"),
-                            resultSet.getInt("temp"),
-                            resultSet.getInt("depth"),
+                            duration,
+                            temp,
+                            depth,
                             DiverDAO.getInstance().getDiver(resultSet.getInt("owner"))
                     );
 
@@ -149,16 +168,27 @@ public class SessionDAOPostgre extends SessionDAO {
                 ArrayList<Session> allSessions = new ArrayList<>();
 
                 while (resultSet.next()) {
+
+                    Float duration = resultSet.getFloat("duration");
+                    if (resultSet.wasNull()) { duration = null; }
+
+                    Integer temp = resultSet.getInt("temp");
+                    if (resultSet.wasNull()) { temp = null; }
+
+                    Integer depth = resultSet.getInt("depth");
+                    if (resultSet.wasNull()) { depth = null; }
+
                     Session session = new Session(
                             resultSet.getInt("sessionId"),
                             resultSet.getString("title"),
                             resultSet.getDate("date"),
                             resultSet.getString("comment"),
-                            resultSet.getFloat("duration"),
-                            resultSet.getInt("temp"),
-                            resultSet.getInt("depth"),
+                            duration,
+                            temp,
+                            depth,
                             DiverDAO.getInstance().getDiver(resultSet.getInt("owner"))
                     );
+
                     allSessions.add(session);
                 }
 
@@ -189,16 +219,27 @@ public class SessionDAOPostgre extends SessionDAO {
                 ArrayList<Session> allSessions = new ArrayList<>();
 
                 while (resultSet.next()) {
+
+                    Float duration = resultSet.getFloat("duration");
+                    if (resultSet.wasNull()) { duration = null; }
+
+                    Integer temp = resultSet.getInt("temp");
+                    if (resultSet.wasNull()) { temp = null; }
+
+                    Integer depth = resultSet.getInt("depth");
+                    if (resultSet.wasNull()) { depth = null; }
+
                     Session session = new Session(
                             resultSet.getInt("sessionId"),
                             resultSet.getString("title"),
                             resultSet.getDate("date"),
                             resultSet.getString("comment"),
-                            resultSet.getFloat("duration"),
-                            resultSet.getInt("temp"),
-                            resultSet.getInt("depth"),
+                            duration,
+                            temp,
+                            depth,
                             DiverDAO.getInstance().getDiver(resultSet.getInt("owner"))
                     );
+
                     allSessions.add(session);
                 }
 
@@ -222,11 +263,37 @@ public class SessionDAOPostgre extends SessionDAO {
             String sql = "INSERT INTO session (title, date, comment, duration, temp, depth, owner) VALUES (?, ?, ?, ?, ?, ?, ?);";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setString(1, session.getTitle());
-                statement.setDate(2, session.getDate());
-                statement.setString(3, session.getComment());
-                statement.setFloat(4, session.getDuration());
-                statement.setInt(5, session.getTemp());
-                statement.setInt(6, session.getDepth());
+
+                if (session.getDate() == null) {
+                    statement.setNull(2, Types.DATE);
+                } else {
+                    statement.setDate(2, session.getDate());
+                }
+
+                if (Objects.equals(session.getComment(), "")) {
+                    statement.setNull(3, Types.VARCHAR);
+                } else {
+                    statement.setString(3, session.getComment());
+                }
+                
+                if (session.getDuration() == null) {
+                    statement.setNull(4, Types.FLOAT);
+                } else {
+                    statement.setFloat(4, session.getDuration());
+                }
+
+                if (session.getTemp() == null) {
+                    statement.setNull(5, Types.INTEGER);
+                } else {
+                    statement.setInt(5, session.getTemp());
+                }
+
+                if (session.getDepth() == null) {
+                    statement.setNull(6, Types.INTEGER);
+                } else {
+                    statement.setInt(6, session.getDepth());
+                }
+                
                 statement.setInt(7, session.getOwner().getDiverId());
                 statement.executeUpdate();
 
@@ -249,11 +316,37 @@ public class SessionDAOPostgre extends SessionDAO {
             String sql = "UPDATE session SET title=?, date=?, comment=?, duration=?, temp=?, depth=? WHERE sessionId=?;";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setString(1, session.getTitle());
-                statement.setDate(2, session.getDate());
-                statement.setString(3, session.getComment());
-                statement.setFloat(4, session.getDuration());
-                statement.setInt(5, session.getTemp());
-                statement.setInt(6, session.getDepth());
+               
+                if (session.getDate() == null) {
+                    statement.setNull(2, Types.DATE);
+                } else {
+                    statement.setDate(2, session.getDate());
+                }
+
+                if (Objects.equals(session.getComment(), "")) {
+                    statement.setNull(3, Types.VARCHAR);
+                } else {
+                    statement.setString(3, session.getComment());
+                }
+                
+                if (session.getDuration() == null) {
+                    statement.setNull(4, Types.FLOAT);
+                } else {
+                    statement.setFloat(4, session.getDuration());
+                }
+
+                if (session.getTemp() == null) {
+                    statement.setNull(5, Types.INTEGER);
+                } else {
+                    statement.setInt(5, session.getTemp());
+                }
+
+                if (session.getDepth() == null) {
+                    statement.setNull(6, Types.INTEGER);
+                } else {
+                    statement.setInt(6, session.getDepth());
+                }
+
                 statement.setInt(7, session.getSessionId());
                 statement.executeUpdate();
 

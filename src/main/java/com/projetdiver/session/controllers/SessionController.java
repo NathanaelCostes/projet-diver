@@ -1,15 +1,27 @@
 package com.projetdiver.session.controllers;
 
+import com.projetdiver.session.Session;
 import com.projetdiver.session.exceptions.NotConnectedException;
+import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.Parent;
 
 import com.projetdiver.session.SessionFacade;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
-public class SessionController {
+import java.io.InputStream;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class SessionController implements Initializable, ControllerHelper {
     /**
      * The instance of the SessionFacade
      */
@@ -34,75 +46,151 @@ public class SessionController {
         this.facade = SessionFacade.getInstance();
     }
 
-    private Label separator(){
-        Label separator = new Label(" | ");
-        separator.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
-        return separator;
-    }
-
-    private Button createButton(String text, String color){
-        Button button = new Button(text);
-        button.setStyle("-fx-background-color: " + color + "; -fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold; -fx-font-family: 'Roboto';");
-        return button;
-    }
-
-    /**
-     * Initialize the session list
-     */
     @FXML
-    public void initialize() {
+    public void setSessionMenuHBox(){
+        sessionMenuHBox.getChildren().clear();
+
+        Button sessionCreateButton = createButton("Create", "green");
+        sessionCreateButton.setOnAction(event -> { 
+            openCreateSession(event); 
+            setSessionListView();
+        });
+        sessionMenuHBox.getChildren().add(sessionCreateButton);
+    }
+    
+    @FXML
+    public void setSessionListView(){
+        sessionListVBox.getChildren().clear();
         try {
             facade.getAllSessions().forEach(session -> {
                 HBox sessionHBox = new HBox();
                 sessionHBox.setSpacing(5);
                 sessionHBox.setAlignment(javafx.geometry.Pos.CENTER);
-                sessionHBox.setStyle("-fx-background-color: #ffffff; -fx-border-color: #000000; -fx-border-width: 1px; -fx-border-radius: 5px;");
+                sessionHBox.setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-width: 1px; -fx-border-radius: 5px;");
 
-                Label sessionTitleLabel = new Label(session.getTitle());
-                sessionTitleLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-font-family: 'Roboto';");
-                sessionHBox.getChildren().add(sessionTitleLabel);
+                sessionHBox.getChildren().add(createLabel(session.getTitle()));
 
                 sessionHBox.getChildren().add(separator());
 
-                Label sessionDateLabel = new Label(session.getDate().toString());
-                sessionDateLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-font-family: 'Roboto';");
-                sessionHBox.getChildren().add(sessionDateLabel);
+                if (session.getDate() != null) {
+                    sessionHBox.getChildren().add(createLabel(session.getDate().toString()));
 
-                sessionHBox.getChildren().add(separator());
+                    sessionHBox.getChildren().add(separator());
+                }
 
-                Label sessionOwnerLabel = new Label(session.getOwner().getNom() + " " + session.getOwner().getPrenom());
-                sessionOwnerLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-font-family: 'Roboto';");
-                sessionHBox.getChildren().add(sessionOwnerLabel);
+                sessionHBox.getChildren().add(createLabel(session.getOwner().getNom() + " " + session.getOwner().getPrenom()));
 
                 sessionHBox.getChildren().add(separator());
 
                 if(session.getOwner().getDiverId() == facade.getCurrentDiver().getDiverId()) {
                     Button sessionModifyButton = createButton("Modify", "green");
-                    //sessionModifyButton.setOnAction(event -> { modifySession(session); });
+                    sessionModifyButton.setOnAction(event -> { 
+                        openModifySession(event, session);
+                        setSessionListView();
+                    });
                     sessionHBox.getChildren().add(sessionModifyButton);
                 }
 
                 Button sessionInfoButton = createButton("Info", "blue");
-                //sessionInfoButton.setOnAction(event -> { infoSession(session); });
+                sessionInfoButton.setOnAction(event -> { openDetailsSession(event, session); });
                 sessionHBox.getChildren().add(sessionInfoButton);
 
                 sessionListVBox.setSpacing(10);
                 sessionListVBox.getChildren().add(sessionHBox);
             });
-
-
-
-            Button sessionCreateButton = createButton("Create", "green");
-            //sessionCreateButton.setOnAction(event -> { createSession(); });
-            sessionMenuHBox.getChildren().add(sessionCreateButton);
-
-            Button sessionJoinButton = createButton("Join", "orange");
-            //sessionJoinButton.setOnAction(event -> { joinSession(); });
-            sessionMenuHBox.getChildren().add(sessionJoinButton);
-
-
         } catch (NotConnectedException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @FXML
+    public void openDetailsSession(Event event, Session session) {
+        try {
+            InputStream fxmlStream = getClass().getResourceAsStream("/com/projetdiver/views/session/session-details-view.fxml");
+            FXMLLoader loader = new FXMLLoader();
+            Parent root = loader.load(fxmlStream);
+
+            SessionDetailsController sessionDetailsController = loader.getController();
+            sessionDetailsController.setSessionDetails(session);
+
+            Stage modalStage = new Stage();
+            modalStage.setTitle("Session details");
+
+            Scene scene = new Scene(root, 600, 400);
+            scene.setUserData(this);
+
+            modalStage.setScene(scene);
+            modalStage.initOwner(((Button) event.getSource()).getScene().getWindow());
+            modalStage.initModality(Modality.WINDOW_MODAL);
+
+            modalStage.showAndWait();
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    public void openModifySession(Event event, Session session) {
+        try {
+            InputStream fxmlStream = getClass().getResourceAsStream("/com/projetdiver/views/session/session-modify-view.fxml");
+            FXMLLoader loader = new FXMLLoader();
+            Parent root = loader.load(fxmlStream);
+
+            SessionModifyController sessionModifyController = loader.getController();
+            sessionModifyController.setSessionModify(session);
+
+            Stage modalStage = new Stage();
+            modalStage.setTitle("Session modify");
+
+            Scene scene = new Scene(root, 600, 600);
+            scene.setUserData(this);
+
+            modalStage.setScene(scene);
+            modalStage.initOwner(((Button) event.getSource()).getScene().getWindow());
+            modalStage.initModality(Modality.WINDOW_MODAL);
+
+            modalStage.showAndWait();
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    public void openCreateSession(Event event) {
+        try {
+            InputStream fxmlStream = getClass().getResourceAsStream("/com/projetdiver/views/session/session-modify-view.fxml");
+            FXMLLoader loader = new FXMLLoader();
+            Parent root = loader.load(fxmlStream);
+
+            SessionModifyController sessionCreateController = loader.getController();
+            sessionCreateController.setSessionCreate();
+
+            Stage modalStage = new Stage();
+            modalStage.setTitle("Session create");
+
+            Scene scene = new Scene(root, 600, 600);
+            scene.setUserData(this);
+
+            modalStage.setScene(scene);
+            modalStage.initOwner(((Button) event.getSource()).getScene().getWindow());
+            modalStage.initModality(Modality.WINDOW_MODAL);
+
+            modalStage.showAndWait();
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    /**
+     * Initialize the session list
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        setSessionListView();
+        setSessionMenuHBox();
     }
 }

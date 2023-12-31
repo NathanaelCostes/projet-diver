@@ -16,7 +16,7 @@ import java.util.Objects;
  */
 public class SessionApplication extends Application {
 
-    private DiverFacade diverFacade;
+    private final DiverFacade diverFacade;
 
     public SessionApplication() {
         this.diverFacade = DiverFacade.getInstance();
