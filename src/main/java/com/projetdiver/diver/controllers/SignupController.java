@@ -45,6 +45,7 @@ public class SignupController {
         DiverFacade diverFacade = DiverFacade.getInstance();
         try {
             diverFacade.signup(firstName, lastName, email, password); //TODO JUNIT TEST
+            goToLogin();
 
         } catch (DiverAlreadyExisting diverAlreadyExisting) {
             this.errorLabel.setText(diverAlreadyExisting.getMessage());
@@ -58,9 +59,9 @@ public class SignupController {
 
     }
 
-    public void goToLogin() {
+    private void goToLogin() {
         try {
-            FXRouter.goTo("admin");
+            FXRouter.goTo("login");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
