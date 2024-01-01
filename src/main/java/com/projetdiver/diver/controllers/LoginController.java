@@ -1,6 +1,7 @@
 package com.projetdiver.diver.controllers;
 
-import com.projetdiver.FXRouter;
+
+import com.fxrouter.FXRouter;
 import com.projetdiver.diver.DiverFacade;
 import com.projetdiver.diver.exceptions.DiverAlreadyLoggedInException;
 import com.projetdiver.diver.exceptions.DiverEmailNotFoundException;
@@ -55,6 +56,11 @@ public class LoginController {
         DiverFacade diverFacade = DiverFacade.getInstance();
         try {
             diverFacade.login(email, password);
+            try {
+                FXRouter.goTo("profile");
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
 
 
         } catch (DiverAlreadyLoggedInException e) {

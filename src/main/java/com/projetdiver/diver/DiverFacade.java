@@ -1,6 +1,6 @@
 package com.projetdiver.diver;
 
-import com.projetdiver.FXRouter;
+
 import com.projetdiver.dao.PostgreDAOFactory;
 import com.projetdiver.diver.exceptions.*;
 
@@ -41,11 +41,6 @@ public class DiverFacade {
 
             if (succeeded) {
                 this.currentDiver = diverFetched;
-                try {
-                    FXRouter.goTo("profile");
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
                 System.out.println("Diver fetched: " + this.currentDiver);
             }
         } else if(this.currentDiver != null) {

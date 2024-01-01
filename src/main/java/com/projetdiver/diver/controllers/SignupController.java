@@ -1,6 +1,7 @@
 package com.projetdiver.diver.controllers;
 
-import com.projetdiver.FXRouter;
+
+import com.fxrouter.FXRouter;
 import com.projetdiver.diver.DiverFacade;
 import com.projetdiver.diver.exceptions.CreatingAccountFailed;
 import com.projetdiver.diver.exceptions.DiverAlreadyExisting;
@@ -57,10 +58,9 @@ public class SignupController {
 
     }
 
-    @FXML
-    private void goToLogin() {
+    public void goToLogin() {
         try {
-            FXRouter.goTo("login");
+            FXRouter.goTo("admin");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
