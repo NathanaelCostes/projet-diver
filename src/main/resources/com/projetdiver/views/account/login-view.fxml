@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="350.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projetdiver.diver.controllers.LoginController">
+<BorderPane prefHeight="350.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projetdiver.diver.controllers.LoginController" stylesheets="@../../styles/loginStyle.css">
    <center>
       <GridPane alignment="CENTER" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -18,11 +18,12 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-                 <Label text="Email" GridPane.halignment="CENTER" />
-                 <TextField fx:id="emailTextField" prefHeight="25.0" prefWidth="274.0" promptText="example@gmail.com" GridPane.columnIndex="1" />
-               <PasswordField fx:id="passwordTextField" prefHeight="25.0" prefWidth="274.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                 <Label text="Password" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                 <Button onAction="#onAction" text="Login" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                 <Label style="-fx-text-fill: #008080; -fx-font-size: 14.0;" text="Email" GridPane.halignment="CENTER" />
+                 <TextField fx:id="emailTextField" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="200.0" promptText="example@gmail.com" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+               <PasswordField fx:id="passwordTextField" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                 <Label style="-fx-text-fill: #008080; -fx-font-size: 14.0;" text="Password" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                 <Button minWidth="-Infinity" onAction="#onAction" prefWidth="100.0" style="-fx-background-color: #008080; -fx-text-fill: white;" text="Login" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+             <Button fx:id="registerButton" onAction="#goToRegister" styleClass="link-button" mnemonicParsing="false" text="No account yet ? register here !" textFill="TEAL" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
          </children>
          <padding>
             <Insets left="5.0" right="5.0" />
@@ -30,22 +31,22 @@
       </GridPane>
    </center>
    <top>
-         <Label alignment="CENTER" text="Login to your account" BorderPane.alignment="CENTER">
+         <Label alignment="CENTER" text="Login to your account" textFill="TEAL" BorderPane.alignment="CENTER">
             <font>
-               <Font size="16.0" />
+               <Font name="System Bold" size="18.0" />
             </font>
          <BorderPane.margin>
-            <Insets top="10.0" />
+            <Insets top="25.0" />
          </BorderPane.margin>
          </Label>
    </top>
    <bottom>
-         <Label fx:id="errorLabel" ellipsisString="" prefHeight="6.0" prefWidth="164.0" textFill="RED" BorderPane.alignment="CENTER">
+         <Label fx:id="errorLabel" ellipsisString="" prefHeight="6.0" prefWidth="200.0" textFill="RED" BorderPane.alignment="CENTER">
             <font>
                <Font size="14.0" />
             </font>
          <BorderPane.margin>
-            <Insets bottom="10.0" />
+            <Insets bottom="25.0" />
          </BorderPane.margin>
       </Label>
    </bottom>

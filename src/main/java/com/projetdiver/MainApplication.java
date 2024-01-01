@@ -40,6 +40,9 @@ public class MainApplication extends Application {
         // Attention \\
         FXRouter.when("login", "views/account/login-view.fxml");
         FXRouter.when("profile", "views/account/profile-view.fxml");
+        FXRouter.when("register", "views/account/signup-view.fxml");
+        FXRouter.when("admin", "views/admin-panel-view.fxml");
+
         FXRouter.goTo("login");
     }
 }

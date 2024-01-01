@@ -78,6 +78,7 @@ public class DiverFacade {
             boolean isAdded = PostgreDAOFactory.getInstance().createDiverDAO().addDiver(diver);
             if(isAdded) {
                 System.out.println("Diver added: " + diver);
+
             } else {
                 throw new CreatingAccountFailed("Creating account failed. Please verify your information");
             }

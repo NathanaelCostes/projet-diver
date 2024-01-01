@@ -32,7 +32,7 @@
     <bottom>
         <VBox alignment="CENTER" spacing="10">
             <Label fx:id="errorLabel" style="-fx-text-fill: red;" text="" visible="true" />
-            <Button mnemonicParsing="false" onAction="#onAction" style="-fx-background-color: #008080; -fx-text-fill: white;" text="Submit">
+            <Button mnemonicParsing="false" onAction="#goToLogin" style="-fx-background-color: #008080; -fx-text-fill: white;" text="Submit">
             <VBox.margin>
                <Insets bottom="10.0" />
             </VBox.margin></Button>

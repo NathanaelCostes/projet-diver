@@ -25,10 +25,15 @@ public class LoginController {
     @FXML
     private Label errorLabel;
 
+    private DiverFacade diverFacade;
+
     /**
      * Default constructor
      */
-    public LoginController() {}
+    public LoginController() {
+        this.diverFacade = DiverFacade.getInstance();
+    }
+
 
     /**
      * Login the user when the login button is clicked.
@@ -62,5 +67,16 @@ public class LoginController {
             this.errorLabel.setText("Wrong password");
         }
 
+    }
+
+    /**
+     * Go to the register view when the register button is clicked
+     */
+    public void goToRegister() {
+        try {
+            FXRouter.goTo("register");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
