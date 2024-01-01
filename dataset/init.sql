@@ -9,19 +9,19 @@ CREATE TABLE diver(
     diverId serial NOT NULL PRIMARY KEY,
     email varchar(30) NOT NULL UNIQUE,
     password varchar(30) NOT NULL,
-    first_name varchar(80) NOT NULL,
-    last_name varchar(20) NOT NULL
+    firstName varchar(80) NOT NULL,
+    lastName varchar(20) NOT NULL
 );
 
 -- Ajout d'utilisateurs
 
-INSERT INTO diver(email, password, first_name, last_name)
+INSERT INTO diver(email, password, firstName, lastName)
 VALUES('zac.jungler@riotgames.com', '1234', 'Zac', 'Jungler');
 
-INSERT INTO diver(email, password, first_name, last_name)
+INSERT INTO diver(email, password, firstName, lastName)
 VALUES('lee_sin.jubgler@riotgames.com', '1234', 'Lee Sin', 'Jungler');
 
-INSERT INTO diver(email, password, first_name, last_name)
+INSERT INTO diver(email, password, firstName, lastName)
 VALUES('yasuo.midlaner@riotgames.com', '1234', 'Yasuo', 'Midlaner');
 
 -- Création de la table Session
@@ -62,7 +62,7 @@ CREATE TABLE invitation(
 -- Ajout d'invitations
 
 INSERT INTO invitation(sessionId, receiver, pending)
-VALUES(1, 2, true);
+VALUES(1, 3, true);
 
 INSERT INTO invitation(sessionId, receiver, pending)
 VALUES(2, 3, false);

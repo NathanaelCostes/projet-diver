@@ -1,5 +1,7 @@
 package com.projetdiver.diver;
 
+import java.util.List;
+
 /**
  * Abstract class for the DiverDAO
  */
@@ -26,6 +28,12 @@ public abstract class DiverDAO {
      * @return the diver if found, null otherwise
      */
     public abstract Diver getDiver(int diverId);
+
+    /**
+     * Fetches all the divers from the database
+     * @return the list of all the divers
+     */
+    public abstract List<Diver> getAllDivers();
 
     /**
      * get the instance of the DiverDAO

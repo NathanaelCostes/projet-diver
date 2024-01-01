@@ -1,7 +1,6 @@
 package com.projetdiver.session;
 
 import com.projetdiver.diver.Diver;
-import com.projetdiver.session.invitation.Invitation;
 import com.projetdiver.diver.DiverDAO;
 
 import java.util.ArrayList;
@@ -37,7 +36,6 @@ public class SessionDAOPostgre extends SessionDAO {
      */
     private void connection() {
         try {
-            System.out.println("Test: " + System.getenv("DB_USER"));
             this.connection = DriverManager.getConnection(this.DB_URL, this.DB_USER, this.DB_PASSWORD);
             this.connection.isValid(2);
         } catch (SQLException e) {
@@ -400,7 +398,6 @@ public class SessionDAOPostgre extends SessionDAO {
                     );
 
                     resultSet.close();
-                    System.out.println(invitation);
                     return invitation;
                 }
             }

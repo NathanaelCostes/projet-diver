@@ -1,4 +1,4 @@
-package com.projetdiver.session.invitation;
+package com.projetdiver.session;
 
 import com.projetdiver.diver.Diver;
 import com.projetdiver.session.Session;

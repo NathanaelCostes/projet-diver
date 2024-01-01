@@ -1,7 +1,6 @@
 package com.projetdiver.session;
 
 import com.projetdiver.diver.Diver;
-import com.projetdiver.session.invitation.Invitation;
 
 import java.util.ArrayList;
 

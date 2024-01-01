@@ -4,7 +4,6 @@ import com.projetdiver.dao.PostgreDAOFactory;
 import com.projetdiver.diver.Diver;
 import com.projetdiver.diver.DiverFacade;
 import com.projetdiver.session.exceptions.*;
-import com.projetdiver.session.invitation.Invitation;
 
 import java.util.ArrayList;
 

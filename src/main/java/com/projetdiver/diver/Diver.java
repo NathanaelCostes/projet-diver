@@ -96,4 +96,15 @@ public class Diver {
     	return this.email + " " + this.password + " " + this.nom + " " + this.prenom;
     }
 
+    /**
+     * @return the hashcode of the user
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Diver) {
+            Diver diver = (Diver) obj;
+            return this.diverId == diver.diverId;
+        }
+        return false;
+    }
 }

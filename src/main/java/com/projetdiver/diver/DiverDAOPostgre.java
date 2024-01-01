@@ -4,6 +4,8 @@ import com.projetdiver.diver.Diver;
 import com.projetdiver.diver.DiverDAO;
 import io.github.cdimascio.dotenv.Dotenv;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Does the connection to the postgre database and communicate with it
@@ -63,8 +65,8 @@ public class DiverDAOPostgre extends DiverDAO {
                             resultSet.getInt("diverId"),
                             resultSet.getString("email"),
                             resultSet.getString("password"),
-                            resultSet.getString("last_name"),
-                            resultSet.getString("first_name"));
+                            resultSet.getString("lastName"),
+                            resultSet.getString("firstName"));
 
                     resultSet.close();
                     System.out.println(diver);
@@ -110,8 +112,8 @@ public class DiverDAOPostgre extends DiverDAO {
                             resultSet.getInt("diverId"),
                             resultSet.getString("email"),
                             resultSet.getString("password"),
-                            resultSet.getString("last_name"),
-                            resultSet.getString("first_name"));
+                            resultSet.getString("lastName"),
+                            resultSet.getString("firstName"));
 
                     resultSet.close();
                     System.out.println(diver);
@@ -134,6 +136,54 @@ public class DiverDAOPostgre extends DiverDAO {
             }
         }
         return null;
+    }
+
+    /**
+     * Get all the divers from the database
+     *
+     * @return the list of all the divers
+     */
+    @Override
+    public List<Diver> getAllDivers() {
+        // List of all the divers
+        List<Diver> divers = new ArrayList<>();
+        try{
+            connection();
+            System.out.println("Connection to the database successful");
+
+
+            // Use a prepared statement to avoid SQL injection
+            String sql = "SELECT * FROM diver";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                ResultSet resultSet = statement.executeQuery();
+
+                while (resultSet.next()) {
+                    Diver diver = new Diver(
+                            resultSet.getInt("diverId"),
+                            resultSet.getString("email"),
+                            resultSet.getString("password"),
+                            resultSet.getString("lastName"),
+                            resultSet.getString("firstName"));
+                    
+                    divers.add(diver);
+                }
+                resultSet.close();
+                return divers;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        } finally {
+            // Close the connection
+            try {
+                if (connection != null && !connection.isClosed()) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return divers;
     }
 
 }

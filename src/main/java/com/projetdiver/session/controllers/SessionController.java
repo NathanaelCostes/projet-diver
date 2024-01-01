@@ -1,14 +1,17 @@
 package com.projetdiver.session.controllers;
 
+import com.projetdiver.diver.Diver;
+import com.projetdiver.diver.DiverFacade;
 import com.projetdiver.session.Session;
 import com.projetdiver.session.exceptions.NotConnectedException;
+
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.Parent;
@@ -56,8 +59,42 @@ public class SessionController implements Initializable, ControllerHelper {
             setSessionListView();
         });
         sessionMenuHBox.getChildren().add(sessionCreateButton);
+
+        Button sessionRefreshButton = createButton("Request", "lightgray");
+        sessionRefreshButton.setOnAction(event -> {
+            openInvitationSession(event);
+            setSessionListView(); 
+        });
+        sessionMenuHBox.getChildren().add(sessionRefreshButton);
     }
     
+    @FXML
+    private void openInvitationSession(ActionEvent event) {
+        try {
+            InputStream fxmlStream = getClass().getResourceAsStream("/com/projetdiver/views/session/session-invitation-view.fxml");
+            FXMLLoader loader = new FXMLLoader();
+            Parent root = loader.load(fxmlStream);
+
+            SessionInvitationController sessionInvitationController = loader.getController();
+            sessionInvitationController.setSessionInvitation(DiverFacade.getInstance().getCurrentDiver());
+
+            Stage modalStage = new Stage();
+            modalStage.setTitle("Session invitation");
+
+            Scene scene = new Scene(root, 1500, 400);
+            scene.setUserData(this);
+
+            modalStage.setScene(scene);
+            modalStage.initOwner(((Button) event.getSource()).getScene().getWindow());
+            modalStage.initModality(Modality.WINDOW_MODAL);
+
+            modalStage.showAndWait();
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @FXML
     public void setSessionListView(){
         sessionListVBox.getChildren().clear();
@@ -133,12 +170,12 @@ public class SessionController implements Initializable, ControllerHelper {
     @FXML
     public void openModifySession(Event event, Session session) {
         try {
-            InputStream fxmlStream = getClass().getResourceAsStream("/com/projetdiver/views/session/session-modify-view.fxml");
+            InputStream fxmlStream = getClass().getResourceAsStream("/com/projetdiver/views/session/session-modify-create-view.fxml");
             FXMLLoader loader = new FXMLLoader();
             Parent root = loader.load(fxmlStream);
 
-            SessionModifyController sessionModifyController = loader.getController();
-            sessionModifyController.setSessionModify(session);
+            SessionModifyCreateController sessionModifyCreateController = loader.getController();
+            sessionModifyCreateController.setSessionModify(session);
 
             Stage modalStage = new Stage();
             modalStage.setTitle("Session modify");
@@ -160,11 +197,11 @@ public class SessionController implements Initializable, ControllerHelper {
     @FXML
     public void openCreateSession(Event event) {
         try {
-            InputStream fxmlStream = getClass().getResourceAsStream("/com/projetdiver/views/session/session-modify-view.fxml");
+            InputStream fxmlStream = getClass().getResourceAsStream("/com/projetdiver/views/session/session-modify-create-view.fxml");
             FXMLLoader loader = new FXMLLoader();
             Parent root = loader.load(fxmlStream);
 
-            SessionModifyController sessionCreateController = loader.getController();
+            SessionModifyCreateController sessionCreateController = loader.getController();
             sessionCreateController.setSessionCreate();
 
             Stage modalStage = new Stage();

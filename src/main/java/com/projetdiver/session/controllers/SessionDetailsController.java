@@ -29,7 +29,6 @@ public class SessionDetailsController implements ControllerHelper {
      */
     @FXML
     public void initialize() {
-        System.out.println("SessionDetailsController.initialize()");
     }
 
     public void setSessionDetails(Session session) {

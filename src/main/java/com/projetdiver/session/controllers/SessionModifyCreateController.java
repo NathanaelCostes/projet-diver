@@ -1,5 +1,6 @@
 package com.projetdiver.session.controllers;
 
+import java.io.InputStream;
 import java.sql.Date;
 
 import com.projetdiver.session.Session;
@@ -10,15 +11,21 @@ import com.projetdiver.session.exceptions.NotConnectedException;
 import com.projetdiver.session.exceptions.SessionAlreadyExistsException;
 import com.projetdiver.session.exceptions.SessionNotFoundException;
 
+import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
-public class SessionModifyController implements ControllerHelper {
+public class SessionModifyCreateController implements ControllerHelper {
 
     /**
      * The instance of the SessionFacade
@@ -40,7 +47,7 @@ public class SessionModifyController implements ControllerHelper {
     /**
      * Default constructor
      */
-    public SessionModifyController() {
+    public SessionModifyCreateController() {
         this.facade = SessionFacade.getInstance();
     }
 
@@ -183,11 +190,9 @@ public class SessionModifyController implements ControllerHelper {
         sessionHBox.getChildren().add(sessionDeleteButton);
 
         Button sessionInviteButton = createButton("Invite", "blue");
-        /*sessionInviteButton.setOnAction(event -> { try {
-            facade.invite(session);
-        } catch (NotConnectedException e) {
-            e.printStackTrace();
-        } });*/
+        sessionInviteButton.setOnAction(event -> {
+            openInvitationSession(event, session); 
+        });
         sessionHBox.getChildren().add(sessionInviteButton);
 
         sessionModifyListVBox.getChildren().add(sessionHBox);
@@ -288,5 +293,32 @@ public class SessionModifyController implements ControllerHelper {
 
         sessionModifyListVBox.getChildren().add(sessionHBox);
 
+    }
+
+    @FXML
+    public void openInvitationSession(Event event, Session session) {
+        try {
+            InputStream fxmlStream = getClass().getResourceAsStream("/com/projetdiver/views/session/session-invitation-view.fxml");
+            FXMLLoader loader = new FXMLLoader();
+            Parent root = loader.load(fxmlStream);
+
+            SessionInvitationController sessionInvitationController = loader.getController();
+            sessionInvitationController.setSessionInvitation(session);
+
+            Stage modalStage = new Stage();
+            modalStage.setTitle("Session details");
+
+            Scene scene = new Scene(root, 1000, 400);
+            scene.setUserData(this);
+
+            modalStage.setScene(scene);
+            modalStage.initOwner(((Button) event.getSource()).getScene().getWindow());
+            modalStage.initModality(Modality.WINDOW_MODAL);
+
+            modalStage.showAndWait();
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }
