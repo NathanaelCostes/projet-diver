@@ -42,7 +42,7 @@ public class DiverFacade {
             if (succeeded) {
                 this.currentDiver = diverFetched;
                 try {
-                    FXRouter.goTo("profile");
+                    FXRouter.goTo("main");
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }

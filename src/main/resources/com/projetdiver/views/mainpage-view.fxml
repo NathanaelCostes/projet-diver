@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projetdiver.MainPageController">
    <children>
       <BorderPane layoutX="90.0" layoutY="106.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -31,7 +31,7 @@
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Button minHeight="-Infinity" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: transparent;" HBox.hgrow="NEVER">
+                        <Button onAction="#handleAdminButton" fx:id="adminButton" minHeight="-Infinity" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: transparent;" HBox.hgrow="NEVER">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -44,11 +44,11 @@
                            </HBox.margin>
                         </Button>
 
-                        <Button minWidth="25.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+                        <Button onAction="#handleDiverButton" fx:id="diverButton" minWidth="25.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../icons/user_icon.png" />
+                                    <Image url="@../icons/diver_icon.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -59,10 +59,9 @@
                            <prefWidth>25.0</prefWidth>
                         </Button>
 
-                        <ToggleButton fx:id="sidebarToggleButton" mnemonicParsing="false" style="-fx-background-color: transparent;">
+                        <ToggleButton onAction="#handleToggleSidebar" fx:id="sidebarToggleButton" mnemonicParsing="false" style="-fx-background-color: transparent;">
                            <graphic>
                               <StackPane>
-                                 <!-- Unselected State Image -->
                                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                        <Image url="@../icons/open_tab_icon.png" />
@@ -71,8 +70,6 @@
                                        <Rectangle2D />
                                     </viewport>
                                  </ImageView>
-
-                                 <!-- Selected State Image (Initially hidden) -->
                                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                     <image>
                                        <Image url="@../icons/close_tab_icon.png" />
@@ -101,7 +98,7 @@
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <!-- Button 1 with Image -->
-                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="176.0" style="-fx-background-color: transparent;">
+                        <Button onAction="#handleMapButton" fx:id="mapButton" alignment="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="176.0" style="-fx-background-color: transparent;">
                            <graphic>
                               <HBox alignment="CENTER" spacing="15.0">
                                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
@@ -119,7 +116,7 @@
                         </Button>
 
                         <!-- Button 2 with Image -->
-                        <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="176.0" style="-fx-background-color: transparent;">
+                        <Button onAction="#handleSessionsButton" fx:id="sessionsButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="176.0" style="-fx-background-color: transparent;">
                            <graphic>
                               <HBox alignment="CENTER" spacing="15.0">
                                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
@@ -136,7 +133,7 @@
                            </graphic>
                         </Button>
 
-                        <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="176.0" style="-fx-background-color: transparent;">
+                        <Button onAction="#handleLessonsButton" fx:id="lessonsButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="176.0" style="-fx-background-color: transparent;">
                            <graphic>
                               <HBox alignment="CENTER" spacing="15.0">
                                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
@@ -153,7 +150,7 @@
                            </graphic>
                         </Button>
 
-                        <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="176.0" style="-fx-background-color: transparent;">
+                        <Button onAction="#handleContactsButton" fx:id="contactsButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="176.0" style="-fx-background-color: transparent;">
                            <graphic>
                               <HBox alignment="CENTER" spacing="15.0">
                                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
@@ -170,7 +167,7 @@
                            </graphic>
                         </Button>
 
-                        <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="176.0" style="-fx-background-color: transparent;">
+                        <Button onAction="#handleClubButton" fx:id="clubButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="176.0" style="-fx-background-color: transparent;">
                            <graphic>
                               <HBox alignment="CENTER" spacing="15.0">
                                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">

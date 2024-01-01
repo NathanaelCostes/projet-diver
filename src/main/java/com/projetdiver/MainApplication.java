@@ -30,6 +30,8 @@ public class MainApplication extends Application {
      */
     @Override
     public void start(Stage stage) throws IOException {
+        System.out.println("Application starting...");
+
         FXRouter.bind(this, stage);
         //FXMLLoader fxmlLoader = new FXMLLoader(DiverApplication.class.getResource("/com/projetdiver/views/account/login-view.fxml"));
         //System.out.println(fxmlLoader.getLocation());
@@ -40,6 +42,24 @@ public class MainApplication extends Application {
         // Attention \\
         FXRouter.when("login", "views/account/login-view.fxml");
         FXRouter.when("profile", "views/account/profile-view.fxml");
+        FXRouter.when("main", "views/mainpage-view.fxml");
+        FXRouter.when("lesson", "views/lesson/lesson-view.fxml");
+        FXRouter.when("admin-panel", "views/admin-panel-view.fxml");
+        //Diver panel
+        FXRouter.when("diver-panel", "views/diver-panel-view.fxml");
+        //map/map-view.fxml
+        FXRouter.when("map", "views/map/map-view.fxml");
+        //session/session-view.fxml
+        FXRouter.when("session", "views/session/session-view.fxml");
+        //lesson/lesson-view.fxml
+        FXRouter.when("lesson", "views/lesson/lesson-view.fxml");
+        //contact/contact-view.fxml
+        FXRouter.when("contact", "views/contact/contact-view.fxml");
+        //club/club-view.fxml
+        FXRouter.when("club", "views/club/club-view.fxml");
+
+        System.out.println("Routes configured...");
+
         FXRouter.goTo("login");
     }
 }
