@@ -33,7 +33,7 @@ public class ProfileController {
     public void initialize() {
 
         try {
-            this.diverFacade.login("yasuo.midlaner@riotgames.com", "1234");
+            //this.diverFacade.login("yasuo.midlaner@riotgames.com", "1234");
             System.out.println("Diver logged in: " + diverFacade.getCurrentDiver());
             firstNameTextField.setText(this.diverFacade.getCurrentDiver().getFirstName());
             lastNameTextField.setText(this.diverFacade.getCurrentDiver().getLastName());

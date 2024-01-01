@@ -1,10 +1,8 @@
 package com.projetdiver.diver;
 
+import com.projetdiver.FXRouter;
 import com.projetdiver.dao.PostgreDAOFactory;
-import com.projetdiver.diver.exceptions.DiverAlreadyLoggedInException;
-import com.projetdiver.diver.exceptions.DiverEmailNotFoundException;
-import com.projetdiver.diver.exceptions.CreatingAccountFailed;
-import com.projetdiver.diver.exceptions.DiverAlreadyExisting;
+import com.projetdiver.diver.exceptions.*;
 
 /**
  *
@@ -30,28 +28,31 @@ public class DiverFacade {
      * @throws DiverAlreadyLoggedInException if the diver is already logged in
      * @throws DiverEmailNotFoundException if the email of the diver is not found
      */
-    public void login(String email, String password) throws Exception,
-                                                            DiverAlreadyLoggedInException,
-                                                            DiverEmailNotFoundException {
+    public void login(String email, String password) throws DiverAlreadyLoggedInException,
+            DiverEmailNotFoundException, WrongPasswordException {
 
         Diver diverFetched = (PostgreDAOFactory.getInstance().createDiverDAO().getDiver(email));
         System.out.println("Diver fetched: \n" + diverFetched);
         // If the diver is not logged in and the diver is found in the database
+        System.out.println("Current diver: " + this.currentDiver);
         if(this.currentDiver == null && diverFetched!=null){
 
             boolean succeeded = diverFetched.login(email, password);
 
             if (succeeded) {
                 this.currentDiver = diverFetched;
+                try {
+                    FXRouter.goTo("profile");
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
                 System.out.println("Diver fetched: " + this.currentDiver);
             }
         } else if(this.currentDiver != null) {
             throw new DiverAlreadyLoggedInException("Diver already logged in");
         } else if(diverFetched == null){
+            System.out.println("There is no diver with this email");
             throw new DiverEmailNotFoundException("There is no diver with this email");
-        } else {
-            System.out.println("Unknown error");
-            throw new Exception("There is no diver with this email");
         }
     }
 

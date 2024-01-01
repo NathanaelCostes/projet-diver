@@ -1,9 +1,15 @@
 package com.projetdiver.diver.controllers;
 
+import com.projetdiver.FXRouter;
 import com.projetdiver.diver.DiverFacade;
+import com.projetdiver.diver.exceptions.DiverAlreadyLoggedInException;
+import com.projetdiver.diver.exceptions.DiverEmailNotFoundException;
+import com.projetdiver.diver.exceptions.WrongPasswordException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+
+import java.io.IOException;
 
 /**
  * Controller for the login view, connect the diver when the login button is clicked
@@ -45,10 +51,16 @@ public class LoginController {
         try {
             diverFacade.login(email, password);
 
-            diverFacade.getCurrentDiver().getLastName();
-            diverFacade.getCurrentDiver().getFirstName();
-        } catch (Exception e) {
-           this.errorLabel.setText(e.getMessage());
+
+        } catch (DiverAlreadyLoggedInException e) {
+            System.out.println("Diver already logged in");
+            this.errorLabel.setText("Diver already logged in");
+        } catch (DiverEmailNotFoundException e) {
+            System.out.println("There is no diver with this email");
+            this.errorLabel.setText("There is no diver with this email");
+        } catch (WrongPasswordException e) {
+            this.errorLabel.setText("Wrong password");
         }
+
     }
 }
