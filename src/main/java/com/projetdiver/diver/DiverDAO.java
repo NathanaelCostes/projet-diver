@@ -24,10 +24,10 @@ public abstract class DiverDAO {
 
     /**
      * Fetches a diver from the database using its email
-     * @param diverId the id to find in the database
+     * @param id the id to find in the database
      * @return the diver if found, null otherwise
      */
-    public abstract Diver getDiver(int diverId);
+    public abstract Diver getDiver(int id);
   
      /**
      * Add a diver to the database

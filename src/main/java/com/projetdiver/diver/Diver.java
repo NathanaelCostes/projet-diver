@@ -29,6 +29,7 @@ public class Diver {
 
     /**
      * Creates a Diver
+     * @param id the id of the diver
      * @param email the email of the diver
      * @param password the password of the diver
      */
@@ -147,4 +148,15 @@ public class Diver {
                 "Password: " + this.password + "\n";
     }
 
+    /**
+     * @return the hashcode of the user
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Diver) {
+            Diver diver = (Diver) obj;
+            return this.getId() == diver.getId();
+        }
+        return false;
+    }
 }

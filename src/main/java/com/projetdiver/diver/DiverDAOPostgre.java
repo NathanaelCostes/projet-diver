@@ -19,7 +19,7 @@ public class DiverDAOPostgre extends DiverDAO {
     /**
      * dotenv to load informations from the .env
      */
-    Dotenv dotenv = Dotenv.load();
+    private Dotenv dotenv = Dotenv.load();
 
     private Connection connection;
 
@@ -37,6 +37,7 @@ public class DiverDAOPostgre extends DiverDAO {
      * URL of the database to get in the .env
      */
     private final String DB_URL = dotenv.get("DB_URL");
+
 
     /**
      * Connect to the database using the informations in the .env
@@ -69,8 +70,8 @@ public class DiverDAOPostgre extends DiverDAO {
                 ResultSet resultSet = statement.executeQuery();
 
                 if (resultSet.next()) {
-                    Diver diver = new Diver
-                            (resultSet.getInt("diverId"),
+                    Diver diver = new Diver (
+                            resultSet.getInt("diverId"),
                             resultSet.getString("email"),
                             resultSet.getString("password"),
                             resultSet.getString("lastName"),
@@ -102,10 +103,10 @@ public class DiverDAOPostgre extends DiverDAO {
 
     /**
      * Fetches a diver from the database using its email
-     * @param diverId the id to find in the database
+     * @param id the id to find in the database
      * @return the diver if found, null otherwise
      */
-    public Diver getDiver(int diverId) {
+    public Diver getDiver(int id) {
         try {
             connection();
             System.out.println("Connection to the database successful");
@@ -113,11 +114,11 @@ public class DiverDAOPostgre extends DiverDAO {
             // Use a prepared statement to avoid SQL injection
             String sql = "SELECT * FROM diver WHERE diverId=?";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                statement.setInt(1, diverId);
+                statement.setInt(1, id);
                 ResultSet resultSet = statement.executeQuery();
 
                 if (resultSet.next()) {
-                    Diver diver = new Diver(
+                    Diver diver = new Diver (
                             resultSet.getInt("diverId"),
                             resultSet.getString("email"),
                             resultSet.getString("password"),
@@ -129,7 +130,7 @@ public class DiverDAOPostgre extends DiverDAO {
                     return diver;
                 } else {
                     // Handle the case when no user with the given id is found
-                    System.out.println("User with id " + diverId + " not found");
+                    System.out.println("User with id " + id + " not found");
                 }
             }
         } catch (SQLException e) {
@@ -149,7 +150,6 @@ public class DiverDAOPostgre extends DiverDAO {
 
     /**
      * Adds a diver to the database
-     *
      * @param diver the diver to add to the database
      * @return true if the diver is added, false otherwise
      */
@@ -389,5 +389,4 @@ public class DiverDAOPostgre extends DiverDAO {
             }
         }
     }
-
 }
