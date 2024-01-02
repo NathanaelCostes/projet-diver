@@ -1,0 +1,49 @@
+/* Set the background color for the AnchorPane */
+AnchorPane {
+    -fx-background-color: #f4f4f4;
+    -fx-padding: 10;
+}
+
+/* Style for labels */
+Label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 5 0;
+}
+
+/* Style for text fields */
+TextField, DatePicker {
+    -fx-font-size: 14px;
+    -fx-padding: 5;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1px;
+}
+
+/* Style for ChoiceBox */
+ChoiceBox {
+    -fx-font-size: 14px;
+    -fx-padding: 5;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1px;
+}
+
+/* Style for buttons */
+Button {
+    -fx-font-size: 14px;
+    -fx-padding: 5 10;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #4285f4;
+}
+
+/* Hover effect for buttons */
+Button:hover {
+    -fx-background-color: #3c78d8;
+}
+
+/* Style for error label */
+Label#errorLabel {
+    -fx-font-size: 14px;
+    -fx-text-fill: red;
+}

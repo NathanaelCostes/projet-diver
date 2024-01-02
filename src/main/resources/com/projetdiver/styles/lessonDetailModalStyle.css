@@ -1,12 +1,12 @@
-/* Set the background color for the VBox */
-VBox {
+/* Set the background color for the BorderPane */
+BorderPane {
     -fx-background-color: #f4f4f4;
     -fx-padding: 10;
 }
 
 /* Style for labels */
 Label {
-    -fx-font-size: 16px;
+    -fx-font-size: 18px;
     -fx-font-weight: bold;
     -fx-padding: 5 0;
 }
@@ -17,11 +17,6 @@ Button {
     -fx-padding: 5 10;
     -fx-text-fill: #ffffff;
     -fx-background-color: #4285f4;
-}
-
-/* Style for error label */
-Label#errorLabel {
-    -fx-font-size: 14px;
 }
 
 /* Hover effect for buttons */
@@ -47,4 +42,24 @@ Button:hover {
 /* Set the color for the unsubscribe button */
 #unsubscribeButton {
     -fx-background-color: #795548;
+}
+
+/* Style for ListView */
+ListView {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1px;
+}
+
+/* Style for "Ajouter un cours" button */
+Button#addLessonButton {
+    -fx-font-size: 14px;
+    -fx-padding: 5 10;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #4285f4;
+}
+
+/* Hover effect for "Ajouter un cours" button */
+Button#addLessonButton:hover {
+    -fx-background-color: #3c78d8;
 }

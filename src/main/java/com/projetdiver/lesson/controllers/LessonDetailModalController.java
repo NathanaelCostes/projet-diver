@@ -108,8 +108,6 @@ public class LessonDetailModalController {
         initialize();
     }
 
-
-
     /**
      * Unsubscribe to the lesson
      */
