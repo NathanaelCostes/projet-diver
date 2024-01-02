@@ -45,8 +45,6 @@ public class MainApplication extends Application {
         FXRouter.when("main", "views/mainpage-view.fxml");
         FXRouter.when("lesson", "views/lesson/lesson-view.fxml");
         FXRouter.when("admin-panel", "views/admin-panel-view.fxml");
-        //Diver panel
-        FXRouter.when("diver-panel", "views/diver-panel-view.fxml");
         //map/map-view.fxml
         FXRouter.when("map", "views/map/map-view.fxml");
         //session/session-view.fxml

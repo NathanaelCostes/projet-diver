@@ -83,7 +83,7 @@ public class MainPageController {
     @FXML
     private void handleDiverButton(ActionEvent event) {
         try {
-            FXRouter.goTo("diver-panel");
+            FXRouter.goTo("profile");
             closeSidebar(); // Close the sidebar after navigating to a new page
         } catch (IOException e) {
             throw new RuntimeException(e);
