@@ -1,0 +1,15 @@
+/* styles.css */
+.link-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-text-fill: teal;
+    -fx-font-size: 14.0;
+    -fx-underline: true;
+    -fx-cursor: hand;
+
+}
+
+.link-button:hover {
+    -fx-text-fill: darkcyan;
+
+}

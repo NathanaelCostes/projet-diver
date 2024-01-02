@@ -1,6 +1,6 @@
 package com.projetdiver.diver;
 
-import com.projetdiver.FXRouter;
+
 import com.projetdiver.dao.PostgreDAOFactory;
 import com.projetdiver.diver.exceptions.*;
 
@@ -40,12 +40,7 @@ public class DiverFacade {
             boolean succeeded = diverFetched.login(email, password);
 
             if (succeeded) {
-                this.currentDiver = diverFetched;
-                try {
-                    FXRouter.goTo("main");
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
+                this.currentDiver = diverFetched;              
                 System.out.println("Diver fetched: " + this.currentDiver);
             }
         } else if(this.currentDiver != null) {
@@ -78,6 +73,7 @@ public class DiverFacade {
             boolean isAdded = PostgreDAOFactory.getInstance().createDiverDAO().addDiver(diver);
             if(isAdded) {
                 System.out.println("Diver added: " + diver);
+
             } else {
                 throw new CreatingAccountFailed("Creating account failed. Please verify your information");
             }

@@ -1,6 +1,7 @@
 package com.projetdiver.diver.controllers;
 
-import com.projetdiver.FXRouter;
+
+import com.fxrouter.FXRouter;
 import com.projetdiver.diver.DiverFacade;
 import com.projetdiver.diver.exceptions.DiverAlreadyLoggedInException;
 import com.projetdiver.diver.exceptions.DiverEmailNotFoundException;
@@ -25,10 +26,15 @@ public class LoginController {
     @FXML
     private Label errorLabel;
 
+    private DiverFacade diverFacade;
+
     /**
      * Default constructor
      */
-    public LoginController() {}
+    public LoginController() {
+        this.diverFacade = DiverFacade.getInstance();
+    }
+
 
     /**
      * Login the user when the login button is clicked.
@@ -50,6 +56,11 @@ public class LoginController {
         DiverFacade diverFacade = DiverFacade.getInstance();
         try {
             diverFacade.login(email, password);
+            try {
+                FXRouter.goTo("profile");
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
 
 
         } catch (DiverAlreadyLoggedInException e) {
@@ -62,5 +73,16 @@ public class LoginController {
             this.errorLabel.setText("Wrong password");
         }
 
+    }
+
+    /**
+     * Go to the register view when the register button is clicked
+     */
+    public void goToRegister() {
+        try {
+            FXRouter.goTo("register");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

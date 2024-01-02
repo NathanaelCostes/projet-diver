@@ -1,5 +1,7 @@
 package com.projetdiver.diver.controllers;
 
+
+import com.fxrouter.FXRouter;
 import com.projetdiver.diver.DiverFacade;
 import com.projetdiver.diver.exceptions.CreatingAccountFailed;
 import com.projetdiver.diver.exceptions.DiverAlreadyExisting;
@@ -43,6 +45,8 @@ public class SignupController {
         DiverFacade diverFacade = DiverFacade.getInstance();
         try {
             diverFacade.signup(firstName, lastName, email, password); //TODO JUNIT TEST
+            goToLogin();
+
         } catch (DiverAlreadyExisting diverAlreadyExisting) {
             this.errorLabel.setText(diverAlreadyExisting.getMessage());
         } catch (CreatingAccountFailed creatingAccountFailed) {
@@ -51,5 +55,15 @@ public class SignupController {
             this.errorLabel.setText(e.getMessage());
         }
 
+
+
+    }
+
+    private void goToLogin() {
+        try {
+            FXRouter.goTo("login");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

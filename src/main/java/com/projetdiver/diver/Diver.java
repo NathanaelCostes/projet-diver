@@ -1,9 +1,6 @@
 package com.projetdiver.diver;
 
-import com.projetdiver.FXRouter;
 import com.projetdiver.diver.exceptions.WrongPasswordException;
-
-import java.io.IOException;
 
 /**
  * Diver is a class that represents a diver

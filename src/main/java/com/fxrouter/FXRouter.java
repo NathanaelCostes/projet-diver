@@ -1,4 +1,4 @@
-package com.projetdiver;
+package com.fxrouter;
 
 /*
  This program is free software: you can redistribute it and/or modify
@@ -226,7 +226,7 @@ public final class FXRouter {
         currentRoute = route;
 
         // add package name to scene path
-        route.scenePath = "/" + pathRef.replace(".", "/") + "/" + route.scenePath;
+        // route.scenePath = "/" + pathRef.replace(".", "/") + "/" + route.scenePath;
 
         URL ressource = mainRef.getClass().getResource(currentRoute.scenePath);
 
@@ -270,7 +270,7 @@ public final class FXRouter {
     }
 
     /** Animate routes switching based on animation type
-     * @param node: .FXML scene file to animate
+     * @param resource: .FXML scene file to animate
      */
     private static void routeAnimation(Parent node) {
         String anType = animationType != null ? animationType.toLowerCase() : "";
