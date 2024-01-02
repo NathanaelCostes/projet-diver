@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Objects;
 
 /**
  * Controller for the lesson detail modal.
@@ -215,6 +216,9 @@ public class LessonDetailModalController {
         // Set the LessonModificationController instance as userData for the scene
         Scene scene = new Scene(root);
         scene.setUserData(modificationController);
+
+        String cssPath = Objects.requireNonNull(getClass().getResource("/com/projetdiver/styles/lessonCreationModalStyle.css")).toExternalForm();
+        scene.getStylesheets().add(cssPath);
 
         // Set the lesson details to modify in LessonModificationController
         Lesson lessonToModify = LessonFacade.getInstance().getLessonById(this.lesson_id);
