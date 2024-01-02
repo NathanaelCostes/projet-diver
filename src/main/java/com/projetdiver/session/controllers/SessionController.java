@@ -115,11 +115,11 @@ public class SessionController implements Initializable, ControllerHelper {
                     sessionHBox.getChildren().add(separator());
                 }
 
-                sessionHBox.getChildren().add(createLabel(session.getOwner().getNom() + " " + session.getOwner().getPrenom()));
+                sessionHBox.getChildren().add(createLabel(session.getOwner().getLastName() + " " + session.getOwner().getFirstName()));
 
                 sessionHBox.getChildren().add(separator());
 
-                if(session.getOwner().getDiverId() == facade.getCurrentDiver().getDiverId()) {
+                if(session.getOwner().getId() == facade.getCurrentDiver().getId()) {
                     Button sessionModifyButton = createButton("Modify", "green");
                     sessionModifyButton.setOnAction(event -> { 
                         openModifySession(event, session);

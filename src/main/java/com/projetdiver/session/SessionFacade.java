@@ -43,11 +43,11 @@ public class SessionFacade {
         return DiverFacade.getInstance().getCurrentDiver();
     }
 
-    //TODO: Quand getDiverId sera implémenté en tant que Integer, il faudra modifier cette méthode
+    //TODO: Quand getId sera implémenté en tant que Integer, il faudra modifier cette méthode
     private void checkDiverIsConnected() throws NotConnectedException {
         if(getCurrentDiver() == null){
             throw new NotConnectedException();
-        } /* else if(getCurrentDiver().getDiverId() == null){
+        } /* else if(getCurrentDiver().getId() == null){
             throw new NotConnected();
         } */
     }
@@ -194,7 +194,7 @@ public class SessionFacade {
             throw new SessionNotFoundException();
         }
 
-        Diver receiverFetched = PostgreDAOFactory.getInstance().createDiverDAO().getDiver(receiver.getDiverId());
+        Diver receiverFetched = PostgreDAOFactory.getInstance().createDiverDAO().getDiver(receiver.getId());
 
         if (receiverFetched == null) {
             throw new DiverNotFoundException();
@@ -263,7 +263,7 @@ public class SessionFacade {
             throw new SessionNotFoundException();
         }
 
-        Diver receiverFetched = PostgreDAOFactory.getInstance().createDiverDAO().getDiver(invitation.getReceiver().getDiverId());
+        Diver receiverFetched = PostgreDAOFactory.getInstance().createDiverDAO().getDiver(invitation.getReceiver().getId());
 
         if (receiverFetched == null) {
             throw new DiverNotFoundException();
@@ -300,7 +300,7 @@ public class SessionFacade {
             throw new SessionNotFoundException();
         }
 
-        Diver receiverFetched = PostgreDAOFactory.getInstance().createDiverDAO().getDiver(invitation.getReceiver().getDiverId());
+        Diver receiverFetched = PostgreDAOFactory.getInstance().createDiverDAO().getDiver(invitation.getReceiver().getId());
 
         if (receiverFetched == null) {
             throw new DiverNotFoundException();
@@ -337,7 +337,7 @@ public class SessionFacade {
             throw new SessionNotFoundException();
         }
 
-        Diver receiverFetched = PostgreDAOFactory.getInstance().createDiverDAO().getDiver(invitation.getReceiver().getDiverId());
+        Diver receiverFetched = PostgreDAOFactory.getInstance().createDiverDAO().getDiver(invitation.getReceiver().getId());
 
         if (receiverFetched == null) {
             throw new DiverNotFoundException();

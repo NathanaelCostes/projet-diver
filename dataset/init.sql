@@ -19,7 +19,7 @@ INSERT INTO diver(email, password, firstName, lastName)
 VALUES('zac.jungler@riotgames.com', '1234', 'Zac', 'Jungler');
 
 INSERT INTO diver(email, password, firstName, lastName)
-VALUES('lee_sin.jubgler@riotgames.com', '1234', 'Lee Sin', 'Jungler');
+VALUES('lee_sin.jungler@riotgames.com', '1234', 'Lee Sin', 'Jungler');
 
 INSERT INTO diver(email, password, firstName, lastName)
 VALUES('yasuo.midlaner@riotgames.com', '1234', 'Yasuo', 'Midlaner');

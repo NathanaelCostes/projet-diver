@@ -79,7 +79,7 @@ public class SessionInvitationController implements ControllerHelper {
             ArrayList<Diver> diversInSession = new ArrayList<>();
             
             invitations.forEach(invitation -> {
-                Diver diver = diverDAO.getDiver(invitation.getReceiver().getDiverId());
+                Diver diver = diverDAO.getDiver(invitation.getReceiver().getId());
                 diversInSession.add(diver);
                 Label invitationInfoLabel;
                 if(invitation.isPending()) {
@@ -93,9 +93,9 @@ public class SessionInvitationController implements ControllerHelper {
                 HBox invitationHBox = new HBox();
                 invitationHBox.setSpacing(5);
                 invitationHBox.setAlignment(javafx.geometry.Pos.CENTER);
-                invitationHBox.getChildren().add(createLabel(diver.getNom()));
+                invitationHBox.getChildren().add(createLabel(diver.getLastName()));
                 invitationHBox.getChildren().add(separator());
-                invitationHBox.getChildren().add(createLabel(diver.getPrenom()));
+                invitationHBox.getChildren().add(createLabel(diver.getFirstName()));
                 invitationHBox.getChildren().add(separator());
                 invitationHBox.getChildren().add(invitationInfoLabel);
                 invitationHBox.getChildren().add(separator());
@@ -123,9 +123,9 @@ public class SessionInvitationController implements ControllerHelper {
                 HBox invitationHBox = new HBox();
                 invitationHBox.setSpacing(5);
                 invitationHBox.setAlignment(javafx.geometry.Pos.CENTER);
-                invitationHBox.getChildren().add(createLabel(diver.getNom()));
+                invitationHBox.getChildren().add(createLabel(diver.getLastName()));
                 invitationHBox.getChildren().add(separator());
-                invitationHBox.getChildren().add(createLabel(diver.getPrenom()));
+                invitationHBox.getChildren().add(createLabel(diver.getFirstName()));
                 invitationHBox.getChildren().add(separator());
 
                 Button inviteButton = createButton("Invite", "green");
@@ -189,7 +189,7 @@ public class SessionInvitationController implements ControllerHelper {
                     invitationHBox.getChildren().add(separator());
                     invitationHBox.getChildren().add(invitationInfoLabel);
                     invitationHBox.getChildren().add(separator());
-                    invitationHBox.getChildren().add(createLabel(session.getOwner().getNom() + " " + session.getOwner().getPrenom()));
+                    invitationHBox.getChildren().add(createLabel(session.getOwner().getLastName() + " " + session.getOwner().getFirstName()));
                     invitationHBox.getChildren().add(separator());
                     
                     Button deleteButton = createButton("Delete", "red");
@@ -221,7 +221,7 @@ public class SessionInvitationController implements ControllerHelper {
                 invitationHBox.getChildren().add(separator());
                 invitationHBox.getChildren().add(createLabel(session.getDate().toString()));
                 invitationHBox.getChildren().add(separator());
-                invitationHBox.getChildren().add(createLabel(session.getOwner().getNom() + " " + session.getOwner().getPrenom()));
+                invitationHBox.getChildren().add(createLabel(session.getOwner().getLastName() + " " + session.getOwner().getFirstName()));
                 invitationHBox.getChildren().add(separator());
 
                 Button inviteButton = createButton("Accept", "green");

@@ -68,7 +68,7 @@ public class SessionDetailsController implements ControllerHelper {
                 sessionDetailsListVBox.getChildren().add(createLabel("No depth"));
             }
 
-            sessionDetailsListVBox.getChildren().add(createLabel(session.getOwner().getNom() + " " + session.getOwner().getPrenom()));
+            sessionDetailsListVBox.getChildren().add(createLabel(session.getOwner().getLastName() + " " + session.getOwner().getFirstName()));
         } catch (Exception e) {
             e.printStackTrace();
         }

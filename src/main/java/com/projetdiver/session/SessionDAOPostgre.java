@@ -110,7 +110,7 @@ public class SessionDAOPostgre extends SessionDAO {
             // Use a prepared statement to avoid SQL injection
             String sql = "SELECT * FROM session WHERE owner=? AND title=?;";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                statement.setInt(1, owner.getDiverId());
+                statement.setInt(1, owner.getId());
                 statement.setString(2, title);
                 ResultSet resultSet = statement.executeQuery();
 
@@ -160,7 +160,7 @@ public class SessionDAOPostgre extends SessionDAO {
             String sql = "SELECT * FROM session WHERE owner=?;";
 
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                statement.setInt(1, owner.getDiverId());
+                statement.setInt(1, owner.getId());
                 ResultSet resultSet = statement.executeQuery();
 
                 ArrayList<Session> allSessions = new ArrayList<>();
@@ -210,7 +210,7 @@ public class SessionDAOPostgre extends SessionDAO {
             String sql = "SELECT * FROM session INNER JOIN invitation ON session.sessionId = invitation.sessionId WHERE invitation.receiver=? AND invitation.pending=?;";
 
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                statement.setInt(1, diver.getDiverId());
+                statement.setInt(1, diver.getId());
                 statement.setBoolean(2, pending);
                 ResultSet resultSet = statement.executeQuery();
 
@@ -292,7 +292,7 @@ public class SessionDAOPostgre extends SessionDAO {
                     statement.setInt(6, session.getDepth());
                 }
                 
-                statement.setInt(7, session.getOwner().getDiverId());
+                statement.setInt(7, session.getOwner().getId());
                 statement.executeUpdate();
 
                 return true;
@@ -387,7 +387,7 @@ public class SessionDAOPostgre extends SessionDAO {
             String sql = "SELECT * FROM invitation WHERE sessionId=? AND receiver=?;";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setInt(1, session.getSessionId());
-                statement.setInt(2, receiver.getDiverId());
+                statement.setInt(2, receiver.getId());
                 ResultSet resultSet = statement.executeQuery();
 
                 if (resultSet.next()) {
@@ -417,7 +417,7 @@ public class SessionDAOPostgre extends SessionDAO {
             // Use a prepared statement to avoid SQL injection
             String sql = "SELECT * FROM invitation WHERE receiver=?;";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                statement.setInt(1, receiver.getDiverId());
+                statement.setInt(1, receiver.getId());
                 ResultSet resultSet = statement.executeQuery();
 
                 ArrayList<Invitation> allInvitations = new ArrayList<>();
@@ -484,7 +484,7 @@ public class SessionDAOPostgre extends SessionDAO {
             String sql = "INSERT INTO invitation (sessionId, receiver) VALUES (?, ?);";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setInt(1, invitation.getSession().getSessionId());
-                statement.setInt(2, invitation.getReceiver().getDiverId());
+                statement.setInt(2, invitation.getReceiver().getId());
                 statement.executeUpdate();
 
                 return true;
@@ -507,7 +507,7 @@ public class SessionDAOPostgre extends SessionDAO {
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setBoolean(1, false);
                 statement.setInt(2, invitation.getSession().getSessionId());
-                statement.setInt(3, invitation.getReceiver().getDiverId());
+                statement.setInt(3, invitation.getReceiver().getId());
                 statement.executeUpdate();
 
                 return true;
@@ -529,7 +529,7 @@ public class SessionDAOPostgre extends SessionDAO {
             String sql = "DELETE FROM invitation WHERE sessionId=? AND receiver=?;";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setInt(1, invitation.getSession().getSessionId());
-                statement.setInt(2, invitation.getReceiver().getDiverId());
+                statement.setInt(2, invitation.getReceiver().getId());
                 statement.executeUpdate();
 
                 return true;

@@ -30,7 +30,7 @@ public class SessionApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         try {
-            diverFacade.login("yasuo.midlaner@riotgames.com", "1234");
+            diverFacade.login("lee_sin.jubgler@riotgames.com", "1234");
             System.out.println("Diver logged in: " + diverFacade.getCurrentDiver());
         } catch (Exception e) {
             throw new RuntimeException(e);
