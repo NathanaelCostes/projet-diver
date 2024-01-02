@@ -51,10 +51,9 @@ public class Diver {
      * @param pwd the password of the user
      * @throws WrongPasswordException if the password is wrong
      */
-    public boolean login(String email, String pwd) throws WrongPasswordException {
+    public boolean login(String email, String pwd) throws WrongPasswordException  {
         if(email.equals(this.email) && pwd.equals(this.password)) {
             System.out.println("Login success");
-            //TODO redirect to the main page of the app
             return true;
         } else  if(!pwd.equals(this.password)){
             throw new WrongPasswordException("Wrong password");
