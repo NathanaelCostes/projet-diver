@@ -57,7 +57,7 @@ public class LoginController {
         try {
             diverFacade.login(email, password);
             try {
-                FXRouter.goTo("profile");
+                FXRouter.goTo("main");
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }

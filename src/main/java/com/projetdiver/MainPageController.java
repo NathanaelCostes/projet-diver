@@ -1,5 +1,6 @@
 package com.projetdiver;
 
+import com.fxrouter.FXRouter;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
