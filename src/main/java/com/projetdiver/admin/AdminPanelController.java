@@ -61,7 +61,7 @@ public class AdminPanelController {
             // Set the action of the button
             deleteDiverButton.setOnAction(e -> deleteDiver());
             // Set the style of the button
-            deleteDiverButton.setStyle("-fx-background-color: red; -fx-text-fill: white;");
+            deleteDiverButton.setStyle("-fx-background-color: #D94640; -fx-text-fill: white;");
 
             // Add labels to the HBox
             diverHBox.getChildren().add(diverFirstNameLabel);
