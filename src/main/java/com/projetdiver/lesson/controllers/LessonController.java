@@ -70,6 +70,7 @@ public class LessonController implements Initializable {
 
             LessonDetailModalController detailsController = loader.getController();
             detailsController.setTitle(lesson.getName());
+            System.out.println(lesson.getName());
             detailsController.setDetails(lesson.getDescription());
             detailsController.setDate("From the " + lesson.getStartDate() + " to the " + lesson.getEndDate());
             detailsController.setType(Character.toUpperCase(lesson.getType().toString().charAt(0)) + lesson.getType().toString().substring(1).toLowerCase(Locale.ROOT) + " lesson");
@@ -82,11 +83,8 @@ public class LessonController implements Initializable {
             Scene scene = new Scene(root);
             scene.setUserData(this);
 
-            if (scene != null) {
-                String cssPath = Objects.requireNonNull(getClass().getResource("/com/projetdiver/styles/lessonDetailModalStyle.css")).toExternalForm();
-                System.out.println(cssPath);
-                scene.getStylesheets().add(cssPath);
-            }
+            String cssPath = Objects.requireNonNull(getClass().getResource("/com/projetdiver/styles/lessonDetailModalStyle.css")).toExternalForm();
+            scene.getStylesheets().add(cssPath);
 
             modalStage.setScene(scene);
             modalStage.initOwner(((Node) event.getSource()).getScene().getWindow());
@@ -113,6 +111,9 @@ public class LessonController implements Initializable {
 
             Scene scene = new Scene(root);
             modalStage.setScene(scene);
+
+            String cssPath = Objects.requireNonNull(getClass().getResource("/com/projetdiver/styles/lessonCreationModalStyle.css")).toExternalForm();
+            scene.getStylesheets().add(cssPath);
 
             // Set the current stage as the owner for the modality
             modalStage.initOwner(((Node) event.getSource()).getScene().getWindow());
