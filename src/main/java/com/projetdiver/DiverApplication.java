@@ -1,5 +1,6 @@
 package com.projetdiver;
 
+import com.projetdiver.diver.DiverFacade;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -22,15 +23,19 @@ public class DiverApplication extends Application {
      */
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(DiverApplication.class.getResource("login-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 400, 300);
+
+
+
+        FXMLLoader fxmlLoader = new FXMLLoader(DiverApplication.class.getResource("/com/projetdiver/views/account/profile-view.fxml"));
+        System.out.println(fxmlLoader.getLocation());
+        Scene scene = new Scene(fxmlLoader.load(), 600, 600);
         stage.setTitle("Login!");
 
         stage.getIcons().add(new Image(DiverApplication.class.getResourceAsStream("/Diving_Portal_Logo.png")));
 
 
         stage.setScene(scene);
-        stage.setResizable(false);
+        stage.setResizable(true);
         stage.show();
     }
 

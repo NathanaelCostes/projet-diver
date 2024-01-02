@@ -1,0 +1,50 @@
+/* Set the background color for the VBox */
+VBox {
+    -fx-background-color: #f4f4f4;
+    -fx-padding: 10;
+}
+
+/* Style for labels */
+Label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 5 0;
+}
+
+/* Style for buttons */
+Button {
+    -fx-font-size: 14px;
+    -fx-padding: 5 10;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #4285f4;
+}
+
+/* Style for error label */
+Label#errorLabel {
+    -fx-font-size: 14px;
+}
+
+/* Hover effect for buttons */
+Button:hover {
+    -fx-background-color: #3c78d8;
+}
+
+/* Set the color for the delete button */
+#deleteButton {
+    -fx-background-color: #d32f2f;
+}
+
+/* Set the color for the set button */
+#setButton {
+    -fx-background-color: #4caf50;
+}
+
+/* Set the color for the subscribe button */
+#subscribeButton {
+    -fx-background-color: #ff9800;
+}
+
+/* Set the color for the unsubscribe button */
+#unsubscribeButton {
+    -fx-background-color: #795548;
+}
