@@ -25,13 +25,31 @@ public class MainApplication extends Application {
      */
     @Override
     public void start(Stage stage) throws IOException {
+        System.out.println("Application starting...");
+
         FXRouter.bind(this, stage);
 
         FXRouter.when("login", "views/account/login-view.fxml");
         FXRouter.when("profile", "views/account/profile-view.fxml");
+        
         FXRouter.when("register", "views/account/signup-view.fxml");
-        FXRouter.when("admin", "views/admin-panel-view.fxml");
 
+        FXRouter.when("main", "views/mainpage-view.fxml");
+        FXRouter.when("lesson", "views/lesson/lesson-view.fxml");
+      
+        FXRouter.when("admin-panel", "views/admin-panel-view.fxml");
+
+        FXRouter.when("map", "views/map/map-view.fxml");
+
+        FXRouter.when("session", "views/session/session-view.fxml");
+
+        FXRouter.when("lesson", "views/lesson/lesson-view.fxml");
+
+        FXRouter.when("contact", "views/contact/contact-view.fxml");
+
+        FXRouter.when("club", "views/club/club-view.fxml");
+
+        System.out.println("Routes configured...");
         FXRouter.goTo("login");
     }
 }

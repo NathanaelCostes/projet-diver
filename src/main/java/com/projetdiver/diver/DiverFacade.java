@@ -40,7 +40,7 @@ public class DiverFacade {
             boolean succeeded = diverFetched.login(email, password);
 
             if (succeeded) {
-                this.currentDiver = diverFetched;
+                this.currentDiver = diverFetched;              
                 System.out.println("Diver fetched: " + this.currentDiver);
             }
         } else if(this.currentDiver != null) {
