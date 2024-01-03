@@ -109,3 +109,23 @@ CREATE TABLE IF NOT EXISTS diverTakesLesson(
 
 INSERT INTO diverTakesLesson(lessonId, diverId)
 VALUES (1, 2);
+
+-- Create the Contact table
+
+CREATE TABLE IF NOT EXISTS contact (
+    receiverId INTEGER NOT NULL REFERENCES diver(diverId),
+    senderId INTEGER NOT NULL REFERENCES diver(diverId),
+    pending BOOLEAN NOT NULL DEFAULT true,
+    PRIMARY KEY (receiverId, senderId)
+);
+
+-- Ajout de contacts
+
+INSERT INTO contact(receiverId, senderId)
+VALUES(1, 2);
+
+INSERT INTO contact(receiverId, senderId)
+VALUES(2, 3);
+
+INSERT INTO contact(receiverId, senderId)
+VALUES(1, 3);

@@ -7,6 +7,10 @@ import com.projetdiver.session.exceptions.*;
 
 import java.util.ArrayList;
 
+/**
+ * Represents the facade of the session
+ * @author Boudier
+ */
 public class SessionFacade {
 
     //TODO: Savoir si je dois passer par une facade à faire plus tard dans tout les cas
@@ -43,13 +47,12 @@ public class SessionFacade {
         return DiverFacade.getInstance().getCurrentDiver();
     }
 
-    //TODO: Quand getId sera implémenté en tant que Integer, il faudra modifier cette méthode
     private void checkDiverIsConnected() throws NotConnectedException {
         if(getCurrentDiver() == null){
             throw new NotConnectedException();
-        } /* else if(getCurrentDiver().getId() == null){
-            throw new NotConnected();
-        } */
+        } else if(getCurrentDiver().getIdInteger() == null){
+            throw new NotConnectedException();
+        }
     }
 
     /**
