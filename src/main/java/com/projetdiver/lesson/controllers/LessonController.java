@@ -1,5 +1,6 @@
 package com.projetdiver.lesson.controllers;
 
+import com.projetdiver.diver.DiverFacade;
 import com.projetdiver.lesson.Lesson;
 import com.projetdiver.lesson.LessonFacade;
 import javafx.event.ActionEvent;
@@ -36,7 +37,6 @@ public class LessonController implements Initializable {
     /**
      * Initialize the lesson list view.
      */
-    @FXML
     public void setLessonListView() {
         try {
             lessonListView.getItems().clear();
