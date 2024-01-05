@@ -177,7 +177,13 @@ public class LessonDAOPostgre extends LessonDAO{
                 success = deleteRelatedRecords(lessonId, deleteDiverGivesLessonSql, "diverGivesLesson");
             }
 
-            // If diverGivesLesson deletion was successful, proceed to delete from lesson table
+            // If diverGivesLesson deletion was successful, proceed to delete from lessonReview table
+            if (success) {
+                String deleteLessonReviewSql = "DELETE FROM lessonReview WHERE lessonId = ?";
+                success = deleteRelatedRecords(lessonId, deleteLessonReviewSql, "lessonReview");
+            }
+
+            // If lessonReview deletion was successful, proceed to delete from lesson table
             if (success) {
                 String deleteLessonSql = "DELETE FROM lesson WHERE lessonId = ?";
                 success = deleteRecord(lessonId, deleteLessonSql);
