@@ -1,6 +1,5 @@
 package com.projetdiver.lesson.controllers;
 
-import com.projetdiver.diver.DiverFacade;
 import com.projetdiver.lesson.Lesson;
 import com.projetdiver.lesson.LessonFacade;
 import javafx.event.ActionEvent;
