@@ -24,7 +24,7 @@ public class SessionTest {
      */
     @Test
     void createSessionAlreadyExistingShouldThrowSessionAlreadyExistsException() {
-
+        
         Session session = new Session();
         session.setSessionId(1);
         session.setTitle("Session de test");
