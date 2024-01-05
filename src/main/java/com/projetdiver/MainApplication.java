@@ -50,6 +50,6 @@ public class MainApplication extends Application {
         FXRouter.when("club", "views/club/club-view.fxml");
 
         System.out.println("Routes configured...");
-        FXRouter.goTo("login");
+        FXRouter.goTo("map");
     }
 }

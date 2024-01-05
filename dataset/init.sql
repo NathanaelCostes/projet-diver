@@ -35,7 +35,7 @@ CREATE TABLE session(
     depth int,
     owner int NOT NULL REFERENCES diver(diverId),
     UNIQUE (title, owner)
-    -- spotId int NOT NULL REFERENCES spot(spotId)
+    spotId int NOT NULL REFERENCES spot(spotId)
 );
 
 -- Ajout de sessions
@@ -109,3 +109,23 @@ CREATE TABLE IF NOT EXISTS diverTakesLesson(
 
 INSERT INTO diverTakesLesson(lessonId, diverId)
 VALUES (1, 2);
+
+CREATE TABLE IF NOT EXISTS spot(
+    spotId serial NOT NULL PRIMARY KEY,
+    name varchar(30) NOT NULL,
+    latitude float NOT NULL,
+    longitude float NOT NULL,
+    maxDepth int,
+    type varchar(30) NOT NULL
+    poi varchar(255),
+    level varchar(30) NOT NULL
+);
+
+INSERT INTO spot(name, latitude, longitude, maxDepth, type, poi, level)
+VALUES('Spot de test', 0.0, 0.0, 0, 'SEA', 'Point of interest', 'BEGINNER');
+
+INSERT INTO spot(name, latitude, longitude, maxDepth, type, poi, level)
+VALUES('Spot de test 2', 0.0, 0.0, 0, 'MOUNTAIN', 'Point of interest 2', 'BEGINNER');
+
+INSERT INTO spot(name, latitude, longitude, maxDepth, type, poi, level)
+VALUES('Spot de test 3', 0.0, 0.0, 0, 'LAKE', 'Point of interest 3', 'CONFIRMED');
