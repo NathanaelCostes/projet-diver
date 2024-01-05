@@ -124,6 +124,24 @@ public class SessionFacade {
         return sessionDAO.createSession(session);
     }
 
+    public boolean deleteSessionCascade(Session session){
+        try{
+            this.getAllInvitationsToSession(session).forEach(invitation -> {
+                try {
+                    deleteInvitation(invitation);
+                } catch (NotConnectedException | SessionNotFoundException | DiverNotFoundException | InvitationNotFoundException e) {
+                    e.printStackTrace();
+                }
+            });
+            deleteSession(session);
+        }
+        catch (NotConnectedException | SessionNotFoundException e){
+            e.printStackTrace();
+
+        }
+        return false;
+    }
+
     /**
      * Modify a session
      * @param session the session to modify

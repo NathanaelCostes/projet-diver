@@ -24,4 +24,14 @@
     -fx-background-color: #E04444; /* Rouge plus foncé au survol */
 }
 
+.transparent-button{
+    -fx-background-color: transparent; /* Button background color */
+    -fx-text-fill: #fff; /* Button text color */
+}
+
+.transparent-button:hover{
+    -fx-background-color: transparent; /* Button background color */
+    -fx-text-fill: #fff; /* Button text color */
+}
+
 

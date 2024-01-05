@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="194.0" prefWidth="459.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projetdiver.lesson.controllers.LessonController" stylesheets="@../../styles/lessonViewStyle.css">
+<BorderPane prefHeight="194.0" prefWidth="459.0" stylesheets="@../../styles/lessonViewStyle.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projetdiver.lesson.controllers.LessonController">
    <center>
       <GridPane prefHeight="132.0" prefWidth="430.0">
         <columnConstraints>
@@ -23,10 +25,30 @@
       </GridPane>
    </center>
    <top>
-         <Label text="Liste de cours" BorderPane.alignment="CENTER">
-            <font>
-               <Font size="18.0" />
-            </font>
-      </Label>
+      <HBox alignment="CENTER" BorderPane.alignment="CENTER_LEFT">
+         <children>
+            <Button fx:id="backToMainPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backToMainPage" prefHeight="30.0" prefWidth="30.0" styleClass="transparent-button" HBox.hgrow="ALWAYS">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="imageView">
+                     <image>
+                        <Image url="@../../icons/panneau-chevron-a-gauche.png" />
+                     </image></ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Button>
+             <Pane HBox.hgrow="ALWAYS" />
+             <Label text="Liste de cours" HBox.hgrow="ALWAYS">
+                  <font>
+                     <Font size="18.0" />
+                  </font>
+            </Label>
+             <Pane HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
    </top>
+   <padding>
+      <Insets left="10.0" top="10.0" />
+   </padding>
 </BorderPane>

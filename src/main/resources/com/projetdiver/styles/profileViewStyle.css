@@ -1,0 +1,10 @@
+.transparent-button{
+    -fx-background-color: transparent; /* Button background color */
+    -fx-text-fill: #fff; /* Button text color */
+    -fx-cursor: hand; /* Mouse over cursor */
+}
+
+.transparent-button:hover{
+    -fx-background-color: transparent; /* Button background color */
+    -fx-text-fill: #fff; /* Button text color */
+}

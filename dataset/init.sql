@@ -111,6 +111,43 @@ CREATE TABLE IF NOT EXISTS diverTakesLesson(
 INSERT INTO diverTakesLesson(lessonId, diverId)
 VALUES (1, 2);
 
+
+-- Création de la table review
+CREATE TABLE IF NOT EXISTS review(
+            reviewId serial NOT NULL PRIMARY KEY,
+            diverId int NOT NULL REFERENCES diver(diverId),
+            title varchar(30) NOT NULL,
+            description varchar(255),
+            rating int NOT NULL
+);
+
+-- Ajout d'une relation n-n entre review et lesson (fausse relation n-n, puisque une review ne peut être liée qu'à une seule lesson)
+CREATE TABLE IF NOT EXISTS lessonReview(
+            reviewId int NOT NULL REFERENCES review(reviewId),
+            lessonId int NOT NULL REFERENCES lesson(lessonId),
+            diverId int NOT NULL REFERENCES diver(diverId),
+            PRIMARY KEY(reviewId, lessonId)
+
+);
+
+-- TODO : ajouter une relation n-n entre review et spot
+--  (fausse relation n-n, puisque une review ne peut être liée qu'à un seul spot)
+
+-- Ajout de reviews
+INSERT INTO review(diverId, title, description, rating)
+VALUES(1, 'Review de test', 'Ceci est une review de test', 5);
+
+INSERT INTO review(diverId, title, description, rating)
+VALUES(2, 'Review de test 2', 'Ceci est une review de test 2', 4);
+
+-- Ajout des relations n-n entre review et lesson
+INSERT INTO lessonReview(reviewId, lessonId, diverId)
+VALUES(1, 1, 1);
+
+INSERT INTO lessonReview(reviewId, lessonId, diverId)
+VALUES(2, 1, 2);
+
+
 CREATE TABLE IF NOT EXISTS certification (
                                                 certificationId SERIAL PRIMARY KEY,
                                                 name VARCHAR(255) NOT NULL,
@@ -122,3 +159,4 @@ CREATE TABLE IF NOT EXISTS certification (
                                                 diverId INTEGER NOT NULL,
                                                 FOREIGN KEY (diverId) REFERENCES diver(diverId)
 );
+

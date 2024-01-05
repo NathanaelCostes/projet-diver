@@ -1,5 +1,14 @@
 package com.projetdiver.diver.controllers;
 
+import com.fxrouter.FXRouter;
+import com.projetdiver.diver.DiverFacade;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+
+import java.io.IOException;
+
 import com.projetdiver.certification.Certification;
 import com.projetdiver.certification.CertificationFacade;
 import com.projetdiver.diver.Diver;
@@ -15,6 +24,7 @@ import java.io.File;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class ProfileController {
 
@@ -162,6 +172,15 @@ public class ProfileController {
             }
         } catch (Exception e) {
             System.out.println("Error while handling download: " + e.getMessage());
+        }
+    }
+
+    @FXML
+    private void backToMainPage(){
+        try{
+            FXRouter.goTo("main");
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
         }
     }
 

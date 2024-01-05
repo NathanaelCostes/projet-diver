@@ -393,7 +393,82 @@ public class DiverDAOPostgre extends DiverDAO {
     }
 
     /**
-     * Get all the students of a diver (professor)
+<<<<<<< HEAD
+     * Delete a diver from the database
+     * @param id the id of the diver to delete
+     */
+    public void deleteDiverById(int id) {
+        try {
+            connection();
+            System.out.println("Connection to the database successful");
+            System.out.println("id = " + id);
+
+            // Delete records from invitation
+            String deleteInvitation = "DELETE FROM invitation WHERE receiver = ?";
+            try (PreparedStatement statement = connection.prepareStatement(deleteInvitation)) {
+                statement.setInt(1, id);
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            // Delete records from diverGivesLesson
+            String deleteDiverGivesLesson = "DELETE FROM diverGivesLesson WHERE diverId = ?";
+            try (PreparedStatement statement = connection.prepareStatement(deleteDiverGivesLesson)) {
+                statement.setInt(1, id);
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            // Delete records from diverTakesLesson
+            String deleteDiverTakesLesson = "DELETE FROM diverTakesLesson WHERE diverId = ?";
+            try (PreparedStatement statement = connection.prepareStatement(deleteDiverTakesLesson)) {
+                statement.setInt(1, id);
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            // Delete records from reviewLesson
+            String deleteReviewLesson = "DELETE FROM lessonReview WHERE diverId = ?";
+            try (PreparedStatement statement = connection.prepareStatement(deleteReviewLesson)) {
+                statement.setInt(1, id);
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            // Delete records from review
+            String deleteReview = "DELETE FROM review WHERE diverId = ?";
+            try (PreparedStatement statement = connection.prepareStatement(deleteReview)) {
+                statement.setInt(1, id);
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            // Delete the diver
+            String deleteDiver = "DELETE FROM diver WHERE diverId = ?";
+            try (PreparedStatement statement = connection.prepareStatement(deleteDiver)) {
+                statement.setInt(1, id);
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } finally {
+            // Close the connection
+            try {
+                if (this.connection != null && !this.connection.isClosed()) {
+                    this.connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+     /** Get all the students of a diver (professor)
      *
      * @param diverId the id of the professor diver
      * @return the list of all the students

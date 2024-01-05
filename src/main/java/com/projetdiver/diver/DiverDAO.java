@@ -79,10 +79,17 @@ public abstract class DiverDAO {
     public abstract void deleteDiverByEmail(String email);
 
     /**
-     * Get all the students of a diver (professor)
+     * Delete a diver from the database
+     * @param id the id of the diver to delete
+     */
+    public abstract void deleteDiverById(int id);
+
+
+     /** Get all the students of a diver (professor)
      * @param diverId the id of the professor diver
      */
     public abstract List<Diver> getAllStudents(int diverId);
+
 
     /**
      * get the instance of the DiverDAO

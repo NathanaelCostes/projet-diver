@@ -1,6 +1,7 @@
 package com.projetdiver.lesson;
 
 import com.projetdiver.dao.PostgreDAOFactory;
+import com.projetdiver.review.Review;
 
 import java.util.List;
 
@@ -54,4 +55,6 @@ public class LessonFacade {
     public Lesson getLessonById(int lessonId) {
         return PostgreDAOFactory.getInstance().createLessonDAO().getLessonById(lessonId);
     }
+
+
 }
