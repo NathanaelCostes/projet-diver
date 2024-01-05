@@ -70,7 +70,7 @@ public class DiverFacade {
         Diver diverFetched = (PostgreDAOFactory.getInstance().createDiverDAO().getDiver(email));
         if(diverFetched == null) {
             // If the diver is not existing, create it
-            Diver diver = new Diver(null, email, password, lastName, firstName );
+            Diver diver = new Diver(null, email, password, lastName, firstName, false );
 
             boolean isAdded = PostgreDAOFactory.getInstance().createDiverDAO().addDiver(diver);
             if(isAdded) {

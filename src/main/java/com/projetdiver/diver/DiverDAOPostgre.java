@@ -75,7 +75,8 @@ public class DiverDAOPostgre extends DiverDAO {
                             resultSet.getString("email"),
                             resultSet.getString("password"),
                             resultSet.getString("lastName"),
-                            resultSet.getString("firstName"));
+                            resultSet.getString("firstName"),
+                            resultSet.getBoolean("isAdmin"));
 
                     resultSet.close();
                     System.out.println(diver);
@@ -125,7 +126,8 @@ public class DiverDAOPostgre extends DiverDAO {
                             resultSet.getString("email"),
                             resultSet.getString("password"),
                             resultSet.getString("lastName"),
-                            resultSet.getString("firstName"));
+                            resultSet.getString("firstName"),
+                            resultSet.getBoolean("isAdmin"));
 
                     resultSet.close();
                     System.out.println(diver);
@@ -210,7 +212,8 @@ public class DiverDAOPostgre extends DiverDAO {
                             resultSet.getString("email"),
                             resultSet.getString("password"),
                             resultSet.getString("lastName"),
-                            resultSet.getString("firstName"));
+                            resultSet.getString("firstName"),
+                            resultSet.getBoolean("isAdmin"));
 
                     divers.add(diver);
                 }
@@ -495,7 +498,8 @@ public class DiverDAOPostgre extends DiverDAO {
                                 resultSet.getString("email"),
                                 resultSet.getString("password"),
                                 resultSet.getString("lastName"),
-                                resultSet.getString("firstName"));
+                                resultSet.getString("firstName"),
+                                resultSet.getBoolean("isAdmin"));
 
                         students.add(student);
                     }
