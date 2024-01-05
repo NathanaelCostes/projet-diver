@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS diver(
 -- Ajout d'utilisateurs
 
 INSERT INTO diver(email, password, firstName, lastName)
-VALUES('zac.jungler@riotgames.com', '1234', 'Zac', 'Jungler');
+VALUES('zac.jungler@riotgames.com', '1234', 'Zac', 'Jungler', TRUE);
 
 INSERT INTO diver(email, password, firstName, lastName)
 VALUES('lee_sin.jungler@riotgames.com', '1234', 'Lee Sin', 'Jungler');
