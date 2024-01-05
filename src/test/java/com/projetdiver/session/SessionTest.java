@@ -27,14 +27,17 @@ public class SessionTest {
         
         Session session = new Session();
         session.setSessionId(1);
-        session.setTitle("Session de test");
-        session.setDate(Date.valueOf("2019-01-01"));
+        session.setTitle("Session de test 3");
+        session.setDate(Date.valueOf("2019-01-05"));
 
-        /*try {
-            DiverFacade.getInstance().login("zac.jungler@riotgames.com", "1234");
-        } catch (DiverAlreadyLoggedInException | WrongPasswordException | DiverEmailNotFoundException e) {
-            throw new RuntimeException(e);
-        }*/
+
+        if (DiverFacade.getInstance().getCurrentDiver() == null) {
+            try {
+                DiverFacade.getInstance().login("yasuo.midlaner@riotgames.com", "1234");
+            } catch (DiverAlreadyLoggedInException | WrongPasswordException | DiverEmailNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
         session.setOwner(DiverFacade.getInstance().getCurrentDiver());
 
