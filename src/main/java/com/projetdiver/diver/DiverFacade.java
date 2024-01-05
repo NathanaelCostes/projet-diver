@@ -4,6 +4,8 @@ package com.projetdiver.diver;
 import com.projetdiver.dao.PostgreDAOFactory;
 import com.projetdiver.diver.exceptions.*;
 
+import java.util.List;
+
 /**
  *
  */
@@ -116,6 +118,14 @@ public class DiverFacade {
     public void updateDiverPassword(String password) {
         PostgreDAOFactory.getInstance().createDiverDAO().updateDiverPassword(this.currentDiver, password);
         this.currentDiver.setPassword(password);
+    }
+
+    /**
+     * Get all the students of the current diver
+     * @param diverId the id of the diver
+     */
+    public List<Diver> getAllStudents(int diverId) {
+        return PostgreDAOFactory.getInstance().createDiverDAO().getAllStudents(diverId);
     }
 
     /**
