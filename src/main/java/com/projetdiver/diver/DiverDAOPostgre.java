@@ -101,6 +101,8 @@ public class DiverDAOPostgre extends DiverDAO {
     }
 
 
+
+
     /**
      * Fetches a diver from the database using its email
      * @param id the id to find in the database
@@ -209,7 +211,7 @@ public class DiverDAOPostgre extends DiverDAO {
                             resultSet.getString("password"),
                             resultSet.getString("lastName"),
                             resultSet.getString("firstName"));
-                    
+
                     divers.add(diver);
                 }
                 resultSet.close();
@@ -388,5 +390,58 @@ public class DiverDAOPostgre extends DiverDAO {
                 e.printStackTrace();
             }
         }
+    }
+
+    /**
+     * Get all the students of a diver (professor)
+     *
+     * @param diverId the id of the professor diver
+     * @return the list of all the students
+     */
+    @Override
+    public List<Diver> getAllStudents(int diverId) {
+        // List of all the students
+        List<Diver> students = new ArrayList<>();
+        try {
+            connection();
+            System.out.println("Connection to the database successful");
+
+            // Use a prepared statement to avoid SQL injection
+            String sql = "SELECT * FROM diver WHERE diverId IN (SELECT diverId FROM diverTakesLesson WHERE lessonId IN (SELECT lessonId FROM diverGivesLesson WHERE diverId = ?))";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setInt(1, diverId);
+
+                // Execute the query
+                try (ResultSet resultSet = statement.executeQuery()) {
+                    System.out.println("Students of Diver with ID " + diverId + ":");
+                    while (resultSet.next()) {
+                        Diver student = new Diver(
+                                resultSet.getInt("diverId"),
+                                resultSet.getString("email"),
+                                resultSet.getString("password"),
+                                resultSet.getString("lastName"),
+                                resultSet.getString("firstName"));
+
+                        students.add(student);
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                // Close the connection
+                try {
+                    if (connection != null && !connection.isClosed()) {
+                        connection.close();
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return students;
     }
 }

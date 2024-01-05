@@ -40,4 +40,9 @@ module com.projetdiver {
     exports com.fxrouter;
     opens com.fxrouter to javafx.fxml;
 
+    exports com.projetdiver.certification;
+    opens com.projetdiver.certification to javafx.fxml;
+    opens com.projetdiver.certification.controllers to javafx.fxml;
+    exports com.projetdiver.certification.controllers;
+
 }

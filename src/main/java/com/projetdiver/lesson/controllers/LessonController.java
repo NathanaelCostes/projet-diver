@@ -36,7 +36,6 @@ public class LessonController implements Initializable {
     /**
      * Initialize the lesson list view.
      */
-    @FXML
     public void setLessonListView() {
         try {
             lessonListView.getItems().clear();

@@ -10,7 +10,8 @@ CREATE TABLE IF NOT EXISTS diver(
                       email varchar(30) NOT NULL,
                       password varchar(30) NOT NULL,
                       firstName varchar(80) NOT NULL,
-                      lastName varchar(20) NOT NULL
+                      lastName varchar(20) NOT NULL,
+                      isAdmin boolean NOT NULL DEFAULT false
 );
 
 -- Ajout d'utilisateurs
@@ -109,3 +110,15 @@ CREATE TABLE IF NOT EXISTS diverTakesLesson(
 
 INSERT INTO diverTakesLesson(lessonId, diverId)
 VALUES (1, 2);
+
+CREATE TABLE IF NOT EXISTS certification (
+                                                certificationId SERIAL PRIMARY KEY,
+                                                name VARCHAR(255) NOT NULL,
+                                                pending BOOLEAN NOT NULL DEFAULT true,
+                                                file BYTEA NOT NULL,
+                                                fileName VARCHAR(255) NOT NULL,
+                                                levelObtainedLevel INTEGER NOT NULL,
+                                                levelObtainedType VARCHAR(255) NOT NULL,
+                                                diverId INTEGER NOT NULL,
+                                                FOREIGN KEY (diverId) REFERENCES diver(diverId)
+);

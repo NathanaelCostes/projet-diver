@@ -72,9 +72,9 @@ public class MainPageController {
     }
 
     @FXML
-    private void handleClubButton(ActionEvent event) {
+    private void handleCertificateButton() {
         try {
-            FXRouter.goTo("club");
+            FXRouter.goTo("certification");
             closeSidebar(); // Close the sidebar after navigating to a new page
         } catch (IOException e) {
             throw new RuntimeException(e);
