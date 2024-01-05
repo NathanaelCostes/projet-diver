@@ -79,6 +79,12 @@ public abstract class DiverDAO {
     public abstract void deleteDiverByEmail(String email);
 
     /**
+     * Delete a diver from the database
+     * @param id the id of the diver to delete
+     */
+    public abstract void deleteDiverById(int id);
+
+    /**
      * get the instance of the DiverDAO
      * Not thread safe
      */

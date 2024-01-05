@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projetdiver.diver.controllers.ProfileController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" stylesheets="@../../styles/profileViewStyle.css" fx:controller="com.projetdiver.diver.controllers.ProfileController">
    <center>
       <BorderPane BorderPane.alignment="CENTER">
          <center>
@@ -163,20 +163,37 @@
             </GridPane>
          </center>
          <top>
-            <Label text="Personal details" textFill="TEAL" BorderPane.alignment="CENTER_LEFT">
+            <HBox BorderPane.alignment="CENTER_LEFT">
                <BorderPane.margin>
-                  <Insets left="50.0" />
+                  <Insets />
                </BorderPane.margin>
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
+               <children>
+                  <Button fx:id="backToMainPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backToMainPage" prefHeight="30.0" prefWidth="30.0" styleClass="transparent-button" HBox.hgrow="ALWAYS">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="imageView">
+                           <image>
+                              <Image url="@../../icons/panneau-chevron-a-gauche.png" />
+                           </image></ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+                  <Pane HBox.hgrow="ALWAYS" />
+                  <Label text="Personal details" textFill="TEAL">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Pane HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
          </top>
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>
          <padding>
-            <Insets top="10.0" />
+            <Insets left="10.0" top="10.0" />
          </padding>
       </BorderPane>
    </center>

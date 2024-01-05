@@ -1,10 +1,13 @@
 package com.projetdiver.diver.controllers;
 
+import com.fxrouter.FXRouter;
 import com.projetdiver.diver.DiverFacade;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+
+import java.io.IOException;
 
 public class ProfileController {
 
@@ -43,6 +46,15 @@ public class ProfileController {
             throw new RuntimeException(e);
         }
 
+    }
+
+    @FXML
+    private void backToMainPage(){
+        try{
+            FXRouter.goTo("main");
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
     }
 
     /**

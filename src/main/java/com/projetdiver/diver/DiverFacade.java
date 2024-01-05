@@ -131,6 +131,15 @@ public class DiverFacade {
     }
 
     /**
+     * Get diver by his id
+     * @param id the id of the diver
+     * @return the diver with the id
+     */
+    public Diver getDiver(int id) {
+        return PostgreDAOFactory.getInstance().createDiverDAO().getDiver(id);
+    }
+
+    /**
      * @return the current diver
      */
     public Diver getCurrentDiver() {

@@ -23,43 +23,70 @@ public abstract class ReviewDAO {
     public abstract Review getReview(int id);
 
     /**
-     * Fetches all reviews from the database
-     * @return the list of reviews
+     * Fetches a review from the database using its id
+     * @param lessonId the id of the lesson
+     * @param diverId the id of the diver
+     * @return the review if found, null otherwise
      */
-    public abstract List<Review> getAllReviews();
+    public abstract Review getReviewByLessonIdAndDiverId(int lessonId, int diverId);
+
+    /**
+     * Fetches all reviews of a lesson from the database
+     * @param lessonId the id of the lesson
+     * @return the list of reviews for the lesson
+     */
+    public abstract List<Review> getAllReviewsOfLesson(int lessonId);
 
     /**
      * Add a review to the database
      * @param review the review to add
+     * @param typeOfReviewToManage the type of review to manage (Spot or Lesson)
+     * @param idLessonOrSpot the id of the lesson or spot
      * @return true if the review is added, false otherwise
      */
-    public abstract boolean addReview(Review review);
+    public abstract boolean addReview(Review review, String typeOfReviewToManage, int idLessonOrSpot);
+
+    /**
+     * Add a review to a lesson
+     * @param review the review to add
+     * @param lessonId the id of the lesson
+     * @return true if the review is added, false otherwise
+     */
+    public abstract boolean addReviewToLesson(Review review, int lessonId);
 
     /**
      * Delete a review from the database
      * @param review the review to delete
+     * @param typeOfReviewToDelete the type of review to delete (Spot or Lesson)
      * @return true if the review is deleted, false otherwise
      */
-    public abstract boolean deleteReview(Review review);
+    public abstract boolean deleteReview(Review review, String typeOfReviewToDelete);
 
     /**
-     * Update the title of the review
-     * @param review the review to update
-     * @param title the new title of the review
+     * Update the review
+     * @param review the new review
+     * @return true if the review is updated, false otherwise
      */
-    public abstract void updateReviewTitle(Review review, String title);
+    public abstract boolean updateReview(Review review);
+
+
 
     /**
-     * Update the description of the review
-     * @param review the review to update
-     * @param description the new description of the review
+     * Check if a diver has already reviewed a lesson
+     * @param diverId the id of the diver
+     * @param lessonId the id of the lesson
+     * @return true if the diver has already reviewed the lesson, false otherwise
      */
-    public abstract void updateReviewDescription(Review review, String description);
+    public abstract boolean hasReviewedLesson(int diverId, int lessonId);
 
     /**
-     * Update the rating of the review
-     * @param review the review to update
-     * @param rating the new rating of the review
+     * get the instance of the ReviewDAO
+     * @return the instance of the ReviewDAO
      */
-    public abstract void updateReviewRating(Review review, Integer rating);
+    public static ReviewDAO getInstance() {
+        if (instance == null) {
+            instance = new ReviewDAOPostgre();
+        }
+        return instance;
+    }
 }

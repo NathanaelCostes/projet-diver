@@ -77,6 +77,14 @@ public class Review {
     }
 
     /**
+     * Set the id of the review
+     * @param id the id of the review
+     */
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    /**
      * Set the title of the review
      * @param title the title of the review
      */

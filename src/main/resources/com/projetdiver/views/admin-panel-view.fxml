@@ -2,15 +2,16 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projetdiver.admin.AdminPanelController" stylesheets="@../styles/adminPanel-style.css">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/adminPanel-style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projetdiver.admin.AdminPanelController">
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="292.4" minWidth="10.0" prefWidth="290.4" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="349.99999999999994" minWidth="10.0" prefWidth="290.3999999999999" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -40,13 +41,33 @@
       </GridPane>
    </center>
    <top>
-      <Label text="Admin Dashboard" BorderPane.alignment="CENTER">
-         <font>
-            <Font size="18.0" />
-         </font>
+      <HBox BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="10.0" top="5.0" />
          </BorderPane.margin>
-      </Label>
+         <children>
+             <Button fx:id="backToMainPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backToMainPage" prefHeight="30.0" prefWidth="30.0" styleClass="transparent-button" HBox.hgrow="ALWAYS">
+                 <graphic>
+                     <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="imageView">
+                         <image>
+                             <Image url="@../icons/panneau-chevron-a-gauche.png" />
+                         </image></ImageView>
+                 </graphic>
+                 <HBox.margin>
+                     <Insets />
+                 </HBox.margin>
+             </Button>
+             <Pane HBox.hgrow="ALWAYS" />
+            <Label text="Admin Dashboard">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+             <Pane HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
    </top>
+   <padding>
+      <Insets left="10.0" top="10.0" />
+   </padding>
 </BorderPane>
