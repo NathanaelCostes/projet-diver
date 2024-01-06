@@ -47,7 +47,7 @@ public abstract class  SessionDAO {
      * @param owner the owner of the session
      * @return the session with the owner
      */
-    abstract ArrayList<Session> getAllSessionsWhereDiverIsOwner(Diver owner);
+    public abstract ArrayList<Session> getAllSessionsWhereDiverIsOwner(Diver owner);
 
     /**
      * @param diver the diver of the session
@@ -85,7 +85,7 @@ public abstract class  SessionDAO {
      * @param receiver the receiver
      * @return all the invitations to the diver
      */
-    abstract ArrayList<Invitation> getAllInvitationsToDiver(Diver receiver);
+    public abstract ArrayList<Invitation> getAllInvitationsToDiver(Diver receiver);
 
     /**
      * @param session the session
@@ -109,6 +109,6 @@ public abstract class  SessionDAO {
      * @param invitation the invitation to refuse/delete
      * @return if the invitation is refused/deleted
      */
-    abstract boolean deleteInvitation(Invitation invitation);
+    public abstract boolean deleteInvitation(Invitation invitation);
 
 }

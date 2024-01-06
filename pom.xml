@@ -72,7 +72,7 @@
             <groupId>io.github.cdimascio</groupId>
                 <artifactId>java-dotenv</artifactId>
                 <version>5.2.2</version>
-            </dependency>
+        </dependency>
     </dependencies>
 
     <build>
@@ -95,7 +95,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.projetdiver.DiverApplication</mainClass>
+                            <mainClass>com.projetdiver.MainApplication</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

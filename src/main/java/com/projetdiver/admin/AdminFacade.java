@@ -43,6 +43,16 @@ public class AdminFacade {
     }
 
     /**
+     * Delete a diver by his id
+     * @param id the id of the diver to delete
+     */
+    public void deleteDiverById(int id) {
+        PostgreDAOFactory.getInstance().createDiverDAO().deleteDiverById(id);
+        // Update the list of divers
+        this.divers = PostgreDAOFactory.getInstance().createDiverDAO().getAllDivers();
+    }
+
+    /**
      * Get the instance of the AdminFacade
      * @return the instance of the AdminFacade
      */

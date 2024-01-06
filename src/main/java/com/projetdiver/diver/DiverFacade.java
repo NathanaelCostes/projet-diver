@@ -4,6 +4,8 @@ package com.projetdiver.diver;
 import com.projetdiver.dao.PostgreDAOFactory;
 import com.projetdiver.diver.exceptions.*;
 
+import java.util.List;
+
 /**
  *
  */
@@ -68,7 +70,7 @@ public class DiverFacade {
         Diver diverFetched = (PostgreDAOFactory.getInstance().createDiverDAO().getDiver(email));
         if(diverFetched == null) {
             // If the diver is not existing, create it
-            Diver diver = new Diver(null, email, password, lastName, firstName );
+            Diver diver = new Diver(null, email, password, lastName, firstName, false );
 
             boolean isAdded = PostgreDAOFactory.getInstance().createDiverDAO().addDiver(diver);
             if(isAdded) {
@@ -119,6 +121,14 @@ public class DiverFacade {
     }
 
     /**
+     * Get all the students of the current diver
+     * @param diverId the id of the diver
+     */
+    public List<Diver> getAllStudents(int diverId) {
+        return PostgreDAOFactory.getInstance().createDiverDAO().getAllStudents(diverId);
+    }
+
+    /**
      * get the instance of the DiverFacade
      */
     public static DiverFacade getInstance() {
@@ -128,6 +138,15 @@ public class DiverFacade {
         }
 
         return DiverFacade.instance;
+    }
+
+    /**
+     * Get diver by his id
+     * @param id the id of the diver
+     * @return the diver with the id
+     */
+    public Diver getDiver(int id) {
+        return PostgreDAOFactory.getInstance().createDiverDAO().getDiver(id);
     }
 
     /**

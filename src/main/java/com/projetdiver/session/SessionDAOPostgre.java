@@ -413,7 +413,7 @@ public class SessionDAOPostgre extends SessionDAO {
     }
 
     @Override
-    ArrayList<Invitation> getAllInvitationsToDiver(Diver receiver) {
+    public ArrayList<Invitation> getAllInvitationsToDiver(Diver receiver) {
         try {
             connection();
 
@@ -524,7 +524,7 @@ public class SessionDAOPostgre extends SessionDAO {
     }
 
     @Override
-    boolean deleteInvitation(Invitation invitation) {
+    public boolean deleteInvitation(Invitation invitation) {
         try {
             connection();
 

@@ -1,9 +1,11 @@
 package com.projetdiver;
 
 import com.fxrouter.FXRouter;
+import com.projetdiver.diver.DiverFacade;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
@@ -16,6 +18,9 @@ import java.io.IOException;
 public class MainPageController {
 
     @FXML
+    private Button adminButton;
+
+    @FXML
     private ToggleButton sidebarToggleButton;
 
     @FXML
@@ -25,6 +30,7 @@ public class MainPageController {
 
     @FXML
     private void initialize() {
+        adminButton.setVisible(DiverFacade.getInstance().getCurrentDiver().isAdmin());
         // Set up right panel animation
         sidebarTransition.setNode(rightPanel);
         sidebarTransition.setFromX(0);
@@ -72,9 +78,9 @@ public class MainPageController {
     }
 
     @FXML
-    private void handleClubButton(ActionEvent event) {
+    private void handleCertificateButton() {
         try {
-            FXRouter.goTo("club");
+            FXRouter.goTo("certification");
             closeSidebar(); // Close the sidebar after navigating to a new page
         } catch (IOException e) {
             throw new RuntimeException(e);

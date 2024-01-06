@@ -33,13 +33,13 @@ public class Diver {
      * @param email the email of the diver
      * @param password the password of the diver
      */
-    public Diver(Integer id, String email, String password, String lastName, String firstName) {
+    public Diver(Integer id, String email, String password, String lastName, String firstName, boolean isAdmin) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.lastName = lastName;
         this.firstName = firstName;
-        this.isAdmin = false;
+        this.isAdmin = isAdmin;
     }
 
     /** Default Constructor */
