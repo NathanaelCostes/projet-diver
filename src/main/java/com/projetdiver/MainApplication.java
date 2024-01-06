@@ -16,9 +16,9 @@ public class MainApplication extends Application {
      * Main method of the application. Launches the javafx application.
      * @param args arguments of the application
      */
-    public static void main(String[] args) {
-        launch();
-    }
+//    public static void main(String[] args) {
+//        launch();
+//    }
 
     /**
      * Starts the javafx application
