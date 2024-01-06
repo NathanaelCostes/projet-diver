@@ -72,6 +72,13 @@ public class Diver {
     }
 
     /**
+     * @return the id of the diver
+     */
+    public Integer getIdInteger() {
+        return id;
+    }
+
+    /**
      * @return true if the diver is an admin, false otherwise
      */
     public boolean isAdmin() {

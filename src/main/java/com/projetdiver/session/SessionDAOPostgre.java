@@ -9,7 +9,10 @@ import java.util.Objects;
 
 import io.github.cdimascio.dotenv.Dotenv;
 
-
+/**
+ * Represents the concrete SessionDAO for the Postgre database
+ * @author Boudier
+ */
 public class SessionDAOPostgre extends SessionDAO {
 
     /**

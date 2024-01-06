@@ -56,8 +56,6 @@ CREATE TABLE invitation(
     receiver int NOT NULL REFERENCES diver(diverId),
     pending boolean NOT NULL DEFAULT true,
     PRIMARY KEY(sessionId, receiver)
-    --Coming:
-    --receiver int NOT NULL REFERENCES contact(contactId) PRIMARY KEY
 );
 
 -- Ajout d'invitations
@@ -111,6 +109,25 @@ CREATE TABLE IF NOT EXISTS diverTakesLesson(
 INSERT INTO diverTakesLesson(lessonId, diverId)
 VALUES (1, 2);
 
+-- Create the Contact table
+
+CREATE TABLE IF NOT EXISTS contact (
+    receiver INTEGER NOT NULL REFERENCES diver(diverId),
+    sender INTEGER NOT NULL REFERENCES diver(diverId),
+    pending BOOLEAN NOT NULL DEFAULT true,
+    PRIMARY KEY (receiver, sender)
+);
+
+-- Ajout de contacts
+
+INSERT INTO contact(receiver, sender)
+VALUES(1, 2);
+
+INSERT INTO contact(receiver, sender, pending)
+VALUES(2, 3, false);
+
+INSERT INTO contact(receiver, sender, pending)
+VALUES(3, 1, false);
 
 -- Création de la table review
 CREATE TABLE IF NOT EXISTS review(
@@ -159,4 +176,3 @@ CREATE TABLE IF NOT EXISTS certification (
                                                 diverId INTEGER NOT NULL,
                                                 FOREIGN KEY (diverId) REFERENCES diver(diverId)
 );
-

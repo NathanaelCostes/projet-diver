@@ -3,6 +3,8 @@ package com.projetdiver.session.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.projetdiver.contact.Contact;
+import com.projetdiver.contact.ContactFacade;
 import com.projetdiver.diver.Diver;
 import com.projetdiver.diver.DiverDAO;
 import com.projetdiver.session.Session;
@@ -115,11 +117,22 @@ public class SessionInvitationController implements ControllerHelper {
                 sessionAlreadyInvitedListVBox.getChildren().add(invitationHBox);
             });
 
-            List<Diver> diversNotInSession = diverDAO.getAllDivers();
-            diversNotInSession.removeAll(diversInSession);
-            diversNotInSession.remove(facade.getCurrentDiver());
+            List<Diver> diversInContact = new ArrayList<>(ContactFacade.getInstance().
+                    getAllContact(facade.getCurrentDiver().getId())
+                    .stream().filter(contact -> !contact.isPending())
+                    .map(contact -> {
+                        if (contact.getReceiver().getId() == facade.getCurrentDiver().getId()) {
+                            return contact.getSender();
+                        } else {
+                            return contact.getReceiver();
+                        }
+                    }).toList());
+            // Remove the diver already in the session
+            diversInContact.removeAll(diversInSession);
+            // Remove the current diver
+            diversInContact.remove(facade.getCurrentDiver());
 
-            diversNotInSession.forEach(diver -> {
+            diversInContact.forEach(diver -> {
                 HBox invitationHBox = new HBox();
                 invitationHBox.setSpacing(5);
                 invitationHBox.setAlignment(javafx.geometry.Pos.CENTER);

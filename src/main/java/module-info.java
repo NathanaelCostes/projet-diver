@@ -27,9 +27,10 @@ module com.projetdiver {
     exports com.projetdiver.diver;
     opens com.projetdiver.diver to javafx.fxml;
 
+    /** Session */
     exports com.projetdiver.session;
-    opens com.projetdiver.session to javafx.fxml;
     exports com.projetdiver.session.exceptions;
+    opens com.projetdiver.session to javafx.fxml;
     opens com.projetdiver.session.exceptions to javafx.fxml;
     opens com.projetdiver.session.controllers to javafx.fxml;
 
@@ -43,6 +44,11 @@ module com.projetdiver {
 
     exports com.fxrouter;
     opens com.fxrouter to javafx.fxml;
+
+    /** Contact */
+    exports com.projetdiver.contact;
+    opens com.projetdiver.contact to javafx.fxml;
+    opens com.projetdiver.contact.controllers to javafx.fxml;
 
     exports com.projetdiver.certification;
     opens com.projetdiver.certification to javafx.fxml;

@@ -4,7 +4,11 @@ import com.projetdiver.diver.Diver;
 
 import java.util.ArrayList;
 
-public abstract class SessionDAO {
+/**
+ * Represents the abstract class of the SessionDAO
+ * @author Boudier
+ */
+public abstract class  SessionDAO {
 
     /** instance de SessionDAO Postgre */
     private static SessionDAO instance;

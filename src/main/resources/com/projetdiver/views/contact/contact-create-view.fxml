@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projetdiver.contact.controllers.ContactCreateController">
+    <top>
+        <HBox BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets bottom="10.0" top="5.0" />
+            </BorderPane.margin>
+            <Pane HBox.hgrow="ALWAYS" />
+            <Label text="Add contact">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </Label>
+            <Pane HBox.hgrow="ALWAYS" />
+        </HBox>
+    </top>
+    <center>
+        <VBox fx:id="VBoxAddContact" prefHeight="100.0" prefWidth="200.0" spacing="50.0" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+    </center>
+</BorderPane>
