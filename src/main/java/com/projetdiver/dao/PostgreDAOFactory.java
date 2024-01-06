@@ -36,6 +36,7 @@ public class PostgreDAOFactory implements DAOFactory {
 
     public ContactDAO createContactDAO() {
         return ContactDAO.getInstance();
+    }
 
     public ReviewDAO createReviewDAO() {
         return ReviewDAO.getInstance();
