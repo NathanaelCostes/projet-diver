@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * Represents the abstract class of the SessionDAO
  * @author Boudier
  */
-public abstract class SessionDAO {
+public abstract class  SessionDAO {
 
     /** instance de SessionDAO Postgre */
     private static SessionDAO instance;

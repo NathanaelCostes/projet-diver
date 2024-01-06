@@ -55,8 +55,6 @@ CREATE TABLE invitation(
     receiver int NOT NULL REFERENCES diver(diverId),
     pending boolean NOT NULL DEFAULT true,
     PRIMARY KEY(sessionId, receiver)
-    --Coming:
-    --receiver int NOT NULL REFERENCES contact(contactId) PRIMARY KEY
 );
 
 -- Ajout d'invitations
@@ -113,19 +111,19 @@ VALUES (1, 2);
 -- Create the Contact table
 
 CREATE TABLE IF NOT EXISTS contact (
-    receiverId INTEGER NOT NULL REFERENCES diver(diverId),
-    senderId INTEGER NOT NULL REFERENCES diver(diverId),
+    receiver INTEGER NOT NULL REFERENCES diver(diverId),
+    sender INTEGER NOT NULL REFERENCES diver(diverId),
     pending BOOLEAN NOT NULL DEFAULT true,
-    PRIMARY KEY (receiverId, senderId)
+    PRIMARY KEY (receiver, sender)
 );
 
 -- Ajout de contacts
 
-INSERT INTO contact(receiverId, senderId)
+INSERT INTO contact(receiver, sender)
 VALUES(1, 2);
 
-INSERT INTO contact(receiverId, senderId)
-VALUES(2, 3);
+INSERT INTO contact(receiver, sender, pending)
+VALUES(2, 3, false);
 
-INSERT INTO contact(receiverId, senderId)
-VALUES(1, 3);
+INSERT INTO contact(receiver, sender, pending)
+VALUES(3, 1, false);

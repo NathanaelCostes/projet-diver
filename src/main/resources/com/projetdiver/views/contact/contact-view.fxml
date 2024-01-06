@@ -1,11 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projetdiver.contact.controllers.ContactController">
-    <children>
-        <Text layoutX="279.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact" />
-    </children>
-
-</AnchorPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projetdiver.contact.controllers.ContactController">
+    <top>
+        <HBox BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets bottom="10.0" top="5.0" />
+            </BorderPane.margin>
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goToMain" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
+                <graphic>
+                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@../../icons/return.png" />
+                    </ImageView>
+                </graphic>
+                <HBox.margin>
+                    <Insets />
+                </HBox.margin>
+            </Button>
+            <Pane HBox.hgrow="ALWAYS" />
+            <Label text="Contact">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </Label>
+            <Pane HBox.hgrow="ALWAYS" />
+        </HBox>
+    </top>
+   <center>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <VBox fx:id="VBoxYourContact" prefHeight="100.0" prefWidth="200.0" spacing="50.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                 <Label text="Your contact" style="-fx-alignment: center;">
+                     <font>
+                         <Font size="18.0" />
+                     </font>
+                 </Label>
+            </VBox>
+            <VBox fx:id="VBoxRequestContact" prefHeight="100.0" prefWidth="200.0" spacing="50.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                 <Label text="Request contact" style="-fx-alignment: center;">
+                     <font>
+                         <Font size="18.0" />
+                     </font>
+                 </Label>
+            </VBox>
+         </children>
+      </GridPane>
+   </center>
+    <bottom>
+        <HBox fx:id="contactMenuHBox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER" />
+    </bottom>
+</BorderPane>
