@@ -6,7 +6,6 @@ AnchorPane {
 
 /* Style for labels */
 Label {
-    -fx-font-size: 16px;
     -fx-font-weight: bold;
     -fx-padding: 5 0;
 }
@@ -34,12 +33,12 @@ Button {
     -fx-font-size: 14px;
     -fx-padding: 5 10;
     -fx-text-fill: #ffffff;
-    -fx-background-color: #4285f4;
+    -fx-background-color: #3ebbbe;
 }
 
 /* Hover effect for buttons */
 Button:hover {
-    -fx-background-color: #3c78d8;
+    -fx-background-color: #0c9bb6;
 }
 
 /* Style for error label */

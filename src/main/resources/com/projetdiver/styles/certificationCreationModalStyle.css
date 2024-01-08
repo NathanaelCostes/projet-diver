@@ -11,7 +11,6 @@ GridPane {
 
 /* Style for Labels */
 Label {
-    -fx-font-size: 14px; /* Font size */
     -fx-text-fill: #333333; /* Dark gray text color */
     -fx-padding: 5 0; /* Padding top and bottom */
 }
@@ -24,7 +23,7 @@ TextField, ChoiceBox {
 
 /* Style for the Button */
 Button {
-    -fx-background-color: #3498db; /* Blue background color */
+    -fx-background-color: #3ebbbe ; /* Blue background color */
     -fx-text-fill: white; /* White text color */
     -fx-padding: 10 20; /* Padding around the text */
     -fx-font-size: 14px; /* Font size */
@@ -32,7 +31,7 @@ Button {
 
 /* Hover effect for buttons */
 Button:hover {
-    -fx-background-color: #2980b9; /* Darker blue on hover */
+    -fx-background-color: #0eadd5; /* Darker blue on hover */
 }
 
 /* Style for the errorLabel (Red text color) */

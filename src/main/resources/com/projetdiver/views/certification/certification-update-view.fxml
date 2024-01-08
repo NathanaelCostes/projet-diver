@@ -19,16 +19,34 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Button mnemonicParsing="false" onAction="#browseFiles" text="Insert File" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                <Button mnemonicParsing="false" onAction="#browseFiles" text="Insert File" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
                 <Label GridPane.rowIndex="1" />
-                <Label text="Name" />
-                <Label fx:id="fileLabel" text="Insert your pdf file" GridPane.rowIndex="1" />
+                <Label text="Name">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+                <Label fx:id="fileLabel" text="Insert your pdf file" GridPane.rowIndex="1">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
                 <TextField fx:id="nameTextField" GridPane.columnIndex="1" />
-                <Label text="Obtained Level" GridPane.rowIndex="2" />
-                <Label text="Obtained Type" GridPane.rowIndex="3" />
+                <Label text="Obtained Level" GridPane.rowIndex="2">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+                <Label text="Obtained Type" GridPane.rowIndex="3">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
                 <TextField fx:id="obtainedLevelTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                 <ChoiceBox fx:id="selectTypeChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-                <Button mnemonicParsing="false" onAction="#updateCertification" text="Update" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                <Button mnemonicParsing="false" onAction="#updateCertification" text="Update" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
                 <Label fx:id="errorLabel" textFill="RED" GridPane.rowIndex="4" />
             </children>
         </GridPane>
