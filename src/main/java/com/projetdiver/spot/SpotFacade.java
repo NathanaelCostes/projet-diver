@@ -58,11 +58,11 @@ public class SpotFacade {
     /**
      * Delete a spot
      *
-     * @param spotId the id of the spot
+     * @param spot the id of the spot
      * @return true if the spot was deleted, false otherwise
      */
-    public boolean deleteSpot(int spotId) {
-        return spotDAO.deleteSpot(spotId);
+    public boolean deleteSpot(Spot spot) {
+        return spotDAO.deleteSpot(spot);
     }
 
     /**

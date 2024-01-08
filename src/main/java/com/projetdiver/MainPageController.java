@@ -22,7 +22,7 @@ public class MainPageController {
     @FXML
     private void handleMapButton(ActionEvent event) {
         try {
-            FXRouter.goTo("map");
+            FXRouter.goTo("spot");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -47,6 +47,8 @@ public class MainApplication extends Application {
 
         FXRouter.when("contact", "views/contact/contact-view.fxml");
 
+        FXRouter.when("spot", "views/spot/spot-view.fxml");
+
         FXRouter.when("club", "views/club/club-view.fxml");
 
         System.out.println("Routes configured...");

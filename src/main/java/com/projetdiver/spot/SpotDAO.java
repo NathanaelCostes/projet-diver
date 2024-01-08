@@ -1,7 +1,6 @@
 package com.projetdiver.spot;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Class representing a diving spot.
@@ -55,7 +54,7 @@ public class SpotDAO {
      * @param spotId the id of the spot
      * @return true if the spot was deleted, false otherwise
      */
-    public boolean deleteSpot(int spotId) {
+    public boolean deleteSpot(Spot spotId) {
         return false;
     }
 
