@@ -1,5 +1,6 @@
 package com.projetdiver.spot.controllers;
 
+import com.projetdiver.ControllerHelper;
 import com.projetdiver.spot.Spot;
 import com.projetdiver.spot.SpotFacade;
 import com.projetdiver.spot.exceptions.NotConnectedException;

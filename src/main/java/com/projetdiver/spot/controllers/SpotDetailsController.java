@@ -1,8 +1,8 @@
 package com.projetdiver.spot.controllers;
 
+import com.projetdiver.ControllerHelper;
 import com.projetdiver.spot.Spot;
 import com.projetdiver.spot.SpotFacade;
-import com.projetdiver.spot.controllers.ControllerHelper;
 import javafx.fxml.FXML;
 import javafx.scene.layout.VBox;
 
