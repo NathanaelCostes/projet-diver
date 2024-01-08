@@ -6,7 +6,7 @@ import java.sql.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class LessonFacadeTest {
+public class LessonFacadeTest {
 
 
     /**

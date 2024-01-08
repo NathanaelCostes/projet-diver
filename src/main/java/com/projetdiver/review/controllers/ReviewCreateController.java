@@ -39,7 +39,6 @@ public class ReviewCreateController {
      * In previous view, if button Create was clicked, set windowLabel to "Create a review".
      * If button Modify was clicked, set windowLabel to "Modify your review".
      * @param typeOfReviewToManage the type of review to manage (Spot or Lesson)
-     * @param functionToCall the function to call (create or modify)
      * @param idLessonOrSpot the id of the lesson or spot
      */
     public void initialize(String typeOfReviewToManage, int idLessonOrSpot) {

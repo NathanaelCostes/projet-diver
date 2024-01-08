@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * Class LoginTest is the class that tests the login method of the DiverFacade
  */
-class LoginTest {
+public class LoginTest {
 
     /**
      * Test the login method of the DiverFacade when the diver is already logged in

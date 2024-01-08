@@ -4,7 +4,7 @@ import com.projetdiver.diver.Diver;
 
 /**
  * This class is the invitation of a diver to a session
- * @Author Boudier
+ * @author  Boudier
  */
 public class Invitation {
 

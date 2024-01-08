@@ -6,7 +6,7 @@ import java.sql.Date;
 
 /**
  * This class is the session of a diver
- * @Author Boudier
+ * @author  Boudier
  */
 public class Session {
 

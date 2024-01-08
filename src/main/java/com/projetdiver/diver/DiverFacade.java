@@ -26,7 +26,7 @@ public class DiverFacade {
      * Login the diver and set the current diver to the diver that logged in
      * @param email the email of the diver
      * @param password the password of the diver
-     * @throws Exception an undescribed exception
+     * @throws WrongPasswordException an undescribed exception
      * @throws DiverAlreadyLoggedInException if the diver is already logged in
      * @throws DiverEmailNotFoundException if the email of the diver is not found
      */
@@ -123,6 +123,7 @@ public class DiverFacade {
     /**
      * Get all the students of the current diver
      * @param diverId the id of the diver
+     * @return the list of diver
      */
     public List<Diver> getAllStudents(int diverId) {
         return PostgreDAOFactory.getInstance().createDiverDAO().getAllStudents(diverId);
@@ -130,6 +131,7 @@ public class DiverFacade {
 
     /**
      * get the instance of the DiverFacade
+     * @return the instance of DiverFacade
      */
     public static DiverFacade getInstance() {
 
