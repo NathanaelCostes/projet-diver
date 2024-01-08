@@ -119,16 +119,22 @@ public class AdminPanelController {
                     buttonDownload.setOnAction(event -> {
                         handleButtonActionDownload(certification);
                     });
+                    buttonDownload.getStyleClass().add("download-button"); // Set style class
+
 
                     Button buttonDelete = new Button("Delete Certificate");
                     buttonDelete.setOnAction(event -> {
                         handleButtonActionDelete(certification);
                     });
+                    buttonDelete.getStyleClass().add("delete-button"); // Set style class
+
 
                     Button buttonValidate = new Button("Accept Certificate");
                     buttonValidate.setOnAction(event -> {
                         handleButtonActionValidate(certification);
                     });
+                    buttonValidate.getStyleClass().add("validate-button"); // Set style class
+
 
                     HBox hbox = new HBox(new Label(certification.toString()), buttonDownload, buttonDelete, buttonValidate);
                     listCertificationView.getItems().add(hbox);
