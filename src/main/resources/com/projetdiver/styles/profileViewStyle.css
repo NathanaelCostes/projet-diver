@@ -8,3 +8,39 @@
     -fx-background-color: transparent; /* Button background color */
     -fx-text-fill: #fff; /* Button text color */
 }
+
+/* Styling for dynamically created buttons */
+.download-button {
+    -fx-background-color: #3ebbbe; /* Set background color for download buttons */
+    -fx-text-fill: white; /* Set text color for download buttons */
+    -fx-font-weight: bold; /* Make the text bold */
+}
+
+.delete-button {
+    -fx-background-color: #D94640; /* Set background color for delete buttons */
+    -fx-text-fill: white; /* Set text color for delete buttons */
+    -fx-font-weight: bold; /* Make the text bold */
+}
+
+.validate-button {
+    -fx-background-color: #1eb01e; /* Set background color for update buttons */
+    -fx-text-fill: white; /* Set text color for update buttons */
+    -fx-font-weight: bold; /* Make the text bold */
+}
+
+/* Hover effect for buttons */
+.download-button:hover {
+    -fx-background-color: #306C79; /* Darken the background color on hover */
+    -fx-text-fill: #ffffff; /* Lighten the text color on hover */
+}
+
+.delete-button:hover {
+    -fx-background-color: #993633; /* Darken the background color on hover */
+    -fx-text-fill: #ffffff; /* Lighten the text color on hover */
+}
+
+.validate-button:hover {
+    -fx-background-color: #2e9d2e; /* Darken the background color on hover */
+    -fx-text-fill: #ffffff; /* Lighten the text color on hover */
+}
+
