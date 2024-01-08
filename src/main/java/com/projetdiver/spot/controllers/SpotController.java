@@ -59,7 +59,7 @@ public class SpotController implements Initializable, ControllerHelper {
     public void setSpotMenuHBox(){
         spotMenuHBox.getChildren().clear();
 
-        Button spotCreateButton = createButton("Create", "green");
+        Button spotCreateButton = createButton("Create", "#3ebbbe");
         spotCreateButton.setOnAction(event -> { 
             openCreateSpot(event); 
             setSpotListView();
@@ -147,7 +147,14 @@ public class SpotController implements Initializable, ControllerHelper {
                 spotHBox.getChildren().add(separator());
             }
 
-            Button spotInfoButton = createButton("Info", "blue");
+            Button spotModifyButton = createButton("Modify", "#BAB8B7");
+            spotModifyButton.setOnAction(event -> { openModifySpot(event, spot); });
+
+            //if Diver isAdmin = true then show modify button
+            if(DiverFacade.getInstance().getCurrentDiver().isAdmin()){
+                spotHBox.getChildren().add(spotModifyButton);
+            }
+            Button spotInfoButton = createButton("Info", "#2d95a1");
             spotInfoButton.setOnAction(event -> { openDetailsSpot(event, spot); });
             spotHBox.getChildren().add(spotInfoButton);
 

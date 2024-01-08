@@ -93,7 +93,7 @@ public class SpotModifyCreateController implements ControllerHelper {
         spotHBox.setAlignment(javafx.geometry.Pos.CENTER);
         spotHBox.setStyle("-fx-padding: 25px 0px 0px 0px;");
 
-        Button spotSaveButton = createButton("Save", "green");
+        Button spotSaveButton = createButton("Save", "#3ebbbe");
         spotSaveButton.setOnAction(event -> { try {
             spot.setName(((TextField) spotModifyListVBox.getChildren().get(2)).getText());
             
@@ -119,7 +119,7 @@ public class SpotModifyCreateController implements ControllerHelper {
         });
         spotHBox.getChildren().add(spotSaveButton);
         
-        Button spotDeleteButton = createButton("Delete", "red");
+        Button spotDeleteButton = createButton("Delete", "#D94640");
         spotDeleteButton.setOnAction(event -> {
             facade.deleteSpot(spot);
             spotDeleteButton.getScene().getWindow().hide();
@@ -170,7 +170,7 @@ public class SpotModifyCreateController implements ControllerHelper {
         spotHBox.setAlignment(javafx.geometry.Pos.CENTER);
         spotHBox.setStyle("-fx-padding: 25px 0px 0px 0px;");
 
-        Button spotCreateButton = createButton("Create", "green");
+        Button spotCreateButton = createButton("Create", "#3ebbbe");
         spotCreateButton.setOnAction(event -> { try {
             Spot spot = new Spot();
             spot.setName(((TextField) spotModifyListVBox.getChildren().get(2)).getText());
