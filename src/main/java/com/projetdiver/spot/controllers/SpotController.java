@@ -1,6 +1,7 @@
 package com.projetdiver.spot.controllers;
 
 import com.fxrouter.FXRouter;
+import com.projetdiver.diver.DiverFacade;
 import com.projetdiver.spot.Spot;
 import com.projetdiver.spot.SpotFacade;
 import com.projetdiver.ControllerHelper;
