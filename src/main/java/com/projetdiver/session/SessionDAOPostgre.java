@@ -46,6 +46,9 @@ public class SessionDAOPostgre extends SessionDAO {
         }
     }
 
+    /**
+     * Close the connection to the database
+     */
     private void closeConnection() {
         // Close the connection
         try {
@@ -57,6 +60,10 @@ public class SessionDAOPostgre extends SessionDAO {
         }
     }
 
+    /**
+     * @param sessionId the id of the session
+     * @return the session with the id
+     */
     @Override
     public Session getSession(Integer sessionId) {
         try {
@@ -105,6 +112,11 @@ public class SessionDAOPostgre extends SessionDAO {
         }
     }
 
+    /**
+     * @param owner the owner of the session
+     * @param title the title of the session
+     * @return the session with the information
+     */
     @Override
     public Session getSession(Diver owner, String title) {
         try {
@@ -154,6 +166,10 @@ public class SessionDAOPostgre extends SessionDAO {
         }
     }
 
+    /**
+     * @param owner the owner of the session
+     * @return the session with the owner
+     */
     @Override
     public ArrayList<Session> getAllSessionsWhereDiverIsOwner(Diver owner){
         try {
@@ -204,6 +220,11 @@ public class SessionDAOPostgre extends SessionDAO {
         }
     }
 
+    /**
+     * @param diver the diver of the session
+     * @param pending the pending of the session
+     * @return the session with the diver and the pending
+     */
     @Override
     public ArrayList<Session> getAllSessionsWhereDiverIsInvited(Diver diver, boolean pending) {
         try {
@@ -255,6 +276,10 @@ public class SessionDAOPostgre extends SessionDAO {
         }
     }
 
+    /**
+     * @param session the session to create
+     * @return if the session is created
+     */
     @Override
     public boolean createSession(Session session) {
         try {
@@ -308,6 +333,10 @@ public class SessionDAOPostgre extends SessionDAO {
         }
     }
 
+    /**
+     * @param session the session to modify
+     * @return if the session is modified
+     */
     @Override
     public boolean modifySession(Session session) {
         try {
@@ -361,6 +390,10 @@ public class SessionDAOPostgre extends SessionDAO {
         }
     }
 
+    /**
+     * @param session the session to delete
+     * @return if the session is deleted
+     */
     @Override
     public boolean deleteSession(Session session) {
         try {
@@ -381,6 +414,10 @@ public class SessionDAOPostgre extends SessionDAO {
         }
     }
 
+    /**
+     * @param session the session to delete
+     * @return if the session is deleted
+     */
     @Override
     public Invitation getInvitation(Session session, Diver receiver) {
         try {
@@ -412,6 +449,10 @@ public class SessionDAOPostgre extends SessionDAO {
         return null;
     }
 
+    /**
+     * @param receiver the receiver of the invitation
+     * @return all the invitations to the diver
+     */
     @Override
     public ArrayList<Invitation> getAllInvitationsToDiver(Diver receiver) {
         try {
@@ -445,6 +486,10 @@ public class SessionDAOPostgre extends SessionDAO {
         return null;
     }
 
+    /**
+     * @param session the session of the invitation
+     * @return all the invitations to the session
+     */
     @Override
     ArrayList<Invitation> getAllInvitationsToSession(Session session) {
         try {
@@ -478,6 +523,10 @@ public class SessionDAOPostgre extends SessionDAO {
         return null;
     }
 
+    /**
+     * @param invitation the invitation to create
+     * @return if the invitation is created
+     */
     @Override
     boolean createInvitation(Invitation invitation) {
         try {
@@ -500,6 +549,10 @@ public class SessionDAOPostgre extends SessionDAO {
         }
     }
 
+    /**
+     * @param invitation the invitation to modify
+     * @return if the invitation is modified
+     */
     @Override
     boolean acceptInvitation(Invitation invitation) {
         try {
@@ -523,6 +576,10 @@ public class SessionDAOPostgre extends SessionDAO {
         }
     }
 
+    /**
+     * @param invitation the invitation to delete
+     * @return if the invitation is deleted
+     */
     @Override
     public boolean deleteInvitation(Invitation invitation) {
         try {

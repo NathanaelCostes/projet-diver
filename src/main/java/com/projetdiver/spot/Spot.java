@@ -26,8 +26,6 @@ public class Spot {
     /** level advised of the spot */
     private String level;
 
-    private Spot spot;
-
     /**
      * Create a spot
      * @param name of the spot
@@ -38,7 +36,6 @@ public class Spot {
      * @param poi of the spot
      * @param level of the spot
      */
-
     public Spot(Integer spotId, String name, Float latitude, Float longitude, Integer maxDepth, String type, String poi, String level) {
         this.spotId = spotId;
         this.name = name;

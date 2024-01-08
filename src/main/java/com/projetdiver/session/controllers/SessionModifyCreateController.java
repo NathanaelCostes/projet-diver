@@ -26,6 +26,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * This class is the controller of the session modify and create view
+ */
 public class SessionModifyCreateController implements ControllerHelper {
 
     /**
@@ -59,6 +62,10 @@ public class SessionModifyCreateController implements ControllerHelper {
     public void initialize() {
     }
 
+    /**
+     * Set the information and fxml element about the session modify
+     * @param session the session to display
+     */
     public void setSessionModify(Session session) {
         sessionModifyListVBox.getChildren().clear();
 
@@ -200,6 +207,9 @@ public class SessionModifyCreateController implements ControllerHelper {
 
     }
 
+    /**
+     * Set the information and fxml element about the session
+     */
     public void setSessionCreate(){
 
         sessionModifyLabel.setText("Create a session");
@@ -296,6 +306,9 @@ public class SessionModifyCreateController implements ControllerHelper {
 
     }
 
+    /**
+     * Open the invitation session view
+     */
     @FXML
     public void openInvitationSession(Event event, Session session) {
         try {

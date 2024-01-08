@@ -27,6 +27,9 @@ import java.util.ResourceBundle;
 
 import static com.fxrouter.FXRouter.goTo;
 
+/**
+ * This class is the controller of the session view
+ */
 public class SessionController implements Initializable, ControllerHelper {
     /**
      * The instance of the SessionFacade
@@ -52,6 +55,9 @@ public class SessionController implements Initializable, ControllerHelper {
         this.facade = SessionFacade.getInstance();
     }
 
+    /**
+     * Set the menu buttons of the session view
+     */
     @FXML
     public void setSessionMenuHBox(){
         sessionMenuHBox.getChildren().clear();
@@ -70,7 +76,10 @@ public class SessionController implements Initializable, ControllerHelper {
         });
         sessionMenuHBox.getChildren().add(sessionRefreshButton);
     }
-    
+
+    /**
+     * Open the invitation session view
+     */
     @FXML
     private void openInvitationSession(ActionEvent event) {
         try {
@@ -98,6 +107,9 @@ public class SessionController implements Initializable, ControllerHelper {
         }
     }
 
+    /**
+     * Set the session list
+     */
     @FXML
     public void setSessionListView(){
         sessionListVBox.getChildren().clear();
@@ -143,6 +155,9 @@ public class SessionController implements Initializable, ControllerHelper {
         }
     }
 
+    /**
+     * Open the session details view
+     */
     @FXML
     public void openDetailsSession(Event event, Session session) {
         try {
@@ -170,6 +185,9 @@ public class SessionController implements Initializable, ControllerHelper {
         }
     }
 
+    /**
+     * Open the session modify view
+     */
     @FXML
     public void openModifySession(Event event, Session session) {
         try {
@@ -197,6 +215,9 @@ public class SessionController implements Initializable, ControllerHelper {
         }
     }
 
+    /**
+     * Open the session create view
+     */
     @FXML
     public void openCreateSession(Event event) {
         try {
@@ -224,6 +245,9 @@ public class SessionController implements Initializable, ControllerHelper {
         }
     }
 
+    /**
+     * Go to the main view
+     */
     @FXML
     public void goToMain(ActionEvent event) {
         try {

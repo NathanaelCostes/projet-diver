@@ -6,6 +6,9 @@ import com.projetdiver.session.SessionFacade;
 import javafx.fxml.FXML;
 import javafx.scene.layout.VBox;
 
+/**
+ * This class is the controller of the session details view
+ */
 public class SessionDetailsController implements ControllerHelper {
     /**
      * The instance of the SessionFacade
@@ -32,6 +35,10 @@ public class SessionDetailsController implements ControllerHelper {
     public void initialize() {
     }
 
+    /**
+     * Set the information about the session
+     * @param session the session to display
+     */
     public void setSessionDetails(Session session) {
         sessionDetailsListVBox.getChildren().clear();
 

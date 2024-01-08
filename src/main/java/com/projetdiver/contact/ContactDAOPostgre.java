@@ -12,6 +12,9 @@ import com.projetdiver.diver.DiverDAO;
 
 import io.github.cdimascio.dotenv.Dotenv;
 
+/**
+ * This class is the DAO of the Contact for Postgre database
+ */
 public class ContactDAOPostgre extends ContactDAO {
 
     /**
@@ -45,6 +48,9 @@ public class ContactDAOPostgre extends ContactDAO {
         }
     }
 
+    /**
+     * Close the connection to the database
+     */
     private void closeConnection() {
         // Close the connection
         try {
@@ -56,6 +62,9 @@ public class ContactDAOPostgre extends ContactDAO {
         }
     }
 
+    /**
+     * @param contact to create
+     */
     @Override
     public void create(Contact contact) {
         try {
@@ -77,6 +86,9 @@ public class ContactDAOPostgre extends ContactDAO {
         }
     }
 
+    /**
+     * @param contact to update
+     */
     @Override
     public void update(Contact contact) {
         try {
@@ -98,6 +110,9 @@ public class ContactDAOPostgre extends ContactDAO {
         }
     }
 
+    /**
+     * @param contact to delete
+     */
     @Override
     public void delete(Contact contact) {
         try {
@@ -118,6 +133,12 @@ public class ContactDAOPostgre extends ContactDAO {
         }
     }
 
+    /**
+     * Get contact, order is not important
+     * @param receiver id of the receiver (diver)
+     * @param sender id of the sender (diver)
+     * @return the contact
+     */
     @Override
     public Contact getContact(int receiver, int sender) {
         Contact contact = null;
@@ -150,6 +171,11 @@ public class ContactDAOPostgre extends ContactDAO {
         return contact;
     }
 
+    /**
+     * Get all the contact of a diver (if he is the sender or the receiver)
+     * @param id of the diver
+     * @return the contact
+     */
     @Override
     public List<Contact> getAllContact(int id) {
         List<Contact> contacts = new ArrayList<Contact>();
@@ -183,6 +209,12 @@ public class ContactDAOPostgre extends ContactDAO {
         return contacts;
     }
 
+    /**
+     * Check if two divers are in contact
+     * @param id1 of the first diver
+     * @param id2 of the second diver
+     * @return true if they are in contact, false otherwise
+     */
     @Override
     public boolean isInContact(int id1, int id2) {
         boolean res = false;

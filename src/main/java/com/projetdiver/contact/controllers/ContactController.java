@@ -28,6 +28,9 @@ import java.util.ResourceBundle;
 
 import static com.fxrouter.FXRouter.goTo;
 
+/**
+ * This class is the controller of the contact view
+ */
 public class ContactController implements Initializable, ControllerHelper {
     /**
      * The instance of the SessionFacade
@@ -59,8 +62,11 @@ public class ContactController implements Initializable, ControllerHelper {
         this.facade = ContactFacade.getInstance();
     }
 
+    /**
+     * Set the menu of the contact view
+     */
     @FXML
-    public void setSessionMenuHBox(){
+    public void setContactMenuHBox(){
         contactMenuHBox.getChildren().clear();
 
         Button sessionCreateButton = createButton("add contact", getColor("validation"));
@@ -73,6 +79,10 @@ public class ContactController implements Initializable, ControllerHelper {
 
     }
 
+    /**
+     * Is called when the user clicks on the add contact button.
+     * Represents the add contact view with all the diver that can be added as contact
+     */
     @FXML
     private void openCreateContact(ActionEvent event) {
         try {
@@ -100,6 +110,10 @@ public class ContactController implements Initializable, ControllerHelper {
         }
     }
 
+    /**
+     * Is called when the user clicks on the back button.
+     * Represents the main view
+     */
     @FXML
     public void goToMain(ActionEvent event) {
         try {
@@ -109,6 +123,9 @@ public class ContactController implements Initializable, ControllerHelper {
         }
     }
 
+    /**
+     * Set the view of your contacts
+     */
     @FXML
     public void setVBoxYourContact(){
         VBoxYourContact.getChildren().clear();
@@ -163,6 +180,9 @@ public class ContactController implements Initializable, ControllerHelper {
         }
     }
 
+    /**
+     * Set the view of your requests
+     */
     @FXML
     public void setVBoxRequestContact(){
         VBoxRequestContact.getChildren().clear();
@@ -212,9 +232,12 @@ public class ContactController implements Initializable, ControllerHelper {
         }
     }
 
+    /**
+     * Initialize the view
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        setSessionMenuHBox();
+        setContactMenuHBox();
         setVBoxYourContact();
         setVBoxRequestContact();
     }

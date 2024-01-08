@@ -13,10 +13,6 @@ import java.util.ArrayList;
  */
 public class SessionFacade {
 
-    //TODO: Savoir si je dois passer par une facade à faire plus tard dans tout les cas
-    //TODO: Savoir si NotConnectedException est la bonne exception à lever
-    //TODO: Savoir si je dois faire refactoriser les exceptions dans d'autres packages
-
     /** the instance of the SessionFacade */
     private static SessionFacade instance;
 

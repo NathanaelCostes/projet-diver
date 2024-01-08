@@ -5,6 +5,7 @@ import com.projetdiver.diver.Diver;
 import java.sql.Date;
 
 /**
+ * This class is the session of a diver
  * @Author Boudier
  */
 public class Session {

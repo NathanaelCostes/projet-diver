@@ -11,6 +11,9 @@ import com.projetdiver.diver.DiverFacade;
 import com.projetdiver.session.exceptions.DiverNotFoundException;
 import com.projetdiver.session.exceptions.NotConnectedException;
 
+/**
+ * This class is the facade of the Contact
+ */
 public class ContactFacade {
 
     /** the instance of the ContactFacade */

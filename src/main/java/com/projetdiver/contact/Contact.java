@@ -2,6 +2,9 @@ package com.projetdiver.contact;
 
 import com.projetdiver.diver.Diver;
 
+/**
+ * This class is the contact between two divers
+ */
 public class Contact {
 
     /** receiver of the contact */

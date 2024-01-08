@@ -22,9 +22,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-//TODO: Implement this class with contact list not diver list
-//TODO: Replace DAO with Facade
-
+/**
+ * This class is the controller of the session invitation view
+ */
 public class SessionInvitationController implements ControllerHelper {
     /**
      * The instance of the SessionFacade
@@ -63,6 +63,10 @@ public class SessionInvitationController implements ControllerHelper {
     public void initialize() {
     }
 
+    /**
+     * Set the information about the invitation to the session
+     * @param session the session to display
+     */
     public void setSessionInvitation(Session session){
         sessionAlreadyInvitedListVBox.getChildren().clear();
         sessionNotInvitedListVBox.getChildren().clear();
@@ -162,6 +166,10 @@ public class SessionInvitationController implements ControllerHelper {
 
     }
 
+    /**
+     * Set the information about the request to the session
+     * @param currentDiver the current diver
+     */
     public void setSessionInvitation(Diver currentDiver) {
         sessionAlreadyInvitedListVBox.getChildren().clear();
         sessionNotInvitedListVBox.getChildren().clear();

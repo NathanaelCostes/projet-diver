@@ -14,6 +14,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+/**
+ * This class is the controller of the contact create view
+ */
 public class ContactCreateController implements ControllerHelper {
     /**
      * The instance of the SessionFacade
@@ -33,6 +36,10 @@ public class ContactCreateController implements ControllerHelper {
     @FXML
     VBox VBoxAddContact;
 
+    /**
+     * Is called when the user clicks on the add contact button.
+     * Represents the add contact view with all the diver that can be added as contact
+     */
     public void setContactCreateController() {
         VBoxAddContact.getChildren().clear();
 

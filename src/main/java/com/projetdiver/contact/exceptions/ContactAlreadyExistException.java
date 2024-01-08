@@ -1,5 +1,8 @@
 package com.projetdiver.contact.exceptions;
 
+/**
+ * This exception is thrown when the contact already exist
+ */
 public class ContactAlreadyExistException extends Exception {
 
     /**
