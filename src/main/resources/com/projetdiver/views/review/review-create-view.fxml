@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projetdiver.review.controllers.ReviewCreateController">
+<BorderPane prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projetdiver.review.controllers.ReviewCreateController" stylesheets="@../../styles/reviewCreationStyle.css">
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -28,7 +28,7 @@
       </GridPane>
    </center>
    <top>
-      <Label fx:id="windowLabel" text="Create/Modify" BorderPane.alignment="CENTER">
+      <Label fx:id="windowLabel" text="Add a review" BorderPane.alignment="CENTER">
          <font>
             <Font size="14.0" />
          </font>

@@ -4,6 +4,7 @@ import com.projetdiver.review.Review;
 import com.projetdiver.review.ReviewFacade;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class ReviewListController {
@@ -29,12 +30,13 @@ public class ReviewListController {
         for (Review review : reviewFacade.getAllReviewsOfLesson(idLesson)) {
             // Create a HBox to hold the review's informations
             VBox reviewVBox = new VBox();
+            // Assigner la classe CSS à la VBox
+            reviewVBox.getStyleClass().add("vbox-review");
+
             // Set the spacing between the elements of the HBox
             reviewVBox.setSpacing(10);
             // Align the elements of the HBox
             reviewVBox.setAlignment(javafx.geometry.Pos.CENTER);
-            // Set the style of the HBox
-            reviewVBox.setStyle("-fx-border-color: black; -fx-border-width: 1px; -fx-padding: 5px;");
 
             // Create title label
             Label reviewTitle = new Label(review.getTitle());
@@ -48,6 +50,7 @@ public class ReviewListController {
 
             // Add the HBox to the VBox
             reviewListVBox.getChildren().add(reviewVBox);
+
         }
     }
 }

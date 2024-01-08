@@ -13,3 +13,13 @@
     -fx-text-fill: darkcyan;
 
 }
+
+.signupButton {
+    -fx-background-color: #3ebbbe;
+    -fx-text-fill: #ffffff;
+    -fx-cursor: hand;
+}
+
+.signupButton:hover {
+    -fx-background-color: #2d95a1;
+}
