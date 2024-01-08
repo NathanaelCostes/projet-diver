@@ -38,13 +38,13 @@ CREATE TABLE IF NOT EXISTS spot(
     );
 
 INSERT INTO spot(name, latitude, longitude, maxDepth, type, poi, level)
-VALUES('Spot de test', 0.0, 0.0, 0, 'SEA', 'Point of interest', 'BEGINNER');
+VALUES('Blue Hole', 17.3199, -87.5354, 124, 'SEA', 'Natural Wonder', 'ADVANCED');
 
 INSERT INTO spot(name, latitude, longitude, maxDepth, type, poi, level)
-VALUES('Spot de test 2', 0.0, 0.0, 0, 'MOUNTAIN', 'Point of interest 2', 'BEGINNER');
+VALUES('Great Barrier Reef', -16.286389, 146.686111, 40, 'SEA', 'Coral Reef', 'INTERMEDIATE');
 
 INSERT INTO spot(name, latitude, longitude, maxDepth, type, poi, level)
-VALUES('Spot de test 3', 0.0, 0.0, 0, 'LAKE', 'Point of interest 3', 'CONFIRMED');
+VALUES('Silfra Fissure', 64.926, -21.119, 63, 'FRESHWATER', 'Tectonic Fissure', 'ADVANCED');
 
 -- Création de la table Session
 CREATE TABLE session(

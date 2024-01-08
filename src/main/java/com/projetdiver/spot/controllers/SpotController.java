@@ -56,13 +56,6 @@ public class SpotController implements Initializable, ControllerHelper {
             setSpotListView();
         });
         spotMenuHBox.getChildren().add(spotCreateButton);
-
-        Button spotRefreshButton = createButton("Request", "lightgray");
-        spotRefreshButton.setOnAction(event -> {
-            openInvitationSpot(event);
-            setSpotListView(); 
-        });
-        spotMenuHBox.getChildren().add(spotRefreshButton);
     }
     
     @FXML
@@ -100,25 +93,25 @@ public class SpotController implements Initializable, ControllerHelper {
 
             spotHBox.getChildren().add(createLabel(spot.getName()));
 
-            if (spot.getLatitude() != null) {
-                spotHBox.getChildren().add(createLabel(spot.getLatitude().toString()));
-
-                spotHBox.getChildren().add(separator());
-            }
-
-            if (spot.getLongitude() != null) {
-                spotHBox.getChildren().add(createLabel(spot.getLongitude().toString()));
-
-                spotHBox.getChildren().add(separator());
-            }
-
-            if (spot.getMaxDepth() != null) {
-                spotHBox.getChildren().add(createLabel(spot.getMaxDepth().toString()));
-
-                spotHBox.getChildren().add(separator());
-            }
-
             spotHBox.getChildren().add(separator());
+
+//            if (spot.getLatitude() != null) {
+//                spotHBox.getChildren().add(createLabel(spot.getLatitude().toString()));
+//
+//                spotHBox.getChildren().add(separator());
+//            }
+//
+//            if (spot.getLongitude() != null) {
+//                spotHBox.getChildren().add(createLabel(spot.getLongitude().toString()));
+//
+//                spotHBox.getChildren().add(separator());
+//            }
+//
+//            if (spot.getMaxDepth() != null) {
+//                spotHBox.getChildren().add(createLabel(spot.getMaxDepth().toString()));
+//
+//                spotHBox.getChildren().add(separator());
+//            }
 
             if (spot.getType() != null) {
                 spotHBox.getChildren().add(createLabel(spot.getType().toString()));
@@ -126,23 +119,17 @@ public class SpotController implements Initializable, ControllerHelper {
                 spotHBox.getChildren().add(separator());
             }
 
-            spotHBox.getChildren().add(separator());
-
             if (spot.getPoi() != null) {
                 spotHBox.getChildren().add(createLabel(spot.getPoi().toString()));
 
                 spotHBox.getChildren().add(separator());
             }
 
-            spotHBox.getChildren().add(separator());
-
             if (spot.getLevel() != null) {
                 spotHBox.getChildren().add(createLabel(spot.getLevel().toString()));
 
                 spotHBox.getChildren().add(separator());
             }
-
-            spotHBox.getChildren().add(separator());
 
             Button spotInfoButton = createButton("Info", "blue");
             spotInfoButton.setOnAction(event -> { openDetailsSpot(event, spot); });

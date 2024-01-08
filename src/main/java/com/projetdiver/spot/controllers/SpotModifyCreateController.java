@@ -137,23 +137,25 @@ public class SpotModifyCreateController implements ControllerHelper {
         spotErrorLabel.setStyle(spotErrorLabel.getStyle() + "-fx-text-fill: red;");
         spotModifyListVBox.getChildren().add(spotErrorLabel);
         
-        spotModifyListVBox.getChildren().add(createLabel("Title: "));
+        spotModifyListVBox.getChildren().add(createLabel("Name: "));
         spotModifyListVBox.getChildren().add(createTextField(""));
 
-        spotModifyListVBox.getChildren().add(createLabel("Date: "));
-        DatePicker datePicker = new DatePicker();
-        spotModifyListVBox.getChildren().add(datePicker);
-        
-        spotModifyListVBox.getChildren().add(createLabel("Comment: "));
+        spotModifyListVBox.getChildren().add(createLabel("Latitude: "));
         spotModifyListVBox.getChildren().add(createTextField(""));
 
-        spotModifyListVBox.getChildren().add(createLabel("Duration: "));
+        spotModifyListVBox.getChildren().add(createLabel("Longitude: "));
         spotModifyListVBox.getChildren().add(createTextField(""));
 
-        spotModifyListVBox.getChildren().add(createLabel("Temperature: "));
+        spotModifyListVBox.getChildren().add(createLabel("Max depth: "));
         spotModifyListVBox.getChildren().add(createTextField(""));
 
-        spotModifyListVBox.getChildren().add(createLabel("Depth: "));
+        spotModifyListVBox.getChildren().add(createLabel("Type: "));
+        spotModifyListVBox.getChildren().add(createTextField(""));
+
+        spotModifyListVBox.getChildren().add(createLabel("Point of interest: "));
+        spotModifyListVBox.getChildren().add(createTextField(""));
+
+        spotModifyListVBox.getChildren().add(createLabel("Level: "));
         spotModifyListVBox.getChildren().add(createTextField(""));
         
         HBox spotHBox = new HBox();
