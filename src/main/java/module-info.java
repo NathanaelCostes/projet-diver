@@ -21,6 +21,8 @@ module com.projetdiver {
     exports com.projetdiver.lesson.controllers;
     exports com.projetdiver.spot.controllers;
     exports com.projetdiver.session.controllers;
+    exports com.projetdiver.map.controllers;
+
 
 
     exports com.projetdiver.admin;
@@ -44,5 +46,7 @@ module com.projetdiver {
     opens com.fxrouter to javafx.fxml;
     exports com.projetdiver.spot;
     opens com.projetdiver.spot to javafx.fxml;
+    opens com.projetdiver.map.controllers to javafx.fxml;
+
 
 }
