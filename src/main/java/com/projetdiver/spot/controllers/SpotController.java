@@ -1,9 +1,10 @@
 package com.projetdiver.spot.controllers;
 
 import com.fxrouter.FXRouter;
-import com.projetdiver.diver.DiverFacade;
 import com.projetdiver.spot.Spot;
 import com.projetdiver.spot.SpotFacade;
+import com.projetdiver.ControllerHelper;
+
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -16,7 +17,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import com.projetdiver.spot.exceptions.*;
 
 import java.io.IOException;
 import java.io.InputStream;

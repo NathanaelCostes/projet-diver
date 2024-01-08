@@ -3,6 +3,7 @@ package com.projetdiver.session.controllers;
 import java.io.InputStream;
 import java.sql.Date;
 
+import com.projetdiver.ControllerHelper;
 import com.projetdiver.session.Session;
 import com.projetdiver.session.SessionFacade;
 import com.projetdiver.session.exceptions.DiverNotFoundException;

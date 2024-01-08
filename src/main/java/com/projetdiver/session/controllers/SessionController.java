@@ -1,5 +1,6 @@
 package com.projetdiver.session.controllers;
 
+import com.projetdiver.ControllerHelper;
 import com.projetdiver.diver.DiverFacade;
 import com.projetdiver.session.Session;
 import com.projetdiver.session.exceptions.NotConnectedException;

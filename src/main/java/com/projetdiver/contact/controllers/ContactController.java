@@ -6,7 +6,7 @@ import com.projetdiver.contact.ContactFacade;
 import com.projetdiver.contact.exceptions.ContactNotFoundException;
 import com.projetdiver.diver.DiverFacade;
 import com.projetdiver.diver.Diver;
-import com.projetdiver.session.controllers.ControllerHelper;
+import com.projetdiver.ControllerHelper;
 import com.projetdiver.session.exceptions.NotConnectedException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

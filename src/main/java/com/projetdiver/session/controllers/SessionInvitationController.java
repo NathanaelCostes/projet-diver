@@ -3,7 +3,7 @@ package com.projetdiver.session.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.projetdiver.contact.Contact;
+import com.projetdiver.ControllerHelper;
 import com.projetdiver.contact.ContactFacade;
 import com.projetdiver.diver.Diver;
 import com.projetdiver.diver.DiverDAO;
