@@ -24,6 +24,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SpotController implements Initializable, ControllerHelper {
+
     /**
      * The instance of the SpotFacade
      */
@@ -48,6 +49,12 @@ public class SpotController implements Initializable, ControllerHelper {
         this.facade = SpotFacade.getInstance();
     }
 
+
+    //Javadoc for the SpotController
+
+    /**
+     * Set the menu buttons
+     */
     @FXML
     public void setSpotMenuHBox(){
         spotMenuHBox.getChildren().clear();
@@ -59,7 +66,11 @@ public class SpotController implements Initializable, ControllerHelper {
         });
         spotMenuHBox.getChildren().add(spotCreateButton);
     }
-    
+
+    /**
+     * Open the invitation spot view
+     * @param event the event
+     */
     @FXML
     private void openInvitationSpot(ActionEvent event) {
         try {
@@ -84,6 +95,9 @@ public class SpotController implements Initializable, ControllerHelper {
         }
     }
 
+    /**
+     * Set the spot list
+     */
     @FXML
     public void setSpotListView(){
         spotListVBox.getChildren().clear();
@@ -142,6 +156,11 @@ public class SpotController implements Initializable, ControllerHelper {
         });
     }
 
+    /**
+     * Open the spot details view
+     * @param event the event
+     * @param spot the spot
+     */
     @FXML
     public void openDetailsSpot(Event event, Spot spot) {
         try {
@@ -169,6 +188,11 @@ public class SpotController implements Initializable, ControllerHelper {
         }
     }
 
+    /**
+     * Open the spot modify view
+     * @param event the event
+     * @param spot the spot
+     */
     @FXML
     public void openModifySpot(Event event, Spot spot) {
         try {
@@ -196,6 +220,10 @@ public class SpotController implements Initializable, ControllerHelper {
         }
     }
 
+    /**
+     * Open the spot create view
+     * @param event the event
+     */
     @FXML
     public void openCreateSpot(Event event) {
         try {
@@ -223,6 +251,9 @@ public class SpotController implements Initializable, ControllerHelper {
         }
     }
 
+    /**
+     * Button to go back to the main page
+     */
     @FXML
     private void backToMainPage(){
         try {

@@ -32,6 +32,10 @@ public class SpotDetailsController implements ControllerHelper {
     public void initialize() {
     }
 
+    /**
+     * Set the spot details
+     * @param spot the spot to display
+     */
     public void setSpotDetails(Spot spot) {
         spotDetailsListVBox.getChildren().clear();
 

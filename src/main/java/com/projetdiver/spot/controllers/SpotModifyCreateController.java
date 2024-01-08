@@ -53,6 +53,10 @@ public class SpotModifyCreateController implements ControllerHelper {
     public void initialize() {
     }
 
+    /**
+     * Set the modify view of a spot
+     * @param spot the spot to modify
+     */
     public void setSpotModify(Spot spot) {
         spotModifyListVBox.getChildren().clear();
 
@@ -125,6 +129,9 @@ public class SpotModifyCreateController implements ControllerHelper {
 
     }
 
+    /**
+     * Set the create view of a spot
+     */
     public void setSpotCreate(){
 
         spotModifyLabel.setText("Create a spot");
@@ -193,6 +200,11 @@ public class SpotModifyCreateController implements ControllerHelper {
 
     }
 
+    /**
+     * Show the spot invitation view
+     * @param event the event
+     * @param spot the spot
+     */
     @FXML
     public void openInvitationSpot(Event event, Spot spot) {
         try {
