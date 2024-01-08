@@ -154,7 +154,7 @@ public class CertificationDAOPostgre extends CertificationDAO {
                 certificationStatement.setString(1, certification.getName());
                 certificationStatement.setBoolean(2, certification.isPending());
                 certificationStatement.setBytes(3, readFileContent(certification.getFile().toPath()));
-                certificationStatement.setString(4, certification.getId() + certification.getFileName());
+                certificationStatement.setString(4, certification.getFileName());
                 certificationStatement.setInt(5, certification.getLevelObtained().getLevel());
                 certificationStatement.setString(6, certification.getLevelObtained().getCertificationType().toString());
                 certificationStatement.setInt(7, diverId);
@@ -181,19 +181,33 @@ public class CertificationDAOPostgre extends CertificationDAO {
     @Override
     public boolean updateCertification(Certification certification) {
 
-        System.out.println(certification);
+        System.out.println("Updating certification");
+        System.out.println(certification.getFileName());
         try {
             connection();
 
             // Update certification table
             String certificationSql = "UPDATE certification SET name=?, pending=?, file=?, fileName=?, levelObtainedLevel=?, levelObtainedType=? WHERE certificationId=?";
-            System.out.println(certification.getId());
 
             try (PreparedStatement certificationStatement = connection.prepareStatement(certificationSql)) {
                 // Set parameters for the UPDATE statement
                 certificationStatement.setString(1, certification.getName());
                 certificationStatement.setBoolean(2, certification.isPending());
                 certificationStatement.setBytes(3, Files.readAllBytes(certification.getFile().toPath()));
+
+                String currentFileName = getCertificationById(certification.getId()).getFileName();
+                System.out.println("Current file name: " + currentFileName);
+                if (!currentFileName.equals(certification.getFileName())) {
+                    System.out.println("File name changed");
+                    System.out.println("New file name: " + certification.getFileName());
+                    certificationStatement.setString(4, certification.getFileName());
+                } else {
+                    System.out.println("File name not changed");
+
+                    // Keep the existing filename if the file is not changed
+                    certificationStatement.setString(4, currentFileName);
+                }
+
                 certificationStatement.setString(4, certification.getFileName());
                 certificationStatement.setInt(5, certification.getLevelObtained().getLevel());
                 certificationStatement.setString(6, certification.getLevelObtained().getCertificationType().toString());
@@ -245,6 +259,51 @@ public class CertificationDAOPostgre extends CertificationDAO {
             closeConnection();
 
         }
+    }
+
+    /**
+     * Get a certification by its id
+     * @param certificationId the id of the certification
+     * @return the certification
+     */
+    public Certification getCertificationById(Integer certificationId){
+        Certification certification = null;
+
+        try {
+            connection();
+            System.out.println("Getting certification by id: " + certificationId);
+
+            // Query to retrieve certification by id
+            String getCertificationByIdSql = "SELECT name, pending, file, fileName, levelObtainedLevel, levelObtainedType FROM certification WHERE certificationId = ?";
+            try (PreparedStatement getCertificationByIdStatement = connection.prepareStatement(getCertificationByIdSql)) {
+                getCertificationByIdStatement.setInt(1, certificationId);
+
+                try (ResultSet resultSet = getCertificationByIdStatement.executeQuery()) {
+                    if (resultSet.next()) {
+                        String name = resultSet.getString("name");
+                        boolean pending = resultSet.getBoolean("pending");
+                        byte[] fileBytes = resultSet.getBytes("file");
+                        String fileName = resultSet.getString("fileName");
+                        int levelObtainedLevel = resultSet.getInt("levelObtainedLevel");
+                        String levelObtainedType = resultSet.getString("levelObtainedType");
+
+                        // Convert byte array to File object
+                        File file = convertBytesToFile(fileBytes, fileName);
+
+                        Level level = new Level(levelObtainedLevel, CertificationType.valueOf(levelObtainedType));
+
+                        certification = new Certification(certificationId, name, level, pending, file, fileName);
+                    }
+                }
+            }
+        } catch (SQLException | IOException e) {
+            System.err.println("Error while retrieving certification by id: " + certificationId);
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+
+        return certification;
     }
 
     /**

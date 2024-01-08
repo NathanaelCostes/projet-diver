@@ -170,8 +170,8 @@ public class LessonController implements Initializable {
             Scene scene = new Scene(root);
             modalStage.setScene(scene);
 
-            //String cssPath = Objects.requireNonNull(getClass().getResource("/com/projetdiver/styles/lessonCreationModalStyle.css")).toExternalForm();
-            //scene.getStylesheets().add(cssPath);
+            String cssPath = Objects.requireNonNull(getClass().getResource("/com/projetdiver/styles/lessonCreationModalStyle.css")).toExternalForm();
+            scene.getStylesheets().add(cssPath);
 
             // Set the current stage as the owner for the modality
             modalStage.initOwner(((Node) event.getSource()).getScene().getWindow());
