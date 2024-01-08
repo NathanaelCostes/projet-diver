@@ -8,7 +8,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/adminPanel-style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projetdiver.admin.AdminPanelController">
    <center>
-      <GridPane prefHeight="167.0" prefWidth="590.0" BorderPane.alignment="CENTER">
+      <GridPane hgap="10.0" prefHeight="167.0" prefWidth="590.0" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="292.4" minWidth="10.0" prefWidth="290.4" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="349.99999999999994" minWidth="10.0" prefWidth="290.3999999999999" />
@@ -33,12 +33,16 @@
                   </ScrollPane>
                </children>
             </VBox>
-            <ListView fx:id="listCertificationView" prefHeight="113.0" prefWidth="295.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label text="Certificate waiting for validation" GridPane.columnIndex="1" GridPane.halignment="CENTER">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
+            <VBox alignment="TOP_CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <Label text="Certificate waiting for validation">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <ListView fx:id="listCertificationView" prefHeight="113.0" prefWidth="295.0" />
+               </children>
+            </VBox>
          </children>
          <padding>
             <Insets left="5.0" right="5.0" />
