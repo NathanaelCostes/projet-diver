@@ -52,7 +52,7 @@ public class ContactCreateController implements ControllerHelper {
 
                         diverHBox.getChildren().add(separator());
 
-                        Button diverButton = createButton("add", "#3ebbbe");
+                        Button diverButton = createButton("add", getColor("validation"));
                         diverButton.setOnAction(event -> {
                             try {
                                 facade.createContact(diver.getId());

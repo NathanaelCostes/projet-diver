@@ -102,7 +102,7 @@ public class SessionInvitationController implements ControllerHelper {
                 invitationHBox.getChildren().add(invitationInfoLabel);
                 invitationHBox.getChildren().add(separator());
                 
-                Button deleteButton = createButton("Delete", "red");
+                Button deleteButton = createButton("Delete", getColor("suppression"));
                 deleteButton.setOnAction(event -> {
                     try {
                         facade.deleteInvitation(invitation);
@@ -141,7 +141,7 @@ public class SessionInvitationController implements ControllerHelper {
                 invitationHBox.getChildren().add(createLabel(diver.getFirstName()));
                 invitationHBox.getChildren().add(separator());
 
-                Button inviteButton = createButton("Invite", "green");
+                Button inviteButton = createButton("Invite", getColor("information"));
                 inviteButton.setOnAction(event -> {
                     try {
                         facade.createInvitation(new Invitation(session, diver, true));
@@ -205,7 +205,7 @@ public class SessionInvitationController implements ControllerHelper {
                     invitationHBox.getChildren().add(createLabel(session.getOwner().getLastName() + " " + session.getOwner().getFirstName()));
                     invitationHBox.getChildren().add(separator());
                     
-                    Button deleteButton = createButton("Delete", "red");
+                    Button deleteButton = createButton("Delete", getColor("suppression"));
                     deleteButton.setOnAction(event -> {
                         try {
                             facade.deleteInvitation(invitation);
@@ -237,7 +237,7 @@ public class SessionInvitationController implements ControllerHelper {
                 invitationHBox.getChildren().add(createLabel(session.getOwner().getLastName() + " " + session.getOwner().getFirstName()));
                 invitationHBox.getChildren().add(separator());
 
-                Button inviteButton = createButton("Accept", "green");
+                Button inviteButton = createButton("Accept", getColor("validation"));
                 inviteButton.setOnAction(event -> {
                     try {
                         facade.acceptInvitation(facade.getInvitation(session, currentDiver));
@@ -251,7 +251,7 @@ public class SessionInvitationController implements ControllerHelper {
 
                 invitationHBox.getChildren().add(separator());
 
-                Button refuseButton = createButton("Refuse", "red");
+                Button refuseButton = createButton("Refuse", getColor("suppression"));
                 refuseButton.setOnAction(event -> {
                     try {
                         facade.deleteInvitation(facade.getInvitation(session, currentDiver));

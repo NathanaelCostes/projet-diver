@@ -28,4 +28,21 @@ public interface ControllerHelper {
         textField.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-font-family: 'Roboto';");
         return textField;
     }
+
+    public default String getColor(String color){
+        switch (color){
+            case "navbar":
+                return "#2d95a1";
+            case "sidebar", "validation":
+                return "#3ebbbe";
+            case "suppression":
+                return "#D94640";
+            case "modification":
+                return "#BAB8B7";
+            case "information":
+                return "#ff7f00";
+            default:
+                return "#ffffff";
+        }
+    }
 }

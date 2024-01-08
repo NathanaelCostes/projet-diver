@@ -55,14 +55,14 @@ public class SessionController implements Initializable, ControllerHelper {
     public void setSessionMenuHBox(){
         sessionMenuHBox.getChildren().clear();
 
-        Button sessionCreateButton = createButton("Create", "green");
+        Button sessionCreateButton = createButton("Create", getColor("validation"));
         sessionCreateButton.setOnAction(event -> { 
             openCreateSession(event); 
             setSessionListView();
         });
         sessionMenuHBox.getChildren().add(sessionCreateButton);
 
-        Button sessionRefreshButton = createButton("Request", "lightgray");
+        Button sessionRefreshButton = createButton("Request", getColor("information"));
         sessionRefreshButton.setOnAction(event -> {
             openInvitationSession(event);
             setSessionListView(); 
@@ -122,7 +122,7 @@ public class SessionController implements Initializable, ControllerHelper {
                 sessionHBox.getChildren().add(separator());
 
                 if(session.getOwner().getId() == facade.getCurrentDiver().getId()) {
-                    Button sessionModifyButton = createButton("Modify", "green");
+                    Button sessionModifyButton = createButton("Modify", getColor("modification"));
                     sessionModifyButton.setOnAction(event -> { 
                         openModifySession(event, session);
                         setSessionListView();
@@ -130,7 +130,7 @@ public class SessionController implements Initializable, ControllerHelper {
                     sessionHBox.getChildren().add(sessionModifyButton);
                 }
 
-                Button sessionInfoButton = createButton("Info", "blue");
+                Button sessionInfoButton = createButton("Info", getColor("information"));
                 sessionInfoButton.setOnAction(event -> { openDetailsSession(event, session); });
                 sessionHBox.getChildren().add(sessionInfoButton);
 

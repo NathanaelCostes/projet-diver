@@ -119,7 +119,7 @@ public class SessionModifyCreateController implements ControllerHelper {
         sessionHBox.setAlignment(javafx.geometry.Pos.CENTER);
         sessionHBox.setStyle("-fx-padding: 25px 0px 0px 0px;");
 
-        Button sessionSaveButton = createButton("Save", "green");
+        Button sessionSaveButton = createButton("Save", getColor("validation"));
         sessionSaveButton.setOnAction(event -> { try {
             session.setTitle(((TextField) sessionModifyListVBox.getChildren().get(2)).getText());
             
@@ -172,7 +172,7 @@ public class SessionModifyCreateController implements ControllerHelper {
         } });
         sessionHBox.getChildren().add(sessionSaveButton);
         
-        Button sessionDeleteButton = createButton("Delete", "red");
+        Button sessionDeleteButton = createButton("Delete", getColor("suppression"));
         sessionDeleteButton.setOnAction(event -> { try {
             facade.getAllInvitationsToSession(session).forEach(invitation -> {
                 try {
@@ -189,7 +189,7 @@ public class SessionModifyCreateController implements ControllerHelper {
         } });
         sessionHBox.getChildren().add(sessionDeleteButton);
 
-        Button sessionInviteButton = createButton("Invite", "blue");
+        Button sessionInviteButton = createButton("Invite", getColor("information"));
         sessionInviteButton.setOnAction(event -> {
             openInvitationSession(event, session); 
         });
@@ -235,7 +235,7 @@ public class SessionModifyCreateController implements ControllerHelper {
         sessionHBox.setAlignment(javafx.geometry.Pos.CENTER);
         sessionHBox.setStyle("-fx-padding: 25px 0px 0px 0px;");
 
-        Button sessionCreateButton = createButton("Create", "green");
+        Button sessionCreateButton = createButton("Create", getColor("validation"));
         sessionCreateButton.setOnAction(event -> { try {
             Session session = new Session();
             session.setTitle(((TextField) sessionModifyListVBox.getChildren().get(2)).getText());
