@@ -191,6 +191,7 @@ public class SpotController implements Initializable, ControllerHelper {
 
             modalStage.showAndWait();
 
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -223,6 +224,8 @@ public class SpotController implements Initializable, ControllerHelper {
 
             modalStage.showAndWait();
 
+            initialize(null, null);
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -253,6 +256,9 @@ public class SpotController implements Initializable, ControllerHelper {
             modalStage.initModality(Modality.WINDOW_MODAL);
 
             modalStage.showAndWait();
+
+            initialize(null, null);
+
 
         } catch (Exception e) {
             throw new RuntimeException(e);

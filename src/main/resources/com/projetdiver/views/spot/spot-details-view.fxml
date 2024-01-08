@@ -5,7 +5,7 @@
 
 <BorderPane prefHeight="1000.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projetdiver.spot.controllers.SpotDetailsController">
    <top>
-      <Label style="-fx-font-weight: bold; -fx-font-size: 50px; -fx-font-family: Roboto;" text="Session Information" textAlignment="CENTER" textFill="#0099ff" BorderPane.alignment="CENTER" />
+      <Label style="-fx-font-weight: bold; -fx-font-size: 50px; -fx-font-family: Roboto;" text="Spot Information" textAlignment="CENTER" textFill="#0099ff" BorderPane.alignment="CENTER" />
    </top>
    <center>
       <VBox fx:id="spotDetailsListVBox" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
