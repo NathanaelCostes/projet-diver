@@ -180,6 +180,58 @@
                </children>
             </AnchorPane>
          </right>
+         <!-- Adding center content to the BorderPane -->
+         <center>
+            <VBox alignment="CENTER" spacing="20.0" prefWidth="400.0">
+               <Text fill="BLACK" text="Welcome to the Diving Manager" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <font>
+                     <Font name="System Bold" size="18.0" />
+                  </font>
+               </Text>
+
+               <Text fill="BLACK" text="The diving management project is designed to facilitate the management of divers, diving sessions, lessons, and certificates. It provides a user-friendly interface to help you track and organize all activities related to diving." fontSmoothingType="LCD" wrappingWidth="400.0">
+                  <font>
+                     <Font name="System" size="14.0" />
+                  </font>
+               </Text>
+
+               <Text fill="BLACK" text="Project Features:" fontSmoothingType="LCD">
+                  <font>
+                     <Font name="System Bold" size="16.0" />
+                  </font>
+               </Text>
+
+               <Text fill="BLACK" text="- Comprehensive management of divers, including personal information." fontSmoothingType="LCD" wrappingWidth="400.0">
+                  <font>
+                     <Font name="System" size="14.0" />
+                  </font>
+               </Text>
+
+               <Text fill="BLACK" text="- Tracking diving sessions with details on locations, dates, and participants." fontSmoothingType="LCD" wrappingWidth="400.0">
+                  <font>
+                     <Font name="System" size="14.0" />
+                  </font>
+               </Text>
+
+               <Text fill="BLACK" text="- Creation and management of lessons, both theoretical and practical, by other divers." fontSmoothingType="LCD" wrappingWidth="400.0">
+                  <font>
+                     <Font name="System" size="14.0" />
+                  </font>
+               </Text>
+
+               <Text fill="BLACK" text="- Addition of official certificates, validated by admins, to access specific lessons." fontSmoothingType="LCD" wrappingWidth="400.0">
+                  <font>
+                     <Font name="System" size="14.0" />
+                  </font>
+               </Text>
+
+               <Text fill="BLACK" text="- Assignment of spots to diving sessions for enhanced session details and organization." fontSmoothingType="LCD" wrappingWidth="400.0">
+                  <font>
+                     <Font name="System" size="14.0" />
+                  </font>
+               </Text>
+            </VBox>
+         </center>
       </BorderPane>
    </children>
 </AnchorPane>
