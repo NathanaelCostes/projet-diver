@@ -1,5 +1,6 @@
 package com.projetdiver.spot.controllers;
 
+import com.fxrouter.FXRouter;
 import com.projetdiver.diver.DiverFacade;
 import com.projetdiver.spot.Spot;
 import com.projetdiver.spot.SpotFacade;
@@ -17,6 +18,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import com.projetdiver.spot.exceptions.*;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -217,6 +219,15 @@ public class SpotController implements Initializable, ControllerHelper {
             modalStage.showAndWait();
 
         } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    private void backToMainPage(){
+        try {
+            FXRouter.goTo("main");
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }

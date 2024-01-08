@@ -77,7 +77,6 @@ public class MainPageController {
     private void handleCertificateButton() {
         try {
             FXRouter.goTo("certification");
-            closeSidebar(); // Close the sidebar after navigating to a new page
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
