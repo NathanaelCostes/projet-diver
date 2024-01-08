@@ -403,8 +403,6 @@ public class DiverDAOPostgre extends DiverDAO {
     public void deleteDiverById(int id) {
         try {
             connection();
-            System.out.println("Connection to the database successful");
-            System.out.println("id = " + id);
 
             // Delete records from invitation
             String deleteInvitation = "DELETE FROM invitation WHERE receiver = ?";
@@ -446,6 +444,16 @@ public class DiverDAOPostgre extends DiverDAO {
             String deleteReview = "DELETE FROM review WHERE diverId = ?";
             try (PreparedStatement statement = connection.prepareStatement(deleteReview)) {
                 statement.setInt(1, id);
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            // Delete records from contact
+            String sql = "DELETE FROM contact WHERE receiver = ? OR sender = ?";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setInt(1, id);
+                statement.setInt(2, id);
                 statement.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
