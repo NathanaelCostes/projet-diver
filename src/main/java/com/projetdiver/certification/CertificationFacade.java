@@ -1,5 +1,7 @@
 package com.projetdiver.certification;
 
+import com.projetdiver.dao.PostgreDAOFactory;
+
 import java.util.List;
 
 public class CertificationFacade {
@@ -25,7 +27,7 @@ public class CertificationFacade {
      * @return true if the certification was created, false otherwise
      */
     public boolean createCertification(Certification certification, int diverId) {
-        return CertificationDAO.getInstance().createCertification(certification, diverId);
+        return PostgreDAOFactory.getInstance().createCertificationDAO().createCertification(certification, diverId);
     }
 
     /**
@@ -34,7 +36,7 @@ public class CertificationFacade {
      * @return true if the certification was updated, false otherwise
      */
     public boolean updateCertification(Certification certification) {
-        return CertificationDAO.getInstance().updateCertification(certification);
+        return PostgreDAOFactory.getInstance().createCertificationDAO().updateCertification(certification);
     }
 
     /**
@@ -42,7 +44,7 @@ public class CertificationFacade {
      * @param certificationId the id of the certification to delete
      */
     public void deleteCertification(int certificationId) {
-        CertificationDAO.getInstance().deleteCertification(certificationId);
+        PostgreDAOFactory.getInstance().createCertificationDAO().deleteCertification(certificationId);
     }
 
     /**
@@ -51,7 +53,7 @@ public class CertificationFacade {
      * @return the List of certifications of this diver
      */
     public List<Certification> getAllCertificationsOfDiver(int diverId) {
-        return CertificationDAO.getInstance().getAllCertificationsOfDiver(diverId);
+        return PostgreDAOFactory.getInstance().createCertificationDAO().getAllCertificationsOfDiver(diverId);
     }
 
     /**
@@ -60,7 +62,7 @@ public class CertificationFacade {
      * @return the List of certifications of this lesson
      */
     public List<Certification> getAllCertificationsOfLesson(int lessonId) {
-        return CertificationDAO.getInstance().getAllCertificationsOfLesson(lessonId);
+        return PostgreDAOFactory.getInstance().createCertificationDAO().getAllCertificationsOfLesson(lessonId);
     }
 
     /**
@@ -68,6 +70,6 @@ public class CertificationFacade {
      * @return the List of certifications
      */
     public List<Certification> getAllCertifications() {
-        return CertificationDAO.getInstance().getAllCertifications();
+        return PostgreDAOFactory.getInstance().createCertificationDAO().getAllCertifications();
     }
 }

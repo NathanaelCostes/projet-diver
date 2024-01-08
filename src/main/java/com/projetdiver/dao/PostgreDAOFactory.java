@@ -1,5 +1,6 @@
 package com.projetdiver.dao;
 
+import com.projetdiver.certification.CertificationDAO;
 import com.projetdiver.contact.ContactDAO;
 import com.projetdiver.diver.DiverDAO;
 import com.projetdiver.review.ReviewDAO;
@@ -37,6 +38,10 @@ public class PostgreDAOFactory implements DAOFactory {
 
     public SpotDAO createSpotDAO() { 
       return SpotDAO.getInstance(); 
+    }
+
+    public CertificationDAO createCertificationDAO(){
+        return CertificationDAO.getInstance();
     }
 
     public ContactDAO createContactDAO() {
