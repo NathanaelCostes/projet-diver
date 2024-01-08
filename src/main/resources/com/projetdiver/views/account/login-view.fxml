@@ -22,7 +22,7 @@
                  <TextField fx:id="emailTextField" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="200.0" promptText="example@gmail.com" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
                <PasswordField fx:id="passwordTextField" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                  <Label style="-fx-text-fill: #2d95a1; -fx-font-size: 14.0;" text="Password" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                 <Button minWidth="-Infinity" onAction="#onAction" prefWidth="100.0" style="-fx-background-color: #2d95a1; -fx-text-fill: white;" text="Login" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                 <Button styleClass="loginButton" minWidth="-Infinity" onAction="#onAction" prefWidth="100.0" text="Login" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
              <Button fx:id="registerButton" mnemonicParsing="false" onAction="#goToRegister" styleClass="link-button" text="No account yet ? register here !" textFill="TEAL" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
          </children>
          <padding>

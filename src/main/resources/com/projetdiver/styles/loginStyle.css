@@ -13,3 +13,14 @@
     -fx-text-fill: darkcyan;
 
 }
+
+.loginButton {
+    -fx-background-color: #3ebbbe;
+    -fx-text-fill: #ffffff;
+    -fx-cursor: hand;
+}
+
+.loginButton:hover {
+    -fx-background-color: #2d95a1;
+}
+

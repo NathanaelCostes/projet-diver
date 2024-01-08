@@ -1,0 +1,29 @@
+/* Style pour la VBox */
+.scrollPane{
+    -fx-border-color: #2d95a1; /* Couleur de la bordure */
+    /*-fx-border-width: 2px; /* Largeur de la bordure */
+}
+
+.vbox-review {
+    -fx-border-color: #2d95a1; /* Couleur de la bordure */
+    -fx-border-width: 0 0 1px 0; /* Largeur de la bordure */
+    -fx-padding: 5px; /* Espacement interne */
+    -fx-background-color: #ffffff; /* Couleur de fond */
+    -fx-cursor: hand; /* Curseur de la main au survol */
+    -fx-hgrow: always; /* Permet de prendre toute la largeur disponible */
+}
+
+/* Style pour les labels à l'intérieur de la VBox */
+.vbox-review Label {
+    -fx-text-fill: #2d95a1; /* Couleur du texte */
+}
+
+/* Effet de survol pour la VBox */
+.vbox-review:hover {
+    -fx-background-color: #2d95a1; /* Couleur de fond au survol */
+
+}
+
+.vbox-review:hover Label {
+    -fx-text-fill: #ffffff; /* Couleur du texte au survol */
+}
