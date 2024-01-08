@@ -5,6 +5,7 @@ import com.projetdiver.diver.DiverDAO;
 import com.projetdiver.review.ReviewDAO;
 import com.projetdiver.session.SessionDAO;
 import com.projetdiver.lesson.LessonDAO;
+import com.projetdiver.spot.SpotDAO;
 
 /**
  * 
@@ -32,6 +33,10 @@ public class PostgreDAOFactory implements DAOFactory {
   
     public LessonDAO createLessonDAO() { 
         return LessonDAO.getInstance(); 
+    }
+
+    public SpotDAO createSpotDAO() { 
+      return SpotDAO.getInstance(); 
     }
 
     public ContactDAO createContactDAO() {
