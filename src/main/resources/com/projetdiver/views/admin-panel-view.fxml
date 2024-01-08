@@ -9,14 +9,6 @@
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../styles/adminPanel-style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projetdiver.admin.AdminPanelController">
    <center>
       <GridPane hgap="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
-        <columnConstraints>
-            <ColumnConstraints hgrow="ALWAYS" maxWidth="292.4" minWidth="10.0" prefWidth="290.4" />
-            <ColumnConstraints maxWidth="349.99999999999994" minWidth="10.0" prefWidth="290.3999999999999" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints maxHeight="167.0" minHeight="9.0" prefHeight="13.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="336.0" minHeight="10.0" prefHeight="332.0" vgrow="SOMETIMES" />
-        </rowConstraints>
          <children>
             <VBox alignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" VBox.vgrow="ALWAYS">
                <children>
@@ -27,13 +19,13 @@
                   </Label>
                   <ScrollPane fitToWidth="true" maxWidth="1.7976931348623157E308" prefHeight="308.0" prefWidth="290.0">
                     <content>
-                        <VBox fx:id="diverListVBox" alignment="CENTER" maxHeight="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" />
+                        <VBox fx:id="diverListVBox" alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" VBox.vgrow="ALWAYS"/>
                     </content>
                   </ScrollPane>
                </children>
             </VBox>
-            <VBox alignment="TOP_CENTER" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
-               <children>
+             <VBox alignment="TOP_CENTER" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" VBox.vgrow="ALWAYS">
+                 <children>
                   <Label text="Certificate waiting for validation">
                      <font>
                         <Font size="14.0" />

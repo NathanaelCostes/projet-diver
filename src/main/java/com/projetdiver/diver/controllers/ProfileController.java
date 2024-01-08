@@ -108,12 +108,15 @@ public class ProfileController {
                 if (certification.isPending()) {
                     Button buttonDownload = new Button("Download Certificate");
                     buttonDownload.setOnAction(event -> handleButtonActionDownload(certification));
+                    buttonDownload.getStyleClass().add("download-button"); // Set style class
 
                     Button buttonDelete = new Button("Delete Certificate");
                     buttonDelete.setOnAction(event -> handleButtonActionDelete(certification));
+                    buttonDelete.getStyleClass().add("delete-button"); // Set style class
 
                     Button buttonValidate = new Button("Accept Certificate");
                     buttonValidate.setOnAction(event -> handlteButtonActionValidate(certification));
+                    buttonValidate.getStyleClass().add("validate-button"); // Set style class
 
                     HBox hbox = new HBox(new Label(certification.toString()), buttonDownload, buttonDelete, buttonValidate);
                     studentsListView.getItems().add(hbox);

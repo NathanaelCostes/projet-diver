@@ -61,6 +61,7 @@ public class CertificationController implements Initializable {
                     handleButtonActionUpdate(certification);
                 });
 
+
                 HBox hbox = new HBox(new Label(certification.toString()), buttonDownload, buttonUpdate, buttonDelete);
                 listCertificationView.getItems().add(hbox);
             }
