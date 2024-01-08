@@ -1,18 +1,8 @@
 /* Stylesheet.css */
 
-/* General styling */
-.root {
-    -fx-font-size: 14px;
-}
-
 /* BorderPane styling */
 #mainBorderPane {
     -fx-background-color: #ffffff; /* Set the background color of the BorderPane */
-}
-
-/* GridPane styling */
-#mainGridPane {
-    -fx-padding: 20; /* Set padding for the GridPane */
 }
 
 /* ListView styling */
@@ -29,7 +19,6 @@
 
 /* Label styling */
 #certificateListLabel {
-    -fx-padding: 0 0 10 20; /* Set padding for the certificate list label */
     -fx-font-size: 15px; /* Set font size for the label */
 }
 
@@ -48,7 +37,6 @@
     -fx-background-color: #3ebbbe; /* Set background color for the add button */
     -fx-text-fill: white; /* Set text color for the add button */
     -fx-font-weight: bold; /* Make the text bold */
-    -fx-padding: 5 10; /* Set padding for the button */
 }
 
 /* Styling for dynamically created buttons */
@@ -56,21 +44,18 @@
     -fx-background-color: #3ebbbe; /* Set background color for download buttons */
     -fx-text-fill: white; /* Set text color for download buttons */
     -fx-font-weight: bold; /* Make the text bold */
-    -fx-padding: 5 10; /* Set padding for buttons */
 }
 
 .delete-button {
     -fx-background-color: #D94640; /* Set background color for delete buttons */
     -fx-text-fill: white; /* Set text color for delete buttons */
     -fx-font-weight: bold; /* Make the text bold */
-    -fx-padding: 5 10; /* Set padding for buttons */
 }
 
 .update-button {
     -fx-background-color: #BAB8B7; /* Set background color for update buttons */
     -fx-text-fill: white; /* Set text color for update buttons */
     -fx-font-weight: bold; /* Make the text bold */
-    -fx-padding: 5 10; /* Set padding for buttons */
 }
 
 /* Hover effect for buttons */

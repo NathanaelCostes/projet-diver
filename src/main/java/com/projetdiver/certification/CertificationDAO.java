@@ -63,4 +63,11 @@ public abstract class CertificationDAO {
      * @return the list of all the certifications
      */
     public abstract List<Certification> getAllCertifications();
+
+    /**
+     * Get a certification by its id
+     * @param certificationId the id of the certification
+     * @return the certification
+     */
+    public abstract Certification getCertificationById(Integer certificationId);
 }
