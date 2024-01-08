@@ -3,7 +3,7 @@ package com.projetdiver.session;
 import com.projetdiver.diver.Diver;
 
 /**
- * @Author Boudier
+ * @author  Boudier
  */
 public class Invitation {
     private Session session;

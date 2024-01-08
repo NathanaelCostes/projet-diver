@@ -396,7 +396,6 @@ public class DiverDAOPostgre extends DiverDAO {
     }
 
     /**
-<<<<<<< HEAD
      * Delete a diver from the database
      * @param id the id of the diver to delete
      */

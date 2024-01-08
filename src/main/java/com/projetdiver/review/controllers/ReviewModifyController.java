@@ -83,7 +83,7 @@ public class ReviewModifyController {
      * Modify a review with the values from the form.
      * Review can be a SpotReview or a LessonReview. Depends on the value of typeOfReviewToManage.
      * @param typeOfReviewToManage the type of review to manage (Spot or Lesson)
-     * @param idLessonOrSpot the id of the lesson or spot
+     * @param newReview the new review
      */
     public void modifyReview(Review newReview ,String typeOfReviewToManage) {
 

@@ -6,7 +6,7 @@ import java.io.File;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CertificationFacadeTest {
+public class CertificationFacadeTest {
 
     /**
      * Test the createCertification method of the CertificationFacade

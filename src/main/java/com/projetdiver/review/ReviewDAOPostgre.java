@@ -63,7 +63,7 @@ public class ReviewDAOPostgre extends ReviewDAO{
 
     /**
      * Fetches a review from the database using its id
-     * @param id the id to find in the database
+     * @param reviewId the id to find in the database
      * @return the review if found, null otherwise
      */
     public Review getReview(int reviewId) {

@@ -204,7 +204,7 @@ public final class FXRouter {
     /** Switch between FXRouter route and show corresponding scenes
      * @param routeLabel: Route label identifier
      * @param data: Data passed to route
-     * @throws Exception: throw FXMLLoader exception if file is not loaded correctly
+     * @throws IOException throw FXMLLoader exception if file is not loaded correctly
      */
     public static void goTo(String routeLabel, Object data) throws IOException {
         // get corresponding route
@@ -215,7 +215,7 @@ public final class FXRouter {
     }
 
     /** Helper method of goTo() which load and show new scene
-     * @throws Exception: throw FXMLLoader exception if file is not loaded correctly
+     * @throws IOException: throw FXMLLoader exception if file is not loaded correctly
      */
     private static void loadNewRoute(RouteScene route) throws IOException {
 
