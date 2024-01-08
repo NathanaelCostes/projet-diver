@@ -10,7 +10,7 @@ class LessonFacadeTest {
 
 
     /**
-     * Test the deleteLesson method of the LessonFacade
+     * Test the updateLesson method of the LessonFacade
      */
     @Test
     void updateLesson() {
