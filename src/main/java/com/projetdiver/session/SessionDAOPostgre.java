@@ -9,7 +9,10 @@ import java.util.Objects;
 
 import io.github.cdimascio.dotenv.Dotenv;
 
-
+/**
+ * Represents the concrete SessionDAO for the Postgre database
+ * @author Boudier
+ */
 public class SessionDAOPostgre extends SessionDAO {
 
     /**
@@ -410,7 +413,7 @@ public class SessionDAOPostgre extends SessionDAO {
     }
 
     @Override
-    ArrayList<Invitation> getAllInvitationsToDiver(Diver receiver) {
+    public ArrayList<Invitation> getAllInvitationsToDiver(Diver receiver) {
         try {
             connection();
 
@@ -521,7 +524,7 @@ public class SessionDAOPostgre extends SessionDAO {
     }
 
     @Override
-    boolean deleteInvitation(Invitation invitation) {
+    public boolean deleteInvitation(Invitation invitation) {
         try {
             connection();
 

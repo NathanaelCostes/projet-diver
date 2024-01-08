@@ -1,10 +1,12 @@
 package com.projetdiver;
 
 import javafx.application.Application;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import com.fxrouter.FXRouter;
 
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * Main class of the application
@@ -26,6 +28,8 @@ public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         System.out.println("Application starting...");
+
+        stage.getIcons().add(new Image(Objects.requireNonNull(DiverApplication.class.getResourceAsStream("/Diving_Portal_Logo.png"))));
 
         FXRouter.bind(this, stage);
 
@@ -50,6 +54,8 @@ public class MainApplication extends Application {
         FXRouter.when("spot", "views/spot/spot-view.fxml");
 
         FXRouter.when("club", "views/club/club-view.fxml");
+
+        FXRouter.when("certification", "views/certification/certification-view.fxml");
 
         System.out.println("Routes configured...");
         FXRouter.goTo("login");

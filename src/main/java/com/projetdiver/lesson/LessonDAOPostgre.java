@@ -1,6 +1,8 @@
 package com.projetdiver.lesson;
 
+import com.projetdiver.review.Review;
 import io.github.cdimascio.dotenv.Dotenv;
+import com.projetdiver.review.ReviewDAO;
 
 import java.sql.*;
 import java.util.List;
@@ -175,7 +177,13 @@ public class LessonDAOPostgre extends LessonDAO{
                 success = deleteRelatedRecords(lessonId, deleteDiverGivesLessonSql, "diverGivesLesson");
             }
 
-            // If diverGivesLesson deletion was successful, proceed to delete from lesson table
+            // If diverGivesLesson deletion was successful, proceed to delete from lessonReview table
+            if (success) {
+                String deleteLessonReviewSql = "DELETE FROM lessonReview WHERE lessonId = ?";
+                success = deleteRelatedRecords(lessonId, deleteLessonReviewSql, "lessonReview");
+            }
+
+            // If lessonReview deletion was successful, proceed to delete from lesson table
             if (success) {
                 String deleteLessonSql = "DELETE FROM lesson WHERE lessonId = ?";
                 success = deleteRecord(lessonId, deleteLessonSql);
@@ -474,6 +482,41 @@ public class LessonDAOPostgre extends LessonDAO{
         }
 
         return 0;
+    }
+
+    /**
+     * Fetches all reviews of a lesson from the database
+     * @param lessonId the id of the lesson
+     * @return the list of reviews for the lesson
+     */
+    public List<Review> getAllReviewsOfLesson(int lessonId) {
+        // Création de la liste
+        List<Review> listReviews = new ArrayList<>();
+
+        try{
+            connection();
+            System.out.println("Connection to the database established");
+
+            // Use a prepared statement to avoid SQL injection
+            String sql = "SELECT * FROM lessonReview WHERE lessonId = ?";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setInt(1, lessonId);
+                ResultSet resultSet = statement.executeQuery();
+
+                while (resultSet.next()) {
+                    //On appelle la méthode getReview pour récupérer les infos de la review
+                    Review review = ReviewDAO.getInstance().getReview(resultSet.getInt("reviewId"));
+                    listReviews.add(review);
+                }
+                resultSet.close();
+                return listReviews;
+            }
+        } catch (SQLException e) {
+            System.err.println("Error while connecting to the database");
+        } finally {
+            closeConnection();
+        }
+        return null;
     }
 
 }

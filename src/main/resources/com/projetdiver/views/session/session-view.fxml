@@ -1,12 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projetdiver.session.controllers.SessionController">
+<?import javafx.scene.text.Font?>
+<?import javafx.geometry.Insets?>
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projetdiver.session.controllers.SessionController">
    <top>
-      <Label style="-fx-font-weight: bold; -fx-font-size: 50px; -fx-font-family: Roboto;" text="List of Sessions" textAlignment="CENTER" textFill="#0099ff" BorderPane.alignment="CENTER" />
+      <HBox BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="10.0" top="5.0"/>
+         </BorderPane.margin>
+         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                 mnemonicParsing="false" onAction="#goToMain" prefHeight="30.0" prefWidth="30.0"
+                 style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
+            <graphic>
+               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../../icons/return.png"/>
+               </ImageView>
+            </graphic>
+            <HBox.margin>
+               <Insets/>
+            </HBox.margin>
+         </Button>
+         <Pane HBox.hgrow="ALWAYS"/>
+         <Label text="List of sessions">
+            <font>
+               <Font size="18.0"/>
+            </font>
+         </Label>
+         <Pane HBox.hgrow="ALWAYS"/>
+      </HBox>
    </top>
    <center>
       <VBox fx:id="sessionListVBox" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />

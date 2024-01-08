@@ -5,10 +5,10 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projetdiver.session.controllers.SessionInvitationController">
    <top>
-      <Label style="-fx-font-weight: bold; -fx-font-size: 50px; -fx-font-family: Roboto;" text="Session Invitation" textAlignment="CENTER" textFill="#0099ff" BorderPane.alignment="CENTER" />
+      <Label style="-fx-font-weight: bold; -fx-font-size: 50px; -fx-font-family: Roboto;" text="Session Invitation" textAlignment="CENTER" textFill="#3ebbbe" BorderPane.alignment="CENTER" />
    </top>
    <center>
-      <GridPane prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" >
+      <GridPane prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -17,8 +17,8 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
 
-         <VBox GridPane.columnIndex="0" GridPane.rowIndex="0" fx:id="sessionAlreadyInvitedListVBox" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
-         <VBox GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="sessionNotInvitedListVBox" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+         <VBox fx:id="sessionAlreadyInvitedListVBox" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+         <VBox fx:id="sessionNotInvitedListVBox" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="0" />
       </GridPane>
    </center>
 </BorderPane>

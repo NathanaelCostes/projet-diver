@@ -1,6 +1,5 @@
 package com.projetdiver.session.controllers;
 
-import com.projetdiver.diver.Diver;
 import com.projetdiver.diver.DiverFacade;
 import com.projetdiver.session.Session;
 import com.projetdiver.session.exceptions.NotConnectedException;
@@ -20,9 +19,12 @@ import com.projetdiver.session.SessionFacade;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import static com.fxrouter.FXRouter.goTo;
 
 public class SessionController implements Initializable, ControllerHelper {
     /**
@@ -37,7 +39,7 @@ public class SessionController implements Initializable, ControllerHelper {
     private VBox sessionListVBox;
 
     /**
-     * HBoc to hold menu buttons
+     * HBox to hold menu buttons
      */
     @FXML
     private HBox sessionMenuHBox;
@@ -221,6 +223,14 @@ public class SessionController implements Initializable, ControllerHelper {
         }
     }
 
+    @FXML
+    public void goToMain(ActionEvent event) {
+        try {
+            goTo("main");
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
+    }
 
     /**
      * Initialize the session list

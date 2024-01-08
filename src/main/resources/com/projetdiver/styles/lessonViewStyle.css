@@ -19,14 +19,27 @@
 
 /* Style for Button */
 .button {
-    -fx-background-color: #00c2ff; /* Button background color */
+    -fx-background-color: #2d95a1; /* Button background color */
     -fx-text-fill: #fff; /* Button text color */
     -fx-font-size: 14px; /* Button font size */
     -fx-font-weight: bold; /* Button font weight */
     -fx-padding: 8px 16px; /* Button padding */
+    -fx-cursor: hand;
 }
 
 /* Style for Button when hovered */
 .button:hover {
-    -fx-background-color: #0080ff; /* Hovered background color */
+    -fx-background-color: #3ebbbe; /* Hovered background color */
+}
+
+.transparent-button{
+    -fx-background-color: transparent; /* Button background color */
+    -fx-text-fill: #fff; /* Button text color */
+    -fx-cursor: hand; /* Mouse over cursor */
+}
+
+.transparent-button:hover{
+    -fx-background-color: transparent; /* Button background color */
+    -fx-text-fill: #fff; /* Button text color */
+    -fx-cursor: hand; /* Mouse over cursor */
 }

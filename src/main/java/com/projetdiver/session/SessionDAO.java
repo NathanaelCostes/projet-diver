@@ -4,7 +4,11 @@ import com.projetdiver.diver.Diver;
 
 import java.util.ArrayList;
 
-public abstract class SessionDAO {
+/**
+ * Represents the abstract class of the SessionDAO
+ * @author Boudier
+ */
+public abstract class  SessionDAO {
 
     /** instance de SessionDAO Postgre */
     private static SessionDAO instance;
@@ -43,7 +47,7 @@ public abstract class SessionDAO {
      * @param owner the owner of the session
      * @return the session with the owner
      */
-    abstract ArrayList<Session> getAllSessionsWhereDiverIsOwner(Diver owner);
+    public abstract ArrayList<Session> getAllSessionsWhereDiverIsOwner(Diver owner);
 
     /**
      * @param diver the diver of the session
@@ -81,7 +85,7 @@ public abstract class SessionDAO {
      * @param receiver the receiver
      * @return all the invitations to the diver
      */
-    abstract ArrayList<Invitation> getAllInvitationsToDiver(Diver receiver);
+    public abstract ArrayList<Invitation> getAllInvitationsToDiver(Diver receiver);
 
     /**
      * @param session the session
@@ -105,6 +109,6 @@ public abstract class SessionDAO {
      * @param invitation the invitation to refuse/delete
      * @return if the invitation is refused/deleted
      */
-    abstract boolean deleteInvitation(Invitation invitation);
+    public abstract boolean deleteInvitation(Invitation invitation);
 
 }

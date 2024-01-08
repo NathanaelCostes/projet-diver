@@ -75,7 +75,8 @@ public class DiverDAOPostgre extends DiverDAO {
                             resultSet.getString("email"),
                             resultSet.getString("password"),
                             resultSet.getString("lastName"),
-                            resultSet.getString("firstName"));
+                            resultSet.getString("firstName"),
+                            resultSet.getBoolean("isAdmin"));
 
                     resultSet.close();
                     System.out.println(diver);
@@ -101,6 +102,8 @@ public class DiverDAOPostgre extends DiverDAO {
     }
 
 
+
+
     /**
      * Fetches a diver from the database using its email
      * @param id the id to find in the database
@@ -123,7 +126,8 @@ public class DiverDAOPostgre extends DiverDAO {
                             resultSet.getString("email"),
                             resultSet.getString("password"),
                             resultSet.getString("lastName"),
-                            resultSet.getString("firstName"));
+                            resultSet.getString("firstName"),
+                            resultSet.getBoolean("isAdmin"));
 
                     resultSet.close();
                     System.out.println(diver);
@@ -208,8 +212,9 @@ public class DiverDAOPostgre extends DiverDAO {
                             resultSet.getString("email"),
                             resultSet.getString("password"),
                             resultSet.getString("lastName"),
-                            resultSet.getString("firstName"));
-                    
+                            resultSet.getString("firstName"),
+                            resultSet.getBoolean("isAdmin"));
+
                     divers.add(diver);
                 }
                 resultSet.close();
@@ -388,5 +393,134 @@ public class DiverDAOPostgre extends DiverDAO {
                 e.printStackTrace();
             }
         }
+    }
+
+    /**
+<<<<<<< HEAD
+     * Delete a diver from the database
+     * @param id the id of the diver to delete
+     */
+    public void deleteDiverById(int id) {
+        try {
+            connection();
+            System.out.println("Connection to the database successful");
+            System.out.println("id = " + id);
+
+            // Delete records from invitation
+            String deleteInvitation = "DELETE FROM invitation WHERE receiver = ?";
+            try (PreparedStatement statement = connection.prepareStatement(deleteInvitation)) {
+                statement.setInt(1, id);
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            // Delete records from diverGivesLesson
+            String deleteDiverGivesLesson = "DELETE FROM diverGivesLesson WHERE diverId = ?";
+            try (PreparedStatement statement = connection.prepareStatement(deleteDiverGivesLesson)) {
+                statement.setInt(1, id);
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            // Delete records from diverTakesLesson
+            String deleteDiverTakesLesson = "DELETE FROM diverTakesLesson WHERE diverId = ?";
+            try (PreparedStatement statement = connection.prepareStatement(deleteDiverTakesLesson)) {
+                statement.setInt(1, id);
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            // Delete records from reviewLesson
+            String deleteReviewLesson = "DELETE FROM lessonReview WHERE diverId = ?";
+            try (PreparedStatement statement = connection.prepareStatement(deleteReviewLesson)) {
+                statement.setInt(1, id);
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            // Delete records from review
+            String deleteReview = "DELETE FROM review WHERE diverId = ?";
+            try (PreparedStatement statement = connection.prepareStatement(deleteReview)) {
+                statement.setInt(1, id);
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            // Delete the diver
+            String deleteDiver = "DELETE FROM diver WHERE diverId = ?";
+            try (PreparedStatement statement = connection.prepareStatement(deleteDiver)) {
+                statement.setInt(1, id);
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } finally {
+            // Close the connection
+            try {
+                if (this.connection != null && !this.connection.isClosed()) {
+                    this.connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+     /** Get all the students of a diver (professor)
+     *
+     * @param diverId the id of the professor diver
+     * @return the list of all the students
+     */
+    @Override
+    public List<Diver> getAllStudents(int diverId) {
+        // List of all the students
+        List<Diver> students = new ArrayList<>();
+        try {
+            connection();
+            System.out.println("Connection to the database successful");
+
+            // Use a prepared statement to avoid SQL injection
+            String sql = "SELECT * FROM diver WHERE diverId IN (SELECT diverId FROM diverTakesLesson WHERE lessonId IN (SELECT lessonId FROM diverGivesLesson WHERE diverId = ?))";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setInt(1, diverId);
+
+                // Execute the query
+                try (ResultSet resultSet = statement.executeQuery()) {
+                    System.out.println("Students of Diver with ID " + diverId + ":");
+                    while (resultSet.next()) {
+                        Diver student = new Diver(
+                                resultSet.getInt("diverId"),
+                                resultSet.getString("email"),
+                                resultSet.getString("password"),
+                                resultSet.getString("lastName"),
+                                resultSet.getString("firstName"),
+                                resultSet.getBoolean("isAdmin"));
+
+                        students.add(student);
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                // Close the connection
+                try {
+                    if (connection != null && !connection.isClosed()) {
+                        connection.close();
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return students;
     }
 }

@@ -10,6 +10,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
+
 public class SignupController {
 
     @FXML
@@ -28,6 +30,15 @@ public class SignupController {
     private Label errorLabel;
 
     public SignupController() {}
+
+    @FXML
+    private void goToLogin(){
+        try{
+            FXRouter.goTo("login");
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
+    }
 
     public void onAction() {
 
@@ -55,15 +66,6 @@ public class SignupController {
             this.errorLabel.setText(e.getMessage());
         }
 
-
-
     }
 
-    private void goToLogin() {
-        try {
-            FXRouter.goTo("login");
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
 }

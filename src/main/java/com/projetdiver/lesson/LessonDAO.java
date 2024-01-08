@@ -1,5 +1,7 @@
 package com.projetdiver.lesson;
 
+import com.projetdiver.review.Review;
+
 import java.util.List;
 
 /**
@@ -92,4 +94,11 @@ public abstract class LessonDAO {
      * @return true if the unsubscription was successful, false otherwise
      */
     public abstract boolean unsubscribeToTheLesson(int lessonId, int diverId);
+
+    /**
+     * Fetches all reviews of a lesson from the database
+     * @param lessonId the id of the lesson
+     * @return the list of reviews for the lesson
+     */
+    public abstract List<Review> getAllReviewsOfLesson(int lessonId);
 }

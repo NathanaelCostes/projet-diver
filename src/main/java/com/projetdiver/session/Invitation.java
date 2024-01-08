@@ -1,8 +1,10 @@
 package com.projetdiver.session;
 
 import com.projetdiver.diver.Diver;
-import com.projetdiver.session.Session;
 
+/**
+ * @Author Boudier
+ */
 public class Invitation {
     private Session session;
 
