@@ -32,18 +32,9 @@ public class MapViewController {
     public void initialize() {
         mapView.setPrefSize(500, 400);
         mapView.addLayer(new CustomMapLayer());
-        mapView.setCenter(BlueHole);
+        mapView.setCenter(SilfraFissure);
         mapView.setZoom(1.7);
     }
-
-
-//    private MapView createMapView() {
-//        MapView mapView = new MapView();
-//        mapView.setPrefSize(500, 400);
-//        mapView.addLayer(new CustomMapLayer());
-//        mapView.setZoom(3);
-//        return mapView;
-//    }
 
     private class CustomMapLayer extends MapLayer {
         private final Node marker;
@@ -142,6 +133,15 @@ public class MapViewController {
     private void handleSpotButton(ActionEvent event) {
         try {
             FXRouter.goTo("spot");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    private void handleCertificateButton() {
+        try {
+            FXRouter.goTo("certification");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
