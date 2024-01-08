@@ -3,10 +3,9 @@ package com.projetdiver.contact.controllers;
 import com.projetdiver.contact.ContactDAO;
 import com.projetdiver.contact.ContactFacade;
 import com.projetdiver.contact.exceptions.ContactAlreadyExistException;
-import com.projetdiver.contact.exceptions.ContactNotFoundException;
 import com.projetdiver.diver.DiverDAO;
 import com.projetdiver.diver.DiverFacade;
-import com.projetdiver.session.controllers.ControllerHelper;
+import com.projetdiver.ControllerHelper;
 import com.projetdiver.session.exceptions.DiverNotFoundException;
 import com.projetdiver.session.exceptions.NotConnectedException;
 import javafx.fxml.FXML;
@@ -52,7 +51,7 @@ public class ContactCreateController implements ControllerHelper {
 
                         diverHBox.getChildren().add(separator());
 
-                        Button diverButton = createButton("add", "#3ebbbe");
+                        Button diverButton = createButton("add", getColor("validation"));
                         diverButton.setOnAction(event -> {
                             try {
                                 facade.createContact(diver.getId());

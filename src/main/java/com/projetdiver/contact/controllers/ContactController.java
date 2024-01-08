@@ -6,7 +6,7 @@ import com.projetdiver.contact.ContactFacade;
 import com.projetdiver.contact.exceptions.ContactNotFoundException;
 import com.projetdiver.diver.DiverFacade;
 import com.projetdiver.diver.Diver;
-import com.projetdiver.session.controllers.ControllerHelper;
+import com.projetdiver.ControllerHelper;
 import com.projetdiver.session.exceptions.NotConnectedException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -63,7 +63,7 @@ public class ContactController implements Initializable, ControllerHelper {
     public void setSessionMenuHBox(){
         contactMenuHBox.getChildren().clear();
 
-        Button sessionCreateButton = createButton("add contact", "#3ebbbe");
+        Button sessionCreateButton = createButton("add contact", getColor("validation"));
         sessionCreateButton.setOnAction(event -> {
             openCreateContact(event);
             setVBoxYourContact();
@@ -151,7 +151,7 @@ public class ContactController implements Initializable, ControllerHelper {
 
                 yourContactHBox.getChildren().add(separator());
 
-                Button contactButton = createButton("Delete", "red");
+                Button contactButton = createButton("Delete", getColor("suppression"));
                 contactButton.setOnAction(event -> {
                     ContactDAO.getInstance().delete(contact);
                     setVBoxYourContact();
@@ -184,7 +184,7 @@ public class ContactController implements Initializable, ControllerHelper {
 
                 yourContactHBox.getChildren().add(separator());
 
-                Button contactButton = createButton("Accept", "green");
+                Button contactButton = createButton("Accept", getColor("validation"));
                 contactButton.setOnAction(event -> {
                     try {
                         facade.acceptContact(contact.getSender().getId());
@@ -196,7 +196,7 @@ public class ContactController implements Initializable, ControllerHelper {
                 });
                 yourContactHBox.getChildren().add(contactButton);
 
-                Button contactButton2 = createButton("Decline", "red");
+                Button contactButton2 = createButton("Decline", getColor("suppression"));
                 contactButton2.setOnAction(event -> {
                     try {
                         facade.refuseContact(contact.getSender().getId());

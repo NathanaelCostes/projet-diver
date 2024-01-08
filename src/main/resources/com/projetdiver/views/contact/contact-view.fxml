@@ -59,6 +59,6 @@
       </GridPane>
    </center>
     <bottom>
-        <HBox fx:id="contactMenuHBox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER" />
+        <HBox fx:id="contactMenuHBox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0" style="-fx-background-color: #2d95a1;" BorderPane.alignment="CENTER" />
     </bottom>
 </BorderPane>

@@ -1,9 +1,10 @@
 package com.projetdiver.spot.controllers;
 
 import com.fxrouter.FXRouter;
-import com.projetdiver.diver.DiverFacade;
 import com.projetdiver.spot.Spot;
 import com.projetdiver.spot.SpotFacade;
+import com.projetdiver.ControllerHelper;
+
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -16,7 +17,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import com.projetdiver.spot.exceptions.*;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -59,7 +59,7 @@ public class SpotController implements Initializable, ControllerHelper {
     public void setSpotMenuHBox(){
         spotMenuHBox.getChildren().clear();
 
-        Button spotCreateButton = createButton("Create", "green");
+        Button spotCreateButton = createButton("Create", "#3ebbbe");
         spotCreateButton.setOnAction(event -> { 
             openCreateSpot(event); 
             setSpotListView();
@@ -147,7 +147,14 @@ public class SpotController implements Initializable, ControllerHelper {
                 spotHBox.getChildren().add(separator());
             }
 
-            Button spotInfoButton = createButton("Info", "blue");
+            Button spotModifyButton = createButton("Modify", "#BAB8B7");
+            spotModifyButton.setOnAction(event -> { openModifySpot(event, spot); });
+
+            //if Diver isAdmin = true then show modify button
+            if(DiverFacade.getInstance().getCurrentDiver().isAdmin()){
+                spotHBox.getChildren().add(spotModifyButton);
+            }
+            Button spotInfoButton = createButton("Info", "#2d95a1");
             spotInfoButton.setOnAction(event -> { openDetailsSpot(event, spot); });
             spotHBox.getChildren().add(spotInfoButton);
 
