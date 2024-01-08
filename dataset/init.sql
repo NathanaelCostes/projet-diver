@@ -25,6 +25,28 @@ VALUES('lee_sin.jungler@riotgames.com', '1234', 'Lee Sin', 'Jungler');
 INSERT INTO diver(email, password, firstName, lastName)
 VALUES('yasuo.midlaner@riotgames.com', '1234', 'Yasuo', 'Midlaner');
 
+-- Création et ajout de spots
+
+CREATE TABLE IF NOT EXISTS spot(
+                                   spotId serial NOT NULL PRIMARY KEY,
+                                   name varchar(30) NOT NULL,
+    latitude float NOT NULL,
+    longitude float NOT NULL,
+    maxDepth int NOT NULL,
+    type varchar(30) NOT NULL,
+    poi varchar(255) NOT NULL,
+    level varchar(30) NOT NULL
+    );
+
+INSERT INTO spot(name, latitude, longitude, maxDepth, type, poi, level)
+VALUES('Blue Hole', 17.3199, -87.5354, 124, 'SEA', 'Natural Wonder', 'ADVANCED');
+
+INSERT INTO spot(name, latitude, longitude, maxDepth, type, poi, level)
+VALUES('Great Barrier Reef', -16.286389, 146.686111, 40, 'SEA', 'Coral Reef', 'INTERMEDIATE');
+
+INSERT INTO spot(name, latitude, longitude, maxDepth, type, poi, level)
+VALUES('Silfra Fissure', 64.926, -21.119, 63, 'FRESHWATER', 'Tectonic Fissure', 'ADVANCED');
+
 -- Création de la table Session
 CREATE TABLE session(
     sessionId serial NOT NULL PRIMARY KEY,
@@ -35,20 +57,20 @@ CREATE TABLE session(
     temp int,
     depth int,
     owner int NOT NULL REFERENCES diver(diverId),
-    UNIQUE (title, owner)
-    -- spotId int NOT NULL REFERENCES spot(spotId)
+    UNIQUE (title, owner),
+    spotId int NOT NULL REFERENCES spot(spotId)
 );
 
 -- Ajout de sessions
 
-INSERT INTO session(title, date, owner)
-VALUES('Session de test', '2019-01-01', 1);
+INSERT INTO session(title, date, owner, spotId)
+VALUES('Session de test', '2019-01-01', 1, 1);
 
-INSERT INTO session(title, date, owner)
-VALUES('Session de test 2', '2019-01-02', 2);
+INSERT INTO session(title, date, owner, spotId)
+VALUES('Session de test 2', '2019-01-02', 2, 2);
 
-INSERT INTO session(title, date, owner)
-VALUES('Session de test 3', '2019-01-05', 3);
+INSERT INTO session(title, date, owner, spotId)
+VALUES('Session de test 3', '2019-01-05', 3, 3);
 
 -- Création de la table Invitation
 CREATE TABLE invitation(

@@ -1,0 +1,47 @@
+/* Style for the BorderPane */
+BorderPane {
+    -fx-background-color: #f0f0f0; /* Light gray background color */
+}
+
+/* Style for the GridPane */
+GridPane {
+    -fx-padding: 20; /* Add padding to the GridPane */
+    -fx-alignment: center; /* Center the content within the GridPane */
+}
+
+/* Style for Labels */
+Label {
+    -fx-text-fill: #333333; /* Dark gray text color */
+    -fx-padding: 5 0; /* Padding top and bottom */
+}
+
+/* Style for TextField and ChoiceBox */
+TextField, ChoiceBox {
+    -fx-pref-width: 200; /* Set preferred width */
+    -fx-font-size: 14px; /* Font size */
+}
+
+/* Style for the Button */
+Button {
+    -fx-background-color: #3ebbbe ; /* Blue background color */
+    -fx-text-fill: white; /* White text color */
+    -fx-padding: 10 20; /* Padding around the text */
+    -fx-font-size: 14px; /* Font size */
+}
+
+/* Hover effect for buttons */
+Button:hover {
+    -fx-background-color: #0eadd5; /* Darker blue on hover */
+}
+
+/* Style for the errorLabel (Red text color) */
+#errorLabel {
+    -fx-text-fill: red;
+}
+
+/* Style for the top Label */
+BorderPane > .top > Label {
+    -fx-font-size: 18px; /* Font size */
+    -fx-text-fill: #333333; /* Dark gray text color */
+    -fx-padding: 10 0; /* Padding top and bottom */
+}

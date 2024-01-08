@@ -3,9 +3,12 @@ module com.projetdiver {
     requires javafx.fxml;
     requires java.sql;
     requires java.dotenv;
+    requires java.desktop;
+    requires com.gluonhq.maps;
 
     opens com.projetdiver to javafx.fxml;
     opens com.projetdiver.diver.controllers to javafx.fxml;
+    opens com.projetdiver.spot.controllers to javafx.fxml;
     //opens com.projetdiver.diver.exceptions to javafx.fxml;
 
     opens com.projetdiver.admin to javafx.fxml;
@@ -16,9 +19,11 @@ module com.projetdiver {
     exports com.projetdiver.club.controllers;
     exports com.projetdiver.contact.controllers;
     exports com.projetdiver.lesson.controllers;
-    exports com.projetdiver.map.controllers;
+    exports com.projetdiver.spot.controllers;
     exports com.projetdiver.session.controllers;
+    exports com.projetdiver.map.controllers;
     exports com.projetdiver.review.controllers;
+
     exports com.projetdiver.admin;
 
     exports com.projetdiver.dao;
@@ -44,6 +49,10 @@ module com.projetdiver {
 
     exports com.fxrouter;
     opens com.fxrouter to javafx.fxml;
+    exports com.projetdiver.spot;
+    opens com.projetdiver.spot to javafx.fxml;
+    opens com.projetdiver.map.controllers to javafx.fxml;
+
 
     /** Contact */
     exports com.projetdiver.contact;

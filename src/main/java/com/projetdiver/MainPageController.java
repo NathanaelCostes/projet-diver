@@ -41,7 +41,6 @@ public class MainPageController {
     private void handleMapButton(ActionEvent event) {
         try {
             FXRouter.goTo("map");
-            closeSidebar(); // Close the sidebar after navigating to a new page
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -51,7 +50,6 @@ public class MainPageController {
     private void handleSessionsButton(ActionEvent event) {
         try {
             FXRouter.goTo("session");
-            closeSidebar(); // Close the sidebar after navigating to a new page
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -61,7 +59,6 @@ public class MainPageController {
     private void handleLessonsButton(ActionEvent event) {
         try {
             FXRouter.goTo("lesson");
-            closeSidebar(); // Close the sidebar after navigating to a new page
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -71,7 +68,6 @@ public class MainPageController {
     private void handleContactsButton(ActionEvent event) {
         try {
             FXRouter.goTo("contact");
-            closeSidebar(); // Close the sidebar after navigating to a new page
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -81,7 +77,6 @@ public class MainPageController {
     private void handleCertificateButton() {
         try {
             FXRouter.goTo("certification");
-            closeSidebar(); // Close the sidebar after navigating to a new page
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -91,7 +86,6 @@ public class MainPageController {
     private void handleDiverButton(ActionEvent event) {
         try {
             FXRouter.goTo("profile");
-            closeSidebar(); // Close the sidebar after navigating to a new page
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -101,29 +95,18 @@ public class MainPageController {
     private void handleAdminButton(ActionEvent event) {
         try {
             FXRouter.goTo("admin-panel");
-            closeSidebar(); // Close the sidebar after navigating to a new page
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
     @FXML
-    private void handleToggleSidebar(ActionEvent event) {
-        // Toggle right panel with animation
-        if (sidebarToggleButton.isSelected()) {
-            // Code for handling tab open state
-            sidebarTransition.setRate(1);
-        } else {
-            // Code for handling tab close state
-            sidebarTransition.setRate(-1);
+    private void handleSpotButton(ActionEvent event) {
+        try {
+            FXRouter.goTo("spot");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-
-        sidebarTransition.play();
     }
 
-    private void closeSidebar() {
-        sidebarToggleButton.setSelected(false);
-        sidebarTransition.setRate(-1);
-        sidebarTransition.play();
-    }
 }

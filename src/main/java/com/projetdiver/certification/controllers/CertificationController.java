@@ -26,6 +26,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Files;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class CertificationController implements Initializable {
@@ -89,10 +90,8 @@ public class CertificationController implements Initializable {
             certificationUpdateController.setCertificationToModify(certification);
             certificationUpdateController.setStage(modalStage);
 
-            //TODO : add css
-            /*
-            String cssPath = Objects.requireNonNull(getClass().getResource("/com/projetdiver/styles/lessonCreationModalStyle.css")).toExternalForm();
-            scene.getStylesheets().add(cssPath);*/
+            String cssPath = Objects.requireNonNull(getClass().getResource("/com/projetdiver/styles/certificationCreationModalStyle.css")).toExternalForm();
+            scene.getStylesheets().add(cssPath);
 
             // Set the current stage as the owner for the modality
             modalStage.initOwner(((Node) listCertificationView).getScene().getWindow());
@@ -127,10 +126,8 @@ public class CertificationController implements Initializable {
             CertificationCreationController certificationCreationController = loader.getController();
             certificationCreationController.setStage(modalStage);
 
-            //TODO : add css
-            /*
-            String cssPath = Objects.requireNonNull(getClass().getResource("/com/projetdiver/styles/lessonCreationModalStyle.css")).toExternalForm();
-            scene.getStylesheets().add(cssPath);*/
+            String cssPath = Objects.requireNonNull(getClass().getResource("/com/projetdiver/styles/certificationCreationModalStyle.css")).toExternalForm();
+            scene.getStylesheets().add(cssPath);
 
             // Set the current stage as the owner for the modality
             modalStage.initOwner(((Node) event.getSource()).getScene().getWindow());
