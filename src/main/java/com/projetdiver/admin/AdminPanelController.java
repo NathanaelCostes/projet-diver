@@ -127,7 +127,7 @@ public class AdminPanelController {
 
                     Button buttonValidate = new Button("Accept Certificate");
                     buttonValidate.setOnAction(event -> {
-                        handlteButtonActionValidate(certification);
+                        handleButtonActionValidate(certification);
                     });
 
                     HBox hbox = new HBox(new Label(certification.toString()), buttonDownload, buttonDelete, buttonValidate);
@@ -143,16 +143,16 @@ public class AdminPanelController {
     private void handleButtonActionDelete(Certification certification) {
         try {
             CertificationFacade.getInstance().deleteCertification(certification.getId());
-            initialize();
+            setCertificationListView();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
-    private void handlteButtonActionValidate(Certification certification) {
+    private void handleButtonActionValidate(Certification certification) {
         certification.setPending(false);
         CertificationFacade.getInstance().updateCertification(certification);
-        initialize();
+        setCertificationListView();
     }
 
 
