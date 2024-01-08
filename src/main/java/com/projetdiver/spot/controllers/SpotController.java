@@ -100,7 +100,17 @@ public class SpotController implements Initializable, ControllerHelper {
 
             spotHBox.getChildren().add(createLabel(spot.getName()));
 
-            spotHBox.getChildren().add(separator());
+            if (spot.getLatitude() != null) {
+                spotHBox.getChildren().add(createLabel(spot.getLatitude().toString()));
+
+                spotHBox.getChildren().add(separator());
+            }
+
+            if (spot.getLongitude() != null) {
+                spotHBox.getChildren().add(createLabel(spot.getLongitude().toString()));
+
+                spotHBox.getChildren().add(separator());
+            }
 
             if (spot.getMaxDepth() != null) {
                 spotHBox.getChildren().add(createLabel(spot.getMaxDepth().toString()));

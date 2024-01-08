@@ -8,6 +8,6 @@
       <Label style="-fx-font-weight: bold; -fx-font-size: 50px; -fx-font-family: Roboto;" text="Session Information" textAlignment="CENTER" textFill="#0099ff" BorderPane.alignment="CENTER" />
    </top>
    <center>
-      <VBox fx:id="sessionDetailsListVBox" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+      <VBox fx:id="spotDetailsListVBox" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>
