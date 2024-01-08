@@ -6,19 +6,19 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/adminPanel-style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projetdiver.admin.AdminPanelController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../styles/adminPanel-style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projetdiver.admin.AdminPanelController">
    <center>
-      <GridPane hgap="10.0" prefHeight="167.0" prefWidth="590.0" BorderPane.alignment="CENTER">
+      <GridPane hgap="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="292.4" minWidth="10.0" prefWidth="290.4" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="349.99999999999994" minWidth="10.0" prefWidth="290.3999999999999" />
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="292.4" minWidth="10.0" prefWidth="290.4" />
+            <ColumnConstraints maxWidth="349.99999999999994" minWidth="10.0" prefWidth="290.3999999999999" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="167.0" minHeight="9.0" prefHeight="13.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="336.0" minHeight="10.0" prefHeight="332.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+            <VBox alignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" VBox.vgrow="ALWAYS">
                <children>
                   <Label text="Diver list">
                      <font>
@@ -26,21 +26,20 @@
                      </font>
                   </Label>
                   <ScrollPane fitToWidth="true" maxWidth="1.7976931348623157E308" prefHeight="308.0" prefWidth="290.0">
-
                     <content>
                         <VBox fx:id="diverListVBox" alignment="CENTER" maxHeight="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" />
                     </content>
                   </ScrollPane>
                </children>
             </VBox>
-            <VBox alignment="TOP_CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <VBox alignment="TOP_CENTER" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
                <children>
                   <Label text="Certificate waiting for validation">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <ListView fx:id="listCertificationView" prefHeight="113.0" prefWidth="295.0" />
+                  <ListView fx:id="listCertificationView" />
                </children>
             </VBox>
          </children>
