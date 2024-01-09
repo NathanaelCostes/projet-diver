@@ -58,7 +58,7 @@ CREATE TABLE session(
     depth int,
     owner int NOT NULL REFERENCES diver(diverId),
     UNIQUE (title, owner),
-    spotId int NOT NULL REFERENCES spot(spotId)
+    spotId int REFERENCES spot(spotId)
 );
 
 -- Ajout de sessions
